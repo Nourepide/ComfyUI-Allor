@@ -1,0 +1,14 @@
+torch
+torchvision
+numpy
+rembg
+pooch
+Pillow
+
+onnxruntime
+# Or GPU version
+# onnxruntime[gpu]
+
+# For Nvidia
+# tensorrt
+# cuda-python
