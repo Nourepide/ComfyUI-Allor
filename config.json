@@ -1,0 +1,11 @@
+{
+  "fonts_folder_path": ["comfy_extras", "fonts"],
+  "modules": {
+    "AlphaChanel": true,
+    "Clamp": true,
+    "ImageComposite": true,
+    "ImageContainer": true,
+    "ImageSegmentation": true,
+    "ImageText": true
+  }
+}
