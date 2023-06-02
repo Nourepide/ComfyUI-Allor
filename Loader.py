@@ -2,7 +2,6 @@ import json
 import os
 
 import folder_paths
-from .modules import AlphaChanel, Clamp, ImageComposite, ImageContainer, ImageSegmentation, ImageText
 
 
 class Loader:
@@ -36,21 +35,27 @@ class Loader:
         modules = dict()
 
         if self.config()["modules"]["AlphaChanel"]:
+            from .modules import AlphaChanel
             modules.update(AlphaChanel.NODE_CLASS_MAPPINGS)
 
         if self.config()["modules"]["Clamp"]:
+            from .modules import Clamp
             modules.update(Clamp.NODE_CLASS_MAPPINGS)
 
         if self.config()["modules"]["ImageComposite"]:
+            from .modules import ImageComposite
             modules.update(ImageComposite.NODE_CLASS_MAPPINGS)
 
         if self.config()["modules"]["ImageContainer"]:
+            from .modules import ImageContainer
             modules.update(ImageContainer.NODE_CLASS_MAPPINGS)
 
         if self.config()["modules"]["ImageSegmentation"]:
+            from .modules import ImageSegmentation
             modules.update(ImageSegmentation.NODE_CLASS_MAPPINGS)
 
         if self.config()["modules"]["ImageText"]:
+            from .modules import ImageText
             modules.update(ImageText.NODE_CLASS_MAPPINGS)
 
         return modules
