@@ -3,11 +3,12 @@ from PIL import Image
 from rembg import remove, new_session
 
 import folder_paths
-from custom_nodes.comfyui_allor.session.CustomSession import CustomAbstractSession
-from custom_nodes.comfyui_allor.session.CustomSession import CustomSessionContainer
-from custom_nodes.comfyui_allor.session.IsnetisSession import IsnetisSession
-from custom_nodes.comfyui_allor.session.ModnetPhotographicSession import ModnetPhotographicSession
-from custom_nodes.comfyui_allor.session.ModnetWebcamSession import ModnetWebcamSession
+
+from ..session.CustomSession import CustomAbstractSession
+from ..session.CustomSession import CustomSessionContainer
+from ..session.IsnetisSession import IsnetisSession
+from ..session.ModnetPhotographicSession import ModnetPhotographicSession
+from ..session.ModnetWebcamSession import ModnetWebcamSession
 
 
 class ImageSegmentation:
