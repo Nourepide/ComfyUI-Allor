@@ -6,7 +6,6 @@ import folder_paths
 
 from ..session.CustomSession import CustomAbstractSession
 from ..session.CustomSession import CustomSessionContainer
-from ..session.IsnetisSession import IsnetisSession
 from ..session.ModnetPhotographicSession import ModnetPhotographicSession
 from ..session.ModnetWebcamSession import ModnetWebcamSession
 
@@ -67,7 +66,7 @@ class ImageSegmentation:
     ):
         if session is None:
             if model == "isnetis":
-                session = IsnetisSession(model)
+                session = new_session("isnet-anime")
             elif model == "modnet-p":
                 session = ModnetPhotographicSession(model)
             elif model == "modnet-w":
