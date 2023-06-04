@@ -1,4 +1,4 @@
-![alt text](images/logo.png)
+![logo](images/logo.png)
 
 
 <details>
@@ -38,13 +38,15 @@
 
 ### Alpha chanel
 
+![alpha_chanel](images/alpha_chanel.png)
+
 > Helpers for work with alpha chanel in exiting images.
 
 <details>
   <summary>Nodes:</summary>
 
 ### By Mask
-![alt text](images/alpha_chanel_by_mask.png)
+![alpha_chanel_by_mask](images/alpha_chanel_by_mask.png)
 
 > Applies transparency to the image using a mask.
 
@@ -58,7 +60,7 @@
 </details>
 
 ### Restore
-![alt text](images/alpha_chanel_restore.png)
+![alpha_chanel_restore](images/alpha_chanel_restore.png)
 
 > Add alpha dimension to images. Or restore if it already exists. 
 
@@ -76,6 +78,8 @@
 
 ---
 ### Image Container
+
+![image_container](images/image_container.png)
 
 > Creating blank images of fixed or inherited size.
 
@@ -129,6 +133,9 @@ The first letter `i` in the word `Inheritance` is barely noticeable. But in the 
 
 ---
 ### Image Composite
+
+![image_composite](images/image_composite.png)
+
 > Allows you to place one image on top of another.
 
 <details>
@@ -148,7 +155,7 @@ The first letter `i` in the word `Inheritance` is barely noticeable. But in the 
                 [a2, b1], [a2, b2], [a2, b3]
                 [a3, b1], [a3, b2], [a3, b3]
 
-![alt text](images/image_composite_methods.png)
+![image_composite_methods](images/image_composite_methods.png)
 
 </details>
 
@@ -189,6 +196,9 @@ How it works.
 
 ---
 ### Image Segmentation
+
+![image_segmentation](images/image_segmentation.png)
+
 > Removes background from image.
 
 <details>
@@ -213,7 +223,7 @@ How it works.
 * u2net_cloth_seg - [GitHub](https://github.com/levindabhi/cloth-segmentation)
 * silueta - [GitHub](https://github.com/xuebinqin/U-2-Net/issues/295)
 * isnet-general-use - [GitHub](https://github.com/xuebinqin/DIS)
-* isnetis - [GitHub](https://github.com/SkyTNT/anime-segmentation)
+* isnetis - [GitHub](https://github.com/SkyTNT/anime-segmentation) (I recommend `alpha_matting` parameter set to `false`)
 * modnet-p - [GitHub](https://github.com/ZHKKKe/MODNet)
 * modnet-w - [GitHub](https://github.com/ZHKKKe/MODNet)
 
@@ -260,6 +270,8 @@ Made on [rembg](https://github.com/danielgatis/rembg). The solution to some prob
 ---
 ### ImageText
 
+![image_text](images/image_text.png)
+
 > Creating text as image.
 
 Fonts should be contained in `ComfyUI/comfy_extras/fonts`.
@@ -270,7 +282,7 @@ You also can change the fonts folder in config.
   <summary>Nodes:</summary>
 
 ### Default
-![alt text](images/image_text.png)
+![image_text_default](images/image_text_default.png)
 
 > Create an image with text.
 
@@ -288,7 +300,7 @@ You also can change the fonts folder in config.
 </details>
 
 ### Outlined
-![alt text](images/image_text_outlined.png)
+![image_text_outlined](images/image_text_outlined.png)
 
 > Create an image with outlined text.
 
@@ -304,7 +316,7 @@ You also can change the fonts folder in config.
 
 ---
 ### Clamp
-![alt text](images/clamp.png)
+![clamp](images/clamp.png)
 
 > Clamps help to control the "web" of nodes and improve readability.
 
