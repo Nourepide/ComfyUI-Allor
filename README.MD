@@ -1,6 +1,5 @@
 ![logo](images/logo.png)
 
-
 <details>
   <summary>This image from start to end was done in ComfyUI. How?</summary>
 
@@ -10,19 +9,18 @@
 4. Load [RealESRNet_x4plus.pth](https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.1/RealESRNet_x4plus.pth) and put in to `models/upscale` folder.
 5. Load [AOM3A1B_orangemixs.safetensors](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/Models/AbyssOrangeMix3/AOM3A1B_orangemixs.safetensors) and put in to `models/chekpoints` folder.
 6. Load [orangemix.vae.pt](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/VAEs/orangemix.vae.pt) and put in to `models/vae` folder.
-7. Drag'n'drop this [image](images/logo.png) to ComfyUI or load [JSON](images/logo.json).
+7. Drag-and-drop this [image](images/logo.png) to ComfyUI or load [JSON](images/logo.json).
+8. Press the `Queue Promt` button.
 
 </details>
 
 ## About Allor:
-
-* Allure is a plugin for ComfyUI with an emphasis on transparency and performance.
+* Allore is a plugin for ComfyUI with an emphasis on transparency and performance.
 * All modules support transparency, multi-image and are easy to use.
 * One of the main features is the ability to combine several images of different sizes.
 * Almost all functionality is implemented in tensor space without transformation into an image, where possible. This allows you to achieve an incredible speed of work, in some places the speed increases from 1-2 seconds to 4-6 milliseconds.
 
 ## Installation:
-
 1. `cd custom_nodes`
 2. `git clone https://github.com/Nourepide/comfyui_allor.git comfyui_allor`
 3. `cd comfyui_allor` 
@@ -30,16 +28,11 @@
 5. You can also create `fonts` folder in `comfy_extras` or just start `ComfyUI` and folder will create automatically.
 
 ## Modules:
-
 <details>
   <summary>Details:</summary>
 
----
-
 ### Alpha chanel
-
 ![alpha_chanel](images/alpha_chanel.png)
-
 > Helpers for work with alpha chanel in exiting images.
 
 <details>
@@ -47,7 +40,6 @@
 
 ### By Mask
 ![alpha_chanel_by_mask](images/alpha_chanel_by_mask.png)
-
 > Applies transparency to the image using a mask.
 
 <details>
@@ -61,7 +53,6 @@
 
 ### Restore
 ![alpha_chanel_restore](images/alpha_chanel_restore.png)
-
 > Add alpha dimension to images. Or restore if it already exists. 
 
 <details>
@@ -78,9 +69,7 @@
 
 ---
 ### Image Container
-
 ![image_container](images/image_container.png)
-
 > Creating blank images of fixed or inherited size.
 
 <details>
@@ -124,7 +113,7 @@
 > Get max width and max height from `images_a` and `images_b` and create a new container with this size.
  
 ### Inheritance Sum
-> Get width and/or height from `images_a` and `images_b` and create a new container with sum this size.
+> Get width and/or height from `images_a` and `images_b` and create a new container with a sum this size.
 
 </details>
 
@@ -133,9 +122,7 @@ The first letter `i` in the word `Inheritance` is barely noticeable. But in the 
 
 ---
 ### Image Composite
-
 ![image_composite](images/image_composite.png)
-
 > Allows you to place one image on top of another.
 
 <details>
@@ -196,16 +183,14 @@ How it works.
 
 ---
 ### Image Segmentation
-
 ![image_segmentation](images/image_segmentation.png)
-
 > Removes background from image.
 
 <details>
   <summary>Nodes:</summary>
 
 #### All
-* alpha_matting `[boolean]` - Alpha metting is a post-processing step that can be used to improve the quality of the output.
+* alpha_matting `[boolean]` - Alpha matting is a post-processing step that can be used to improve the quality of the output.
 * alpha_matting_foreground_threshold `[0 - 250]` - Trimap foreground threshold.
 * alpha_matting_background_threshold `[0 - 250]` - Trimap background threshold.
 * alpha_matting_erode_size `[0 - *]` - How far will the transparency spread from the original mask.
@@ -224,8 +209,8 @@ How it works.
 * silueta - [GitHub](https://github.com/xuebinqin/U-2-Net/issues/295)
 * isnet-general-use - [GitHub](https://github.com/xuebinqin/DIS)
 * isnetis - [GitHub](https://github.com/SkyTNT/anime-segmentation) (I recommend `alpha_matting` parameter set to `false`)
-* modnet-p - [GitHub](https://github.com/ZHKKKe/MODNet)
-* modnet-w - [GitHub](https://github.com/ZHKKKe/MODNet)
+* modnet-p - [GitHub](https://github.com/ZHKKKe/MODNet) (Not calibrated)
+* modnet-w - [GitHub](https://github.com/ZHKKKe/MODNet) (Not calibrated)
 
 </details>
 
@@ -238,7 +223,7 @@ How it works.
 * model `[*.onnx]` - Your model in `ComfyUI/models/onnx` folder.
 * mean `[0.0 - 1.0]` - Clarifying value.
 * std `[0.0 - 1.0]` - The divisor of the final value. I recommend leaving it at 1.0.
-* size `[0 - *]` - Title size. Different models support different sizes. Or their multiple value [512 -> 1024 -> 2048...]. If the size does not match the desired one, you will see a notification in the console.
+* size `[0 - *]` - Title size. Different models support different sizes. Or their multiple values [512 -> 1024 -> 2048...]. If the size does not match the desired one, you will see a notification in the console.
 
 </details>
 
@@ -265,13 +250,11 @@ Some models support non-standard title size. For example [w:1024 - h:2048].
 </details>
 
 #### PS:
-Made on [rembg](https://github.com/danielgatis/rembg). The solution to some problems may be dependent on the rembg developer.
+Made on [rembg](https://github.com/danielgatis/rembg). The solution of some problems may be dependent on the rembg developer.
 
 ---
 ### ImageText
-
 ![image_text](images/image_text.png)
-
 > Creating text as image.
 
 Fonts should be contained in `ComfyUI/comfy_extras/fonts`.
@@ -283,7 +266,6 @@ You also can change the fonts folder in config.
 
 ### Default
 ![image_text_default](images/image_text_default.png)
-
 > Create an image with text.
 
 <details>
@@ -301,7 +283,6 @@ You also can change the fonts folder in config.
 
 ### Outlined
 ![image_text_outlined](images/image_text_outlined.png)
-
 > Create an image with outlined text.
 
 <details>
@@ -317,7 +298,6 @@ You also can change the fonts folder in config.
 ---
 ### Clamp
 ![clamp](images/clamp.png)
-
 > Clamps help to control the "web" of nodes and improve readability.
 
 <details>
@@ -339,12 +319,9 @@ You also can change the fonts folder in config.
 
 </details>
 
----
-
 </details>
 
 ## Configuration:
 You can configurate Allore with `config.json`.
-
 * `fonts_folder_path` - Array with a relative path to fonts folder, by default is `["comfy_extras", "fonts"]`. (Converted to `ComfyUI/comfy_extras/fonts` for Unix and `ComfyUI\comfy_extras\fonts` for Windows).
 * `modules` - You can disable (or enable) modules at will. Nodes from disabled modules will not be loaded during the start of ComfyUI.
