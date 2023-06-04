@@ -1,4 +1,5 @@
 rembg
+onnx
 
 # If you want you can install onnxruntime with GPU support
 # onnxruntime[gpu]

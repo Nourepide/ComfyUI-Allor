@@ -39,7 +39,7 @@ class ModnetPhotographicSession(CustomBaseSession):
         if not os.path.exists(os.path.join(cls.u2net_home(), fname)):
             pooch.retrieve(
                 "https://raw.githubusercontent.com/ZHKKKe/MODNet/master/onnx/export_onnx.py",
-                known_hash=None,
+                "SHA256:647990c98c409fbf6a72cd2a2db5fe19d2e4b15a3a436ef0302be0582458b63e",
                 fname=f"export_onnx.py",
                 path=os.path.join(cls.u2net_home(), "modnet-p/"),
                 progressbar=True,
@@ -47,7 +47,7 @@ class ModnetPhotographicSession(CustomBaseSession):
 
             pooch.retrieve(
                 "https://raw.githubusercontent.com/ZHKKKe/MODNet/master/onnx/modnet_onnx.py",
-                known_hash=None,
+                "SHA256:0502cad1b7ab0bf2f866179960454c1e63df096390db05e93cb40145dbc26e1f",
                 fname=f"modnet_onnx.py",
                 path=os.path.join(cls.u2net_home(), "modnet-p/"),
                 progressbar=True,
@@ -55,7 +55,7 @@ class ModnetPhotographicSession(CustomBaseSession):
 
             pooch.retrieve(
                 "https://raw.githubusercontent.com/ZHKKKe/MODNet/master/src/models/backbones/__init__.py",
-                known_hash=None,
+                "SHA256:28a5fb95f7dcf9e365edbf42c6d2e8ea0ca4839e51fd7f11bd0547d2359fcd96",
                 fname=f"__init__.py",
                 path=os.path.join(cls.u2net_home(), "modnet-p/src/models/backbones"),
                 progressbar=True,
@@ -63,7 +63,7 @@ class ModnetPhotographicSession(CustomBaseSession):
 
             pooch.retrieve(
                 "https://raw.githubusercontent.com/ZHKKKe/MODNet/master/src/models/backbones/mobilenetv2.py",
-                known_hash=None,
+                "SHA256:e3cc8ad6a9933ba18a17a62d5f887c64e0721240871ea8b48742fb9a8a2c3199",
                 fname=f"mobilenetv2.py",
                 path=os.path.join(cls.u2net_home(), "modnet-p/src/models/backbones"),
                 progressbar=True,
@@ -71,7 +71,7 @@ class ModnetPhotographicSession(CustomBaseSession):
 
             pooch.retrieve(
                 "https://raw.githubusercontent.com/ZHKKKe/MODNet/master/src/models/backbones/wrapper.py",
-                known_hash=None,
+                "SHA256:41197be7eb96b8a60dc034b55d8c9340dd682a41441dcf2ce67238955dfa5607",
                 fname=f"wrapper.py",
                 path=os.path.join(cls.u2net_home(), "modnet-p/src/models/backbones"),
                 progressbar=True,
@@ -79,7 +79,7 @@ class ModnetPhotographicSession(CustomBaseSession):
 
             pooch.retrieve(
                 "https://storage.openvinotoolkit.org/repositories/open_model_zoo/public/2022.2/modnet-photographic-portrait-matting/modnet_photographic_portrait_matting.ckpt",
-                known_hash=None,
+                "SHA256:7c22235f0925deba15d4d63e53afcb654c47055bbcd98f56e393ab2584007ed8",
                 fname=f"modnet_photographic_portrait_matting.ckpt",
                 path=os.path.join(cls.u2net_home(), "modnet-p/"),
                 progressbar=True,
