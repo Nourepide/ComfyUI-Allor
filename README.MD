@@ -51,6 +51,19 @@
 
 </details>
 
+### As Mask
+![alpha_chanel_as_mask](images/alpha_chanel_as_mask.png)
+> Get alpha chanel from first image and returns it as mask.
+
+<details>
+  <summary>Params:</summary>
+
+* method -
+  * default - Standard mask overlay.
+  * invert - Inverted mask overlay.
+
+</details>
+
 ### Restore
 ![alpha_chanel_restore](images/alpha_chanel_restore.png)
 > Add alpha dimension to images. Or restore if it already exists. 

@@ -50,6 +50,35 @@ class AlphaChanelByMask:
             ]),)
 
 
+class AlphaChanelAsMask:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "method": (["default", "invert"],),
+            },
+        }
+
+    RETURN_TYPES = ("MASK",)
+    FUNCTION = "alpha_chanel_as_mask"
+    CATEGORY = "mask"
+
+    def alpha_chanel_as_mask(self, images, method):
+        if images[0, 0, 0].shape[0] != 4:
+            raise ValueError("Alpha chanel not exist.")
+
+        if method == "default":
+            return (1.0 - images[0, :, :, 3],)
+        elif method == "invert":
+            return (images[0, :, :, 3],)
+        else:
+            raise ValueError("Unexpected method.")
+
+
 class AlphaChanelRestore:
     def __init__(self):
         pass
@@ -97,5 +126,6 @@ class AlphaChanelRestore:
 
 NODE_CLASS_MAPPINGS = {
     "AlphaChanelByMask": AlphaChanelByMask,
+    "AlphaChanelAsMask": AlphaChanelAsMask,
     "AlphaChanelRestore": AlphaChanelRestore
 }
