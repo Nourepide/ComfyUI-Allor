@@ -189,7 +189,7 @@ How it works.
 
 ---
 ### Image Segmentation
-`Warning!`: Required ONNX. ONNX currently **doesn't** support Python 3.11 and above. [See details](https://github.com/microsoft/onnxruntime/issues/14880#issuecomment-1452037857).
+> Removes background from image.
 
 <details>
   <summary>Nodes:</summary>
