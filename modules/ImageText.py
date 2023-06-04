@@ -1,16 +1,6 @@
-import os
-
 from PIL import Image, ImageDraw, ImageFont
 
 import folder_paths
-
-
-def get_fonts_list():
-    path = os.path.join(folder_paths.base_path, "comfy_extras/fonts")
-    output_list = [f for (dirpath, dirnames, filenames) in os.walk(path) for f in filenames]
-    output_list = filter(lambda x: x.endswith(".ttf") or x.endswith(".otf"), output_list)
-
-    return sorted(list(output_list))
 
 
 class ImageText:
@@ -22,7 +12,7 @@ class ImageText:
         return {
             "required": {
                 "text": ("STRING", {"multiline": False}),
-                "font": (get_fonts_list(),),
+                "font": (folder_paths.get_filename_list("fonts"),),
                 "size": ("INT", {
                     "default": 28,
                     "step": 1
@@ -63,7 +53,7 @@ class ImageText:
     CATEGORY = "image"
 
     def image_text(self, text, font, size, red, green, blue, alpha, margin_x, margin_y):
-        font_path = os.path.join(folder_paths.base_path, "comfy_extras/fonts/", font)
+        font_path = folder_paths.get_full_path("fonts", font)
         font = ImageFont.truetype(font_path, size, encoding="unic")
 
         (left, top, right, bottom) = font.getbbox(text)
@@ -85,7 +75,7 @@ class ImageTextOutlined:
         return {
             "required": {
                 "text": ("STRING", {"multiline": False}),
-                "font": (get_fonts_list(),),
+                "font": (folder_paths.get_filename_list("fonts"),),
                 "size": ("INT", {
                     "default": 28,
                     "step": 1
@@ -148,7 +138,7 @@ class ImageTextOutlined:
             self, text, font, size, red, green, blue, outline_size, outline_red, outline_green, outline_blue, alpha,
             margin_x, margin_y
     ):
-        font_path = os.path.join(folder_paths.base_path, "comfy_extras/fonts/", font)
+        font_path = folder_paths.get_full_path("fonts", font)
         font = ImageFont.truetype(font_path, size, encoding="unic")
 
         (left, top, right, bottom) = font.getbbox(text)
