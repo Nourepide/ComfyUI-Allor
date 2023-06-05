@@ -15,7 +15,7 @@
 </details>
 
 ## About Allor:
-* Allore is a plugin for ComfyUI with an emphasis on transparency and performance.
+* Allor is a plugin for ComfyUI with an emphasis on transparency and performance.
 * All modules support transparency, multi-image and are easy to use.
 * One of the main features is the ability to combine several images of different sizes.
 * Almost all functionality is implemented in tensor space without transformation into an image, where possible. This allows you to achieve an incredible speed of work, in some places the speed increases from 1-2 seconds to 4-6 milliseconds.
@@ -28,7 +28,7 @@
 5. You can also create `fonts` folder in `comfy_extras` or just start `ComfyUI` and folder will create automatically.
 
 ## Updating:
-1. `cd custom_nodes/comfyui_allor` or `cd custom_nodes/{name of ComfyUI Allore folder}`
+1. `cd custom_nodes/comfyui_allor` or `cd custom_nodes/{name of ComfyUI Allor folder}`
 2. `git checkout main && git pull`
 
 ## Modules:
@@ -504,6 +504,6 @@ You also can change the fonts folder in config.
 </details>
 
 ## Configuration:
-You can configurate Allore with `config.json`.
+You can configurate Allor with `config.json`.
 * `fonts_folder_path` - Array with a relative path to fonts folder, by default is `["comfy_extras", "fonts"]`. (Converted to `ComfyUI/comfy_extras/fonts` for Unix and `ComfyUI\comfy_extras\fonts` for Windows).
 * `modules` - You can disable (or enable) modules at will. Nodes from disabled modules will not be loaded during the start of ComfyUI.
