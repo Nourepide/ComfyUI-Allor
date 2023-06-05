@@ -13,10 +13,12 @@ class ImageContainer:
             "required": {
                 "width": ("INT", {
                     "default": 512,
+                    "min": 1,
                     "step": 1
                 }),
                 "height": ("INT", {
                     "default": 512,
+                    "min": 1,
                     "step": 1
                 }),
                 "red": ("INT", {
