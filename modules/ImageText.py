@@ -15,6 +15,7 @@ class ImageText:
                 "font": (folder_paths.get_filename_list("fonts"),),
                 "size": ("INT", {
                     "default": 28,
+                    "min": 1,
                     "step": 1
                 }),
                 "red": ("INT", {
@@ -78,6 +79,7 @@ class ImageTextOutlined:
                 "font": (folder_paths.get_filename_list("fonts"),),
                 "size": ("INT", {
                     "default": 28,
+                    "min": 1,
                     "step": 1
                 }),
                 "red": ("INT", {

@@ -102,7 +102,7 @@
 <details>
   <summary>Params:</summary>
 
-* [width, height] `[0 - *]` - Size of a new container.
+* [width, height] `[1 - *]` - Size of a new container.
 
 </details>
 
@@ -290,7 +290,7 @@ You also can change the fonts folder in config.
 
 * text - Your input. Shouldn't be empty.
 * font `[*.otf, *.ttf]` - Font from `ComfyUI/comfy_extras/fonts` folder.
-* size `[0 - *]` - Font size in `SP`. `Warning!`: It's not `PX` size of the container. The size of the container is calculated using a variety of parameters. Example: `o` and `j` will have different height and exactly different size compared to `树`.   
+* size `[1 - *]` - Font size in `SP`. `Warning!`: It's not `PX` size of the container. The size of the container is calculated using a variety of parameters. Example: `o` and `j` will have different height and exactly different size compared to `树`.   
 * [red, green, blue] `[0 - 255]` - Color of the text in `RGB`. 
 * alpha `[0.0 - 1.0]` - Transparency of the text. 
 * margin_x `[0 - *]` - Horizontal offset. 
