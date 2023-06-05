@@ -43,7 +43,7 @@ class ImageCompositeAbsolute:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "image_composite_absolute"
-    CATEGORY = "image"
+    CATEGORY = "image/composite"
 
     def image_composite_absolute(
             self,
@@ -180,7 +180,7 @@ class ImageCompositeRelative:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "image_composite_relative"
-    CATEGORY = "image"
+    CATEGORY = "image/composite"
 
     def image_composite_relative(
             self,

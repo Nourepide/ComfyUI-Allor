@@ -17,7 +17,7 @@ class AlphaChanelByMask:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "alpha_chanel_by_mask"
-    CATEGORY = "mask"
+    CATEGORY = "mask/alpha"
 
     def alpha_chanel_by_mask(self, images, mask, method):
         img_height, img_width = images[0, :, :, 0].shape
@@ -65,7 +65,7 @@ class AlphaChanelAsMask:
 
     RETURN_TYPES = ("MASK",)
     FUNCTION = "alpha_chanel_as_mask"
-    CATEGORY = "mask"
+    CATEGORY = "mask/alpha"
 
     def alpha_chanel_as_mask(self, images, method):
         if images[0, 0, 0].shape[0] != 4:
@@ -94,7 +94,7 @@ class AlphaChanelRestore:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "alpha_chanel_restore"
-    CATEGORY = "mask"
+    CATEGORY = "mask/alpha"
 
     def alpha_chanel_restore(self, images, method):
         dimensions = images[0, 0, 0, :].shape[0]
