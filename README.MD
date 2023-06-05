@@ -309,6 +309,171 @@ You also can change the fonts folder in config.
 </details>
 
 ---
+### ImageDraw
+![image_draw](images/image_draw.png)
+> Draw figures as image.
+
+<details>
+  <summary>Nodes:</summary>
+
+#### All
+* SSAO [1 - 16] - [Super Sampling Anti-Aliasing](https://en.wikipedia.org/wiki/Supersampling). The figure is drawn initially at a higher resolution, and then compressed to the specified resolution.
+
+<details>
+  <summary>The difference of SSAA strength:</summary>
+
+> From left to right, x1, x2, x4, x8, x16. Image container size 256x256px.
+
+![SSAA](images/ssaa.png)
+
+</details>
+
+### Arc
+![image_draw_arc](images/image_draw_arc.png)
+> Draws an arc (a portion of a circle outline) between the start and end angles, inside the given bounding box.
+
+<details>
+  <summary>Params:</summary>
+
+* [width, height] `[1 - *]` - Size of image container.
+* size `[1 - *]` - contour width.
+* start_[x, y] `[0.0 - 1.0]` - Start points to define the bounding box in percent of image container. 
+* end_[x, y] `[0.0 - 1.0]` - End points to define the bounding box in percent of image container.
+* [start, end] `[0 - 360]` - Starting and ending angle, in degrees. Angles are measured from 3 o’clock, increasing clockwise.
+* [red, green, blue] `[0 - 255]` - Color of the figure in RGB. 
+* alpha `[0.0 - 1.0]` - Transparency of the figure.
+
+</details>
+
+### Chord
+![image_draw_chord](images/image_draw_chord.png)
+> Same as Arc, but connects the end points with a straight line.
+
+<details>
+  <summary>Params:</summary>
+
+* [width, height] `[1 - *]` - Size of image container.
+* size `[1 - *]` - contour width.
+* start_[x, y] `[0.0 - 1.0]` - Start points to define the bounding box in percent of image container. 
+* end_[x, y] `[0.0 - 1.0]` - End points to define the bounding box in percent of image container.
+* [start, end] `[0 - 360]` - Starting and ending angle, in degrees. Angles are measured from 3 o’clock, increasing clockwise.
+* [red, green, blue] `[0 - 255]` - Color of the figure in RGB. 
+* alpha `[0.0 - 1.0]` - Transparency of the figure.
+
+</details>
+
+### Ellipse
+![image_draw_ellipse](images/image_draw_ellipse.png)
+> Draws an ellipse inside the given bounding box.
+
+<details>
+  <summary>Params:</summary>
+
+* [width, height] `[1 - *]` - Size of image container.
+* start_[x, y] `[0.0 - 1.0]` - Start points to define the bounding box in percent of image container. 
+* end_[x, y] `[0.0 - 1.0]` - End points to define the bounding box in percent of image container.
+* outline_size `[0 - *]` - Outline size in PX.
+* outline_[red, green, blue] `[0 - 255]` - Color of the outline in RGB. 
+* outline_alpha `[0.0 - 1.0]` - Transparency of the outline.
+* fill_[red, green, blue] `[0 - 255]` - Color of the fill in RGB. 
+* fill_alpha `[0.0 - 1.0]` - Transparency of the fill.
+
+</details>
+
+### Line
+![image_draw_line](images/image_draw_line.png)
+> Draws a line between the coordinates.
+
+<details>
+  <summary>Params:</summary>
+
+* [width, height] `[1 - *]` - Size of image container.
+* size `[1 - *]` - contour width.
+* start_[x, y] `[0.0 - 1.0]` - Starting point of line. 
+* end_[x, y] `[0.0 - 1.0]` - Ending point of line.
+* [red, green, blue] `[0 - 255]` - Color of the line in RGB. 
+* alpha `[0.0 - 1.0]` - Transparency of the line.
+
+</details>
+
+### Pieslice
+![image_draw_pieslice](images/image_draw_pieslice.png)
+> Same as Arc, but also draws straight lines between the end points and the center of the bounding box.
+
+<details>
+  <summary>Params:</summary>
+
+* [width, height] `[1 - *]` - Size of image container.
+* start_[x, y] `[0.0 - 1.0]` - Start points to define the bounding box in percent of image container. 
+* end_[x, y] `[0.0 - 1.0]` - End points to define the bounding box in percent of image container.
+* [start, end] `[0 - 360]` - Starting and ending angle, in degrees. Angles are measured from 3 o’clock, increasing clockwise.
+* outline_size `[0 - *]` - Outline size in PX.
+* outline_[red, green, blue] `[0 - 255]` - Color of the outline in RGB. 
+* outline_alpha `[0.0 - 1.0]` - Transparency of the outline.
+* fill_[red, green, blue] `[0 - 255]` - Color of the fill in RGB. 
+* fill_alpha `[0.0 - 1.0]` - Transparency of the fill.
+
+</details>
+
+### Polygon
+![image_draw_polygon](images/image_draw_polygon.png)
+> Draws a polygon.
+
+<details>
+  <summary>Params:</summary>
+
+* size `[1 - *]` - Size of image.
+* sides `[3 - *]` - Sides of polygon.
+* rotation `[0 - 360]` - Apply an arbitrary rotation to the polygon in degree. 
+* outline_size `[0 - *]` - Outline size in PX.
+* outline_[red, green, blue] `[0 - 255]` - Color of the outline in RGB. 
+* outline_alpha `[0.0 - 1.0]` - Transparency of the outline.
+* fill_[red, green, blue] `[0 - 255]` - Color of the fill in RGB. 
+* fill_alpha `[0.0 - 1.0]` - Transparency of the fill.
+
+</details>
+
+### Rectangle
+![image_draw_rectangle](images/image_draw_rectangle.png)
+> Draws a rectangle.
+
+<details>
+  <summary>Params:</summary>
+
+* [width, height] `[1 - *]` - Size of image container.
+* start_[x, y] `[0.0 - 1.0]` - Start points to define the bounding box in percent of image container. 
+* end_[x, y] `[0.0 - 1.0]` - End points to define the bounding box in percent of image container.
+* outline_size `[0 - *]` - Outline size in PX.
+* outline_[red, green, blue] `[0 - 255]` - Color of the outline in RGB. 
+* outline_alpha `[0.0 - 1.0]` - Transparency of the outline.
+* fill_[red, green, blue] `[0 - 255]` - Color of the fill in RGB. 
+* fill_alpha `[0.0 - 1.0]` - Transparency of the fill.
+
+</details>
+
+### Rectangle Rounded
+![image_draw_rectangle_rounded](images/image_draw_rectangle_rounded.png)
+> Draws a rounded rectangle.
+
+<details>
+  <summary>Params:</summary>
+
+* [width, height] `[1 - *]` - Size of image container.
+* start_[x, y] `[0.0 - 1.0]` - Start points to define the bounding box in percent of image container. 
+* end_[x, y] `[0.0 - 1.0]` - End points to define the bounding box in percent of image container.
+* radius `[0 -360]` - Radius of the corners.
+* outline_size `[0 - *]` - Outline size in PX.
+* outline_[red, green, blue] `[0 - 255]` - Color of the outline in RGB. 
+* outline_alpha `[0.0 - 1.0]` - Transparency of the outline.
+* fill_[red, green, blue] `[0 - 255]` - Color of the fill in RGB. 
+* fill_alpha `[0.0 - 1.0]` - Transparency of the fill.
+* [top_left, top_right, bottom_right, bottom_left]_corner `[boolean]` - The ability to choose for which angle to apply the radius.
+
+</details>
+
+</details>
+
+---
 ### Clamp
 ![clamp](images/clamp.png)
 > Clamps help to control the "web" of nodes and improve readability.

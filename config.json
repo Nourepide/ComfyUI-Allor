@@ -5,6 +5,7 @@
     "Clamp": true,
     "ImageComposite": true,
     "ImageContainer": true,
+    "ImageDraw": true,
     "ImageSegmentation": true,
     "ImageText": true
   }
