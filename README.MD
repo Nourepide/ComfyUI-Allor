@@ -27,6 +27,10 @@
 4. `pip install -r requirements.txt`
 5. You can also create `fonts` folder in `comfy_extras` or just start `ComfyUI` and folder will create automatically.
 
+## Updating:
+1. `cd custom_nodes/comfyui_allor` or `cd custom_nodes/{name of ComfyUI Allore folder}`
+2. `git checkout main && git pull`
+
 ## Modules:
 <details>
   <summary>Details:</summary>
