@@ -50,6 +50,10 @@ class Loader:
             from .modules import ImageContainer
             modules.update(ImageContainer.NODE_CLASS_MAPPINGS)
 
+        if self.config()["modules"]["ImageDraw"]:
+            from .modules import ImageDraw
+            modules.update(ImageDraw.NODE_CLASS_MAPPINGS)
+
         if self.config()["modules"]["ImageSegmentation"]:
             from .modules import ImageSegmentation
             modules.update(ImageSegmentation.NODE_CLASS_MAPPINGS)
