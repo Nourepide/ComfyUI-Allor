@@ -22,7 +22,7 @@
 
 ## Installation:
 1. `cd custom_nodes`
-2. `git clone https://github.com/Nourepide/comfyui_allor.git comfyui_allor`
+2. `git clone https://github.com/Nourepide/ComfyUI-Allor.git comfyui_allor`
 3. `cd comfyui_allor` 
 4. `pip install -r requirements.txt`
 5. You can also create `fonts` folder in `comfy_extras` or just start `ComfyUI` and folder will create automatically.
