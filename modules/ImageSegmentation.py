@@ -51,7 +51,7 @@ class ImageSegmentation:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "segmentation"
-    CATEGORY = "image"
+    CATEGORY = "image/segmentation"
 
     def segmentation(
             self,
@@ -135,7 +135,7 @@ class ImageSegmentationCustom:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "segmentation"
-    CATEGORY = "image"
+    CATEGORY = "image/segmentation"
 
     def segmentation(
             self,
@@ -243,7 +243,7 @@ class ImageSegmentationCustomAdvanced:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "segmentation"
-    CATEGORY = "image"
+    CATEGORY = "image/segmentation"
 
     def segmentation(
             self,

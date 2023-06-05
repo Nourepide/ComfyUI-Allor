@@ -50,7 +50,7 @@ class ImageText:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "image_text"
-    CATEGORY = "image"
+    CATEGORY = "image/draw"
 
     def image_text(self, text, font, size, red, green, blue, alpha, margin_x, margin_y):
         font_path = folder_paths.get_full_path("fonts", font)
@@ -132,7 +132,7 @@ class ImageTextOutlined:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "image_text"
-    CATEGORY = "image"
+    CATEGORY = "image/draw"
 
     def image_text(
             self, text, font, size, red, green, blue, outline_size, outline_red, outline_green, outline_blue, alpha,
