@@ -32,6 +32,8 @@
 2. `git checkout main && git pull`
 
 ## Modules:
+> Click on `Details` to open/close the drop-down menu with all modules.
+
 <details>
   <summary>Details:</summary>
 
@@ -507,3 +509,19 @@ You also can change the fonts folder in config.
 You can configurate Allor with `config.json`.
 * `fonts_folder_path` - Array with a relative path to fonts folder, by default is `["comfy_extras", "fonts"]`. (Converted to `ComfyUI/comfy_extras/fonts` for Unix and `ComfyUI\comfy_extras\fonts` for Windows).
 * `modules` - You can disable (or enable) modules at will. Nodes from disabled modules will not be loaded during the start of ComfyUI.
+
+## Examples:
+![example](images/example.png)
+> Ready to create your own masterpiece?
+
+<details>
+  <summary>Just see how easy it is to do:</summary>
+
+`Warning` Google Collab can't reproduce those examples.
+
+| Image                       | Nodes                          |
+|-----------------------------|--------------------------------|
+| ![1](images/examples/1.png) | [Json](images/examples/1.json) |
+| ![2](images/examples/2.png) | [Json](images/examples/2.json) |
+
+</details>
