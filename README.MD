@@ -519,9 +519,9 @@ You can configurate Allor with `config.json`.
 
 `Warning` Google Collab can't reproduce those examples.
 
-| Image                       | Nodes                          |
-|-----------------------------|--------------------------------|
-| ![1](images/examples/1.png) | [Json](images/examples/1.json) |
-| ![2](images/examples/2.png) | [Json](images/examples/2.json) |
+|            Image            |             Nodes              |
+|:---------------------------:|:------------------------------:|
+| ![1](images/examples/1.png) | [JSON](images/examples/1.json) |
+| ![2](images/examples/2.png) | [JSON](images/examples/2.json) |
 
 </details>
