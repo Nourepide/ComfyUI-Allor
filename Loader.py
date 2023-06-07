@@ -2,6 +2,7 @@ import json
 import os
 
 import folder_paths
+import nodes
 
 
 class Loader:
@@ -31,6 +32,15 @@ class Loader:
         if not os.path.exists(fonts_folder_path):
             os.mkdir(fonts_folder_path)
 
+    def setup_override(self):
+        if self.config()["override"]["postprocessing"]:
+            nodes.NODE_CLASS_MAPPINGS = dict(
+                filter(
+                    lambda item: not item[1].CATEGORY.startswith("image/postprocessing"),
+                    nodes.NODE_CLASS_MAPPINGS.items()
+                )
+            )
+
     def get_modules(self):
         modules = dict()
 
@@ -53,6 +63,10 @@ class Loader:
         if self.config()["modules"]["ImageDraw"]:
             from .modules import ImageDraw
             modules.update(ImageDraw.NODE_CLASS_MAPPINGS)
+
+        if self.config()["modules"]["ImageFilter"]:
+            from .modules import ImageFilter
+            modules.update(ImageFilter.NODE_CLASS_MAPPINGS)
 
         if self.config()["modules"]["ImageSegmentation"]:
             from .modules import ImageSegmentation

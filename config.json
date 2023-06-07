@@ -6,7 +6,11 @@
     "ImageComposite": true,
     "ImageContainer": true,
     "ImageDraw": true,
+    "ImageFilter": true,
     "ImageSegmentation": true,
     "ImageText": true
+  },
+  "override" : {
+    "postprocessing": true
   }
 }

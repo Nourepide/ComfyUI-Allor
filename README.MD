@@ -480,6 +480,136 @@ You also can change the fonts folder in config.
 </details>
 
 ---
+### Image Filter
+![image_filter](images/image_filter.png)
+> Apply filter on images.
+
+<details>
+  <summary>Nodes:</summary>
+
+`Warning` Some changes are difficult to notice without detailed consideration.You can load this [JSON](images/image_filter.json) and look at the changes in detail.
+
+### Smooth
+![image_draw_polygon](images/image_filter_smooth.png)
+> Anti-Aliasing of image artifacts.
+
+### SmoothMore
+![image_filter_smooth_more](images/image_filter_smooth_more.png)
+> Improved Anti-Aliasing of image artifacts.
+
+### Blur
+![image_filter_blur](images/image_filter_blur.png)
+> Blurring the image.
+
+### BoxBlur
+![image_filter_box_blur](images/image_filter_box_blur.png)
+> Blurring the image by box algorithm.
+
+<details>
+  <summary>Params:</summary>
+
+* radius `[0 - *]` - blurring radius.
+
+</details>
+
+### GaussianBlur
+![image_filter_gaussian_blur](images/image_filter_gaussian_blur.png)
+> Blurring the image by gaussian algorithm.
+
+<details>
+  <summary>Params:</summary>
+
+* radius `[0 - *]` - blurring radius.
+
+</details>
+
+### Contour
+![image_filter_contour](images/image_filter_contour.png)
+> Find the contours of the image.
+
+### Detail
+![image_filter_detail](images/image_filter_detail.png)
+> Image detailing.
+
+### EdgeEnhance
+![image_filter_edge_enhance](images/image_filter_edge_enhance.png)
+> Clarity of the image boundaries.
+
+### EdgeEnhanceMore
+![image_filter_edge_enhance_more](images/image_filter_edge_enhance_more.png)
+> Improved clarity of image boundaries.
+
+### Emboss
+![image_filter_emboss](images/image_filter_emboss.png)
+> Embossed image.
+
+### FindEdges
+![image_filter_find_edges](images/image_filter_find_edges.png)
+> Identifies the boundaries of the image.
+
+### Sharpen
+![image_filter_sharpen](images/image_filter_sharpen.png)
+> Sharpness improvement.
+
+### Rank
+![image_filter_rank](images/image_filter_rank.png)
+> Rank filter sorts all pixels in a window of a given size.
+
+<details>
+  <summary>Params:</summary>
+
+* size `[0 - *]` - The size of the core in PX.
+* rank `[0 - *]` - Which pixel value to choose.
+
+</details>
+
+### Median
+![image_filter_median](images/image_filter_median.png)
+> Selects the average pixel value in a window of the specified size.
+
+<details>
+  <summary>Params:</summary>
+
+* size `[0 - *]` - The size of the core in PX.
+
+</details>
+
+### Min
+![image_filter_min](images/image_filter_min.png)
+> Selects the smallest pixel value in the window at the specified size.
+
+<details>
+  <summary>Params:</summary>
+
+* size `[0 - *]` - The size of the core in PX.
+
+</details>
+
+### Max
+![image_filter_max](images/image_filter_max.png)
+> Selects the largest pixel value in the window at the specified size.
+
+<details>
+  <summary>Params:</summary>
+
+* size `[0 - *]` - The size of the core in PX.
+
+</details>
+
+### Mode
+![image_filter_mode](images/image_filter_mode.png)
+> Selects the most common pixel value in a field of the specified size.
+
+<details>
+  <summary>Params:</summary>
+
+* size `[0 - *]` - The size of the core in PX.
+
+</details>
+
+</details>
+
+---
 ### Clamp
 ![clamp](images/clamp.png)
 > Clamps help to control the "web" of nodes and improve readability.
@@ -507,8 +637,9 @@ You also can change the fonts folder in config.
 
 ## Configuration:
 You can configurate Allor with `config.json`.
-* `fonts_folder_path` - Array with a relative path to fonts folder, by default is `["comfy_extras", "fonts"]`. (Converted to `ComfyUI/comfy_extras/fonts` for Unix and `ComfyUI\comfy_extras\fonts` for Windows).
-* `modules` - You can disable (or enable) modules at will. Nodes from disabled modules will not be loaded during the start of ComfyUI.
+* fonts_folder_path - Array with a relative path to fonts folder, by default is `["comfy_extras", "fonts"]`. (Converted to `ComfyUI/comfy_extras/fonts` for Unix and `ComfyUI\comfy_extras\fonts` for Windows).
+* modules - You can disable (or enable) modules at will. Nodes from disabled modules will not be loaded during the start of ComfyUI.
+* override - If the nested value is set to `true`, similar functionality from the original nodes is disabled.
 
 ## Examples:
 ![example](images/example.png)
