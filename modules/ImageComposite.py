@@ -142,6 +142,68 @@ class ImageCompositeAbsolute:
         return None
 
 
+class ImageCompositeAbsoluteByContainer:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "container": ("IMAGE",),
+                "images_a": ("IMAGE",),
+                "images_b": ("IMAGE",),
+                "images_a_x": ("INT", {
+                    "default": 0,
+                    "step": 1
+                }),
+                "images_a_y": ("INT", {
+                    "default": 0,
+                    "step": 1
+                }),
+                "images_b_x": ("INT", {
+                    "default": 0,
+                    "step": 1
+                }),
+                "images_b_y": ("INT", {
+                    "default": 0,
+                    "step": 1
+                }),
+                "background": (["images_a", "images_b"],),
+                "method": (["pair", "matrix"],),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "image_composite_absolute_by_container"
+    CATEGORY = "image/composite"
+
+    def image_composite_absolute_by_container(
+            self,
+            container,
+            images_a,
+            images_b,
+            images_a_x,
+            images_a_y,
+            images_b_x,
+            images_b_y,
+            background,
+            method
+    ):
+        return ImageCompositeAbsolute().image_composite_absolute(
+            images_a,
+            images_b,
+            images_a_x,
+            images_a_y,
+            images_b_x,
+            images_b_y,
+            container[0, :, :, 0].shape[1],
+            container[0, :, :, 0].shape[0],
+            background,
+            method
+        )
+
+
 class ImageCompositeRelative:
     def __init__(self):
         pass
@@ -235,7 +297,87 @@ class ImageCompositeRelative:
         )
 
 
+class ImageCompositeRelativeByContainer:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "container": ("IMAGE",),
+                "images_a": ("IMAGE",),
+                "images_b": ("IMAGE",),
+                "images_a_x": ("FLOAT", {
+                    "default": 0.0,
+                    "max": 1.0,
+                    "step": 0.01
+                }),
+                "images_a_y": ("FLOAT", {
+                    "default": 0.0,
+                    "max": 1.0,
+                    "step": 0.01
+                }),
+                "images_b_x": ("FLOAT", {
+                    "default": 0.0,
+                    "max": 1.0,
+                    "step": 0.01
+                }),
+                "images_b_y": ("FLOAT", {
+                    "default": 0.0,
+                    "max": 1.0,
+                    "step": 0.01
+                }),
+                "background": (["images_a", "images_b"],),
+                "method": (["pair", "matrix"],),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "image_composite_relative_by_container"
+    CATEGORY = "image/composite"
+
+    def image_composite_relative_by_container(
+            self,
+            container,
+            images_a,
+            images_b,
+            images_a_x,
+            images_a_y,
+            images_b_x,
+            images_b_y,
+            background,
+            method
+    ):
+        def offset_by_percent(container_size: int, image_size: int, percent: float):
+            return int((container_size - image_size) * percent)
+
+        img_a_height, img_a_width = images_a[0, :, :, 0].shape
+        img_b_height, img_b_width = images_b[0, :, :, 0].shape
+
+        container_width = container[0, :, :, 0].shape[1]
+        container_height = container[0, :, :, 0].shape[0]
+
+        if container_width < max(img_a_width, img_b_width) or container_height < max(img_a_height, img_b_height):
+            raise ValueError("Container can't be smaller then max width or height of images.")
+
+        return ImageCompositeAbsolute().image_composite_absolute(
+            images_a,
+            images_b,
+            offset_by_percent(container_width, img_a_width, images_a_x),
+            offset_by_percent(container_height, img_a_height, images_a_y),
+            offset_by_percent(container_width, img_b_width, images_b_x),
+            offset_by_percent(container_height, img_b_height, images_b_y),
+            container_width,
+            container_height,
+            background,
+            method
+        )
+
+
 NODE_CLASS_MAPPINGS = {
     "ImageCompositeAbsolute": ImageCompositeAbsolute,
-    "ImageCompositeRelative": ImageCompositeRelative
+    "ImageCompositeAbsoluteByContainer": ImageCompositeAbsoluteByContainer,
+    "ImageCompositeRelative": ImageCompositeRelative,
+    "ImageCompositeRelativeByContainer": ImageCompositeRelativeByContainer
 }
