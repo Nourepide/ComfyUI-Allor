@@ -36,13 +36,22 @@ class Loader:
             os.mkdir(fonts_folder_path)
 
     def setup_override(self):
+        override_nodes_len = 0
+
         if self.config()["override"]["postprocessing"]:
+            start_len = nodes.NODE_CLASS_MAPPINGS.__len__()
+
             nodes.NODE_CLASS_MAPPINGS = dict(
                 filter(
                     lambda item: not item[1].CATEGORY.startswith("image/postprocessing"),
                     nodes.NODE_CLASS_MAPPINGS.items()
                 )
             )
+
+            end_len = nodes.NODE_CLASS_MAPPINGS.__len__()
+            override_nodes_len += start_len - end_len
+
+        self.__log(str(override_nodes_len) + " standard nodes was overridden.")
 
     def get_modules(self):
         modules = dict()
