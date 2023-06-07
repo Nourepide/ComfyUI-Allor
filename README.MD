@@ -84,6 +84,10 @@
 
 </details>
 
+### Remove
+![alpha_chanel_remove](images/alpha_chanel_remove.png)
+> Completely remove alpha chanel from image (Convert `RGBA` to `RGB`).
+
 </details>
 
 ---

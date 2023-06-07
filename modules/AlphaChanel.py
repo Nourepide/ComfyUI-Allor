@@ -124,8 +124,35 @@ class AlphaChanelRestore:
             return restore() if dimensions == 4 else (images,)
 
 
+class AlphaChanelRemove:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "alpha_chanel_remove"
+    CATEGORY = "mask/alpha"
+
+    def alpha_chanel_remove(self, images):
+        return (torch.stack([
+            torch.stack((
+                images[i, :, :, 0],
+                images[i, :, :, 1],
+                images[i, :, :, 2]
+            ), dim=-1) for i in range(len(images))
+        ]),)
+
+
 NODE_CLASS_MAPPINGS = {
     "AlphaChanelByMask": AlphaChanelByMask,
     "AlphaChanelAsMask": AlphaChanelAsMask,
-    "AlphaChanelRestore": AlphaChanelRestore
+    "AlphaChanelRestore": AlphaChanelRestore,
+    "AlphaChanelRemove": AlphaChanelRemove
 }
