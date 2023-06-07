@@ -352,6 +352,7 @@ You also can change the fonts folder in config.
   <summary>Nodes:</summary>
 
 #### All
+> All nodes has `ByContainer` version.
 * SSAO [1 - 16] - [Super Sampling Anti-Aliasing](https://en.wikipedia.org/wiki/Supersampling). The figure is drawn initially at a higher resolution, and then compressed to the specified resolution.
 
 <details>
