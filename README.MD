@@ -450,24 +450,6 @@ You also can change the fonts folder in config.
 
 </details>
 
-### Polygon
-![image_draw_polygon](images/image_draw_polygon.png)
-> Draws a polygon.
-
-<details>
-  <summary>Params:</summary>
-
-* size `[1 - *]` - Size of image.
-* sides `[3 - *]` - Sides of polygon.
-* rotation `[0 - 360]` - Apply an arbitrary rotation to the polygon in degree. 
-* outline_size `[0 - *]` - Outline size in PX.
-* outline_[red, green, blue] `[0 - 255]` - Color of the outline in RGB. 
-* outline_alpha `[0.0 - 1.0]` - Transparency of the outline.
-* fill_[red, green, blue] `[0 - 255]` - Color of the fill in RGB. 
-* fill_alpha `[0.0 - 1.0]` - Transparency of the fill.
-
-</details>
-
 ### Rectangle
 ![image_draw_rectangle](images/image_draw_rectangle.png)
 > Draws a rectangle.
@@ -503,6 +485,24 @@ You also can change the fonts folder in config.
 * fill_[red, green, blue] `[0 - 255]` - Color of the fill in RGB. 
 * fill_alpha `[0.0 - 1.0]` - Transparency of the fill.
 * [top_left, top_right, bottom_right, bottom_left]_corner `[boolean]` - The ability to choose for which angle to apply the radius.
+
+</details>
+
+### Polygon
+![image_draw_polygon](images/image_draw_polygon.png)
+> Draws a polygon.
+
+<details>
+  <summary>Params:</summary>
+
+* size `[1 - *]` - Size of image.
+* sides `[3 - *]` - Sides of polygon.
+* rotation `[0 - 360]` - Apply an arbitrary rotation to the polygon in degree. 
+* outline_size `[0 - *]` - Outline size in PX.
+* outline_[red, green, blue] `[0 - 255]` - Color of the outline in RGB. 
+* outline_alpha `[0.0 - 1.0]` - Transparency of the outline.
+* fill_[red, green, blue] `[0 - 255]` - Color of the fill in RGB. 
+* fill_alpha `[0.0 - 1.0]` - Transparency of the fill.
 
 </details>
 
