@@ -178,6 +178,19 @@ The first letter `i` in the word `Inheritance` is barely noticeable. But in the 
 * images_[a, b]_x `[0 - *]` - Images horizontal position. `[left -> right]`.
 * images_[a, b]_y `[0 - *]` - Images vertical position. `[top -> bottom]`.
 * container_[width, height] `[0 - *]` - Container size. If 0, then the container will be with the maximum width and height of the images.
+
+</details>
+
+### AbsoluteByContainer
+> Use it for pixel-perfect images compositing. The size of the container is taken from the outside.
+
+<details>
+  <summary>Params:</summary>
+
+* container - Image "donor". Its size will determine the size of the compositing space.
+* images_[a, b]_x `[0 - *]` - Images horizontal position. `[left -> right]`.
+* images_[a, b]_y `[0 - *]` - Images vertical position. `[top -> bottom]`.
+
 </details>
 
 ### Relative
@@ -191,7 +204,7 @@ The first letter `i` in the word `Inheritance` is barely noticeable. But in the 
 * container_size_type
 * * max - Maximum of width and height from `images_a` and `images_b`.
 * * sum - Sum of width and height from `images_a` and `images_b`.
-* * sum_[width, height] -
+* * sum_[width, height] - Sum of width or height from `images_a` and `images_b`.
 
 How it works.
 
@@ -199,6 +212,18 @@ How it works.
 * In horizontal [0.0 - images is located on the left of the container], [1.0 - on right of container].
 * In vertical [0.0 - images is located on the top of the container], [1.0 - on bottom of container].
 * In all cases, [0.5] means that the images will be in the center.
+
+</details>
+
+### RelativeByContainer
+> Use it for percentage images compositing. The size of the container is taken from the outside.
+
+<details>
+  <summary>Params:</summary>
+
+* container - Image "donor". Its size will determine the size of the compositing space. Can't be smaller then max size of with or height images_[a, b].
+* images_[a, b]_x `[0.0 - 1.0]` - First images horizontal offset. `[left edge -> right edge]`.
+* images_[a, b]_y `[0.0 - 1.0]` - First images vertical offset. `[top edge -> bottom edge]`.
 
 </details>
 
@@ -486,7 +511,7 @@ You also can change the fonts folder in config.
 ---
 ### Image Filter
 ![image_filter](images/image_filter.png)
-> Apply filter on images.
+> Apply filters to images.
 
 <details>
   <summary>Nodes:</summary>
