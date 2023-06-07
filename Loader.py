@@ -9,6 +9,9 @@ class Loader:
     def __init__(self):
         pass
 
+    def __log(self, text):
+        print("\033[92m[Allor]\033[0m: " + text)
+
     def __get_config(self):
         root = os.path.dirname(os.path.abspath(__file__))
 
@@ -75,5 +78,17 @@ class Loader:
         if self.config()["modules"]["ImageText"]:
             from .modules import ImageText
             modules.update(ImageText.NODE_CLASS_MAPPINGS)
+
+        modules_len = dict(
+            filter(
+                lambda item: item[1],
+                self.config()["modules"].items()
+            )
+        ).__len__()
+
+        nodes_len = modules.__len__()
+
+        self.__log(str(modules_len) + " modules enabled.")
+        self.__log(str(nodes_len) + " nodes was loaded.")
 
         return modules
