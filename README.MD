@@ -640,6 +640,79 @@ You also can change the fonts folder in config.
 </details>
 
 ---
+### Image Transform
+![image_transform](images/image_transform.png)
+> Transform your images.
+
+<details>
+  <summary>Nodes:</summary>
+
+### Resize
+![image_transform_resize](images/image_transform_resize.png)
+> Change size of images.
+
+<details>
+  <summary>Params:</summary>
+
+#### Absolute
+* [width, height] `[1 - *]` - New size of images.
+
+#### Relative
+* scale_[width, height] `[0.0 - 1.0]` - New size of images.
+
+</details>
+
+### Crop
+![image_transform_crop](images/image_transform_crop.png)
+> Returns area from images.
+
+<details>
+  <summary>Params:</summary>
+
+#### Absolute
+* start_[x, y] `[1 - *]` - Start of rectangle point.
+* end_[x, y] `[1 - *]` - End of rectangle point.
+
+#### Relative
+* start_[x, y] `[0.0 - 1.0]` - Start of rectangle point.
+* end_[x, y] `[0.0 - 1.0]` - End of rectangle point.
+
+</details>
+
+### Crop Corners
+![image_transform_crop_corners](images/image_transform_crop_corners.png)
+> Round corners of your images.
+
+<details>
+  <summary>Params:</summary>
+
+* radius `[0 -360]` - Radius of the corners.
+* [top_left, top_right, bottom_right, bottom_left]_corner `[boolean]` - The ability to choose for which angle to apply the radius.
+* SSAO [1 - 16] - [Super Sampling Anti-Aliasing](https://en.wikipedia.org/wiki/Supersampling). The figure is drawn initially at a higher resolution, and then compressed to the specified resolution.
+
+</details>
+
+
+### Rotate
+![image_transform_rotate](images/image_transform_rotate.png)
+> Rotate your images.
+
+<details>
+  <summary>Params:</summary>
+
+* angle `[0 -360]` - Angle in degrees. Angles are measured from 3 o’clock, increasing clockwise.
+* expand `[boolean]` - If "true" when rotating, change the size of the image to fit into it.
+* SSAO [1 - 16] - [Super Sampling Anti-Aliasing](https://en.wikipedia.org/wiki/Supersampling). The figure is drawn initially at a higher resolution, and then compressed to the specified resolution.
+
+</details>
+
+### Transpose
+![image_transform_transpose](images/image_transform_transpose.png)
+> Transpose your images.
+
+</details>
+
+---
 ### Clamp
 ![clamp](images/clamp.png)
 > Clamps help to control the "web" of nodes and improve readability.
@@ -670,6 +743,8 @@ You can configurate Allor with `config.json`.
 * fonts_folder_path - Array with a relative path to fonts folder, by default is `["comfy_extras", "fonts"]`. (Converted to `ComfyUI/comfy_extras/fonts` for Unix and `ComfyUI\comfy_extras\fonts` for Windows).
 * modules - You can disable (or enable) modules at will. Nodes from disabled modules will not be loaded during the start of ComfyUI.
 * override - If the nested value is set to `true`, similar functionality from the original nodes is disabled.
+* * postprocessing - Disable `image/postprocessing` nodes. (See `ImageFilter` module)
+* * transform - Disable `ImageScale` and `ImageInvert` nodes. (See `ImageTransform` module)
 
 ## Examples:
 ![example](images/example.png)

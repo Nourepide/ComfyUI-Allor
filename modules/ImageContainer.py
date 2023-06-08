@@ -161,7 +161,7 @@ class ImageContainerInheritanceScale:
     CATEGORY = "image/container"
 
     def image_container_inheritance_scale(self, images, scale_width, scale_height, red, green, blue, alpha, method):
-        width, height = images[0, :, :, 0].shape
+        height, width = images[0, :, :, 0].shape
 
         width = int((width * scale_width) - width)
         height = int((height * scale_height) - height)

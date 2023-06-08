@@ -38,18 +38,20 @@ class Loader:
     def setup_override(self):
         override_nodes_len = 0
 
-        if self.config()["override"]["postprocessing"]:
+        def override(function):
             start_len = nodes.NODE_CLASS_MAPPINGS.__len__()
 
             nodes.NODE_CLASS_MAPPINGS = dict(
-                filter(
-                    lambda item: not item[1].CATEGORY.startswith("image/postprocessing"),
-                    nodes.NODE_CLASS_MAPPINGS.items()
-                )
+                filter(function, nodes.NODE_CLASS_MAPPINGS.items())
             )
 
-            end_len = nodes.NODE_CLASS_MAPPINGS.__len__()
-            override_nodes_len += start_len - end_len
+            return start_len - nodes.NODE_CLASS_MAPPINGS.__len__()
+
+        if self.config()["override"]["postprocessing"]:
+            override_nodes_len += override(lambda item: not item[1].CATEGORY.startswith("image/postprocessing"))
+
+        if self.config()["override"]["transform"]:
+            override_nodes_len += override(lambda item: not item[0] == "ImageScale" and not item[0] == "ImageInvert")
 
         self.__log(str(override_nodes_len) + " standard nodes was overridden.")
 
@@ -87,6 +89,10 @@ class Loader:
         if self.config()["modules"]["ImageText"]:
             from .modules import ImageText
             modules.update(ImageText.NODE_CLASS_MAPPINGS)
+
+        if self.config()["modules"]["ImageTransform"]:
+            from .modules import ImageTransform
+            modules.update(ImageTransform.NODE_CLASS_MAPPINGS)
 
         modules_len = dict(
             filter(
