@@ -8,9 +8,11 @@
     "ImageDraw": true,
     "ImageFilter": true,
     "ImageSegmentation": true,
-    "ImageText": true
+    "ImageText": true,
+    "ImageTransform": true
   },
   "override" : {
-    "postprocessing": true
+    "postprocessing": true,
+    "transform": true
   }
 }

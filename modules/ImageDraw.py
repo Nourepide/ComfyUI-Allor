@@ -1520,7 +1520,7 @@ class ImageDrawRectangleRounded:
                 (width * start_x * SSAA, height * start_y * SSAA),
                 (width * end_x * SSAA, height * end_y * SSAA)
             ),
-            radius,
+            radius * SSAA,
             (fill_red, fill_green, fill_blue, int(fill_alpha * 255)),
             (outline_red, outline_green, outline_blue, int(outline_alpha * 255)),
             outline_size * SSAA,
