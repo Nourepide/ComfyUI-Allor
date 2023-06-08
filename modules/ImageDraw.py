@@ -1,5 +1,7 @@
 from PIL import ImageDraw, Image
 
+from .Utils import get_sampler_by_name
+
 
 class ImageDrawArc:
     def __init__(self):
@@ -75,11 +77,12 @@ class ImageDrawArc:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -88,7 +91,7 @@ class ImageDrawArc:
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences
-    def image_draw_arc(self, width, height, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA):
+    def image_draw_arc(self, width, height, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
         canvas = Image.new("RGBA", (width * SSAA, height * SSAA), (0, 0, 0, 0))
 
         draw = ImageDraw.Draw(canvas)
@@ -100,7 +103,7 @@ class ImageDrawArc:
             start, end, (red, green, blue, int(alpha * 255)), size * SSAA
         )
 
-        canvas = canvas.resize((width, height), Image.ANTIALIAS)
+        canvas = canvas.resize((width, height), get_sampler_by_name(method))
 
         return (canvas.image_to_tensor().unsqueeze(0),)
 
@@ -170,11 +173,12 @@ class ImageDrawArcByContainer:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -183,7 +187,7 @@ class ImageDrawArcByContainer:
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming
-    def image_draw_arc_by_container(self, container, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA):
+    def image_draw_arc_by_container(self, container, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
         return ImageDrawArc().image_draw_arc(
             container[0, :, :, 0].shape[1],
             container[0, :, :, 0].shape[0],
@@ -198,7 +202,8 @@ class ImageDrawArcByContainer:
             green,
             blue,
             alpha,
-            SSAA
+            SSAA,
+            method
         )
 
 
@@ -276,11 +281,12 @@ class ImageDrawChord:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -289,7 +295,7 @@ class ImageDrawChord:
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences
-    def image_draw_chord(self, width, height, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA):
+    def image_draw_chord(self, width, height, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
         canvas = Image.new("RGBA", (width * SSAA, height * SSAA), (0, 0, 0, 0))
 
         draw = ImageDraw.Draw(canvas)
@@ -301,7 +307,7 @@ class ImageDrawChord:
             start, end, (red, green, blue, int(alpha * 255)), size * SSAA
         )
 
-        canvas = canvas.resize((width, height), Image.ANTIALIAS)
+        canvas = canvas.resize((width, height), get_sampler_by_name(method))
 
         return (canvas.image_to_tensor().unsqueeze(0),)
 
@@ -371,11 +377,12 @@ class ImageDrawChordByContainer:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -384,7 +391,7 @@ class ImageDrawChordByContainer:
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming
-    def image_draw_chord_by_container(self, container, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA):
+    def image_draw_chord_by_container(self, container, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
         return ImageDrawChord().image_draw_chord(
             container[0, :, :, 0].shape[1],
             container[0, :, :, 0].shape[0],
@@ -399,7 +406,8 @@ class ImageDrawChordByContainer:
             green,
             blue,
             alpha,
-            SSAA
+            SSAA,
+            method
         )
 
 
@@ -486,11 +494,12 @@ class ImageDrawEllipse:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -516,7 +525,8 @@ class ImageDrawEllipse:
             fill_green,
             fill_blue,
             fill_alpha,
-            SSAA
+            SSAA,
+            method
     ):
         canvas = Image.new("RGBA", (width * SSAA, height * SSAA), (0, 0, 0, 0))
 
@@ -531,7 +541,7 @@ class ImageDrawEllipse:
             outline_size * SSAA
         )
 
-        canvas = canvas.resize((width, height), Image.ANTIALIAS)
+        canvas = canvas.resize((width, height), get_sampler_by_name(method))
 
         return (canvas.image_to_tensor().unsqueeze(0),)
 
@@ -610,11 +620,12 @@ class ImageDrawEllipseByContainer:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -639,7 +650,8 @@ class ImageDrawEllipseByContainer:
             fill_green,
             fill_blue,
             fill_alpha,
-            SSAA
+            SSAA,
+            method
     ):
         return ImageDrawEllipse().image_draw_ellipse(
             container[0, :, :, 0].shape[1],
@@ -657,7 +669,8 @@ class ImageDrawEllipseByContainer:
             fill_green,
             fill_blue,
             fill_alpha,
-            SSAA
+            SSAA,
+            method
         )
 
 
@@ -725,11 +738,12 @@ class ImageDrawLine:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -738,7 +752,7 @@ class ImageDrawLine:
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences
-    def image_draw_line(self, width, height, size, start_x, start_y, end_x, end_y, red, green, blue, alpha, SSAA):
+    def image_draw_line(self, width, height, size, start_x, start_y, end_x, end_y, red, green, blue, alpha, SSAA, method):
         canvas = Image.new("RGBA", (width * SSAA, height * SSAA), (0, 0, 0, 0))
 
         draw = ImageDraw.Draw(canvas)
@@ -750,7 +764,7 @@ class ImageDrawLine:
             (red, green, blue, int(alpha * 255)), size * SSAA
         )
 
-        canvas = canvas.resize((width, height), Image.ANTIALIAS)
+        canvas = canvas.resize((width, height), get_sampler_by_name(method))
 
         return (canvas.image_to_tensor().unsqueeze(0),)
 
@@ -810,11 +824,12 @@ class ImageDrawLineByContainer:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -823,7 +838,7 @@ class ImageDrawLineByContainer:
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming
-    def image_draw_line_by_container(self, container, size, start_x, start_y, end_x, end_y, red, green, blue, alpha, SSAA):
+    def image_draw_line_by_container(self, container, size, start_x, start_y, end_x, end_y, red, green, blue, alpha, SSAA, method):
         return ImageDrawLine().image_draw_line(
             container[0, :, :, 0].shape[1],
             container[0, :, :, 0].shape[0],
@@ -836,7 +851,8 @@ class ImageDrawLineByContainer:
             green,
             blue,
             alpha,
-            SSAA
+            SSAA,
+            method
         )
 
 
@@ -933,11 +949,12 @@ class ImageDrawPieslice:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -965,7 +982,8 @@ class ImageDrawPieslice:
             fill_green,
             fill_blue,
             fill_alpha,
-            SSAA
+            SSAA,
+            method
     ):
         canvas = Image.new("RGBA", (width * SSAA, height * SSAA), (0, 0, 0, 0))
 
@@ -981,7 +999,7 @@ class ImageDrawPieslice:
             outline_size * SSAA
         )
 
-        canvas = canvas.resize((width, height), Image.ANTIALIAS)
+        canvas = canvas.resize((width, height), get_sampler_by_name(method))
 
         return (canvas.image_to_tensor().unsqueeze(0),)
 
@@ -1070,11 +1088,12 @@ class ImageDrawPiesliceByContainer:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -1101,7 +1120,8 @@ class ImageDrawPiesliceByContainer:
             fill_green,
             fill_blue,
             fill_alpha,
-            SSAA
+            SSAA,
+            method
     ):
         return ImageDrawPieslice().image_draw_pieslice(
             container[0, :, :, 0].shape[1],
@@ -1121,7 +1141,8 @@ class ImageDrawPiesliceByContainer:
             fill_green,
             fill_blue,
             fill_alpha,
-            SSAA
+            SSAA,
+            method
         )
 
 
@@ -1208,11 +1229,12 @@ class ImageDrawRectangle:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -1238,7 +1260,8 @@ class ImageDrawRectangle:
             fill_green,
             fill_blue,
             fill_alpha,
-            SSAA
+            SSAA,
+            method
     ):
         canvas = Image.new("RGBA", (width * SSAA, height * SSAA), (0, 0, 0, 0))
 
@@ -1253,7 +1276,7 @@ class ImageDrawRectangle:
             outline_size * SSAA
         )
 
-        canvas = canvas.resize((width, height), Image.ANTIALIAS)
+        canvas = canvas.resize((width, height), get_sampler_by_name(method))
 
         return (canvas.image_to_tensor().unsqueeze(0),)
 
@@ -1332,11 +1355,12 @@ class ImageDrawRectangleByContainer:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -1361,7 +1385,8 @@ class ImageDrawRectangleByContainer:
             fill_green,
             fill_blue,
             fill_alpha,
-            SSAA
+            SSAA,
+            method
     ):
         return ImageDrawRectangle().image_draw_rectangle(
             container[0, :, :, 0].shape[1],
@@ -1379,7 +1404,8 @@ class ImageDrawRectangleByContainer:
             fill_green,
             fill_blue,
             fill_alpha,
-            SSAA
+            SSAA,
+            method
         )
 
 
@@ -1475,11 +1501,12 @@ class ImageDrawRectangleRounded:
                 "bottom_right_corner": (["true", "false"],),
                 "bottom_left_corner": (["true", "false"],),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -1510,7 +1537,8 @@ class ImageDrawRectangleRounded:
             top_right_corner,
             bottom_right_corner,
             bottom_left_corner,
-            SSAA
+            SSAA,
+            method
     ):
         canvas = Image.new("RGBA", (width * SSAA, height * SSAA), (0, 0, 0, 0))
 
@@ -1532,7 +1560,7 @@ class ImageDrawRectangleRounded:
             )
         )
 
-        canvas = canvas.resize((width, height), Image.ANTIALIAS)
+        canvas = canvas.resize((width, height), get_sampler_by_name(method))
 
         return (canvas.image_to_tensor().unsqueeze(0),)
 
@@ -1620,11 +1648,12 @@ class ImageDrawRectangleRoundedByContainer:
                 "bottom_right_corner": (["true", "false"],),
                 "bottom_left_corner": (["true", "false"],),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -1654,7 +1683,8 @@ class ImageDrawRectangleRoundedByContainer:
             top_right_corner,
             bottom_right_corner,
             bottom_left_corner,
-            SSAA
+            SSAA,
+            method
     ):
         return ImageDrawRectangleRounded().image_draw_rounded(
             container[0, :, :, 0].shape[1],
@@ -1677,7 +1707,8 @@ class ImageDrawRectangleRoundedByContainer:
             top_right_corner,
             bottom_right_corner,
             bottom_left_corner,
-            SSAA
+            SSAA,
+            method
         )
 
 
@@ -1749,11 +1780,12 @@ class ImageDrawPolygon:
                     "step": 0.01
                 }),
                 "SSAA": ("INT", {
-                    "default": 8,
+                    "default": 4,
                     "min": 1,
                     "max": 16,
                     "step": 1
                 }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
             },
         }
 
@@ -1776,7 +1808,8 @@ class ImageDrawPolygon:
             fill_green,
             fill_blue,
             fill_alpha,
-            SSAA
+            SSAA,
+            method
     ):
         canvas = Image.new("RGBA", (size * SSAA, size * SSAA), (0, 0, 0, 0))
 
@@ -1790,7 +1823,7 @@ class ImageDrawPolygon:
             # outline_size * SSAA
         )
 
-        canvas = canvas.resize((size, size), Image.ANTIALIAS)
+        canvas = canvas.resize((size, size), get_sampler_by_name(method))
 
         return (canvas.image_to_tensor().unsqueeze(0),)
 

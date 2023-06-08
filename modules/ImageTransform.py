@@ -1,6 +1,8 @@
 import torch
 from PIL import Image, ImageDraw
 
+from .Utils import get_sampler_by_name
+
 
 class ImageTransformResizeAbsolute:
     def __init__(self):
@@ -31,22 +33,7 @@ class ImageTransformResizeAbsolute:
 
     def image_transform_resize_absolute(self, images, width, height, method):
         def resize_tensor(tensor):
-            if method == "lanczos":
-                sampler = Image.LANCZOS
-            elif method == "bicubic":
-                sampler = Image.BICUBIC
-            elif method == "hamming":
-                sampler = Image.HAMMING
-            elif method == "bilinear":
-                sampler = Image.BILINEAR
-            elif method == "box":
-                sampler = Image.BOX
-            elif method == "nearest":
-                sampler = Image.NEAREST
-            else:
-                raise ValueError()
-
-            return tensor.tensor_to_image().resize((width, height), sampler).image_to_tensor()
+            return tensor.tensor_to_image().resize((width, height), get_sampler_by_name(method)).image_to_tensor()
 
         return (torch.stack([
             resize_tensor(images[i]) for i in range(len(images))
@@ -220,20 +207,7 @@ class ImageTransformCropCorners:
             SSAA,
             method
     ):
-        if method == "lanczos":
-            sampler = Image.LANCZOS
-        elif method == "bicubic":
-            sampler = Image.BICUBIC
-        elif method == "hamming":
-            sampler = Image.HAMMING
-        elif method == "bilinear":
-            sampler = Image.BILINEAR
-        elif method == "box":
-            sampler = Image.BOX
-        elif method == "nearest":
-            sampler = Image.NEAREST
-        else:
-            raise ValueError()
+        sampler = get_sampler_by_name(method)
 
         height, width = images[0, :, :, 0].shape
 
