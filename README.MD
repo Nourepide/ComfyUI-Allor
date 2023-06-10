@@ -510,6 +510,64 @@ You also can change the fonts folder in config.
 </details>
 
 ---
+### Image Effects
+![image_effects](images/image_effects.png)
+> Apply effects to images.
+
+<details>
+  <summary>Nodes:</summary>
+
+### Adjustment
+![image_effects_adjustment](images/image_effects_adjustment.png)
+> Adjust your images with color correction.
+
+<details>
+  <summary>Params:</summary>
+
+* brightness `[0.0 - *]` - Adjust brightness of images with scale.
+* contrast `[0.0 - *]` - Adjust contrast of images with scale.
+* saturation `[0.0 - *]` - Adjust color saturation of an images with scale.
+* hue `[0.0 - 1.0]` - Adjust hue of images.
+* gamma `[0.0 - *]` - Perform gamma correction on an images with scale.
+* sharpness  `[0.0 - *]` - Adjust the sharpness of an images with scale.
+* [red, green, blue] - Scale color factor.
+
+</details>
+
+### Grayscale
+![image_effects_grayscale](images/image_effects_grayscale.png)
+> Turn your images into monochrome.
+
+### Sepia
+![image_effects_sepia](images/image_effects_sepia.png)
+> Add an antique effect to your images.
+
+### Negative
+![image_effects_negative](images/image_effects_negative.png)
+> Add negative effect.
+
+### Chromatic Aberration
+![image_effects_chromatic_aberration](images/image_effects_chromatic_aberration.png)
+> Apply a camera lens effect to the images.
+
+`Attention`⚡: You can test all params of `Chromatic Aberration` with this  [JSON](images/image_effects_chromatic_aberration.json). The example works using `Image Draw` module and does not require any preparation. Changing the parameters leads to very unusual effects that you will not find anywhere else, so I recommend that you spend time on this and get acquainted as best as possible for incredible results.
+
+<details>
+  <summary>Params:</summary>
+
+* shift `[0 - *]` - Color shift in PX.
+* method `[reflect, edge, constant]` - Method for fill new empty space around image while effect applying. The new space does not fall into the final result and is only needed to avoid artifacts.
+* shift_type `[1 - 4]` - Type of chromatic aberration.
+* mixing_type `[1 - 4]` - Type of method for shifting colors.
+* transpose `[none, rotate, reflect]` - Shifting direction, where `none` is without changes, `rotate` is in alternative direction and `reflect` in both directions at the same time.
+* colors `[rb, rg, gb]`- The color layers that will be shifted. 
+* curvy `[0.0 - 15.0]` - The value of the curve during the propagation of the effect, where 1.0 is linear. Not work with shift_type 4.
+
+</details>
+
+</details>
+
+---
 ### Image Filter
 ![image_filter](images/image_filter.png)
 > Apply filters to images.

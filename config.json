@@ -6,6 +6,7 @@
     "ImageComposite": true,
     "ImageContainer": true,
     "ImageDraw": true,
+    "ImageEffects": true,
     "ImageFilter": true,
     "ImageSegmentation": true,
     "ImageText": true,

@@ -1,0 +1,3525 @@
+{
+  "last_node_id": 179,
+  "last_link_id": 257,
+  "nodes": [
+    {
+      "id": 65,
+      "type": "ImageCompositeRelative",
+      "pos": [
+        400,
+        530
+      ],
+      "size": {
+        "0": 315,
+        "1": 222
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images_a",
+          "type": "IMAGE",
+          "link": 128,
+          "slot_index": 0
+        },
+        {
+          "name": "images_b",
+          "type": "IMAGE",
+          "link": 129,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            131
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageCompositeRelative"
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        0,
+        "images_a",
+        "max",
+        "pair"
+      ]
+    },
+    {
+      "id": 63,
+      "type": "ImageDrawLine",
+      "pos": [
+        0,
+        930
+      ],
+      "size": {
+        "0": 315,
+        "1": 346
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            129
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageDrawLine"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        64,
+        0.019999999999999886,
+        0.5,
+        0.9800000000000002,
+        0.5,
+        50,
+        50,
+        50,
+        1,
+        4,
+        "lanczos"
+      ]
+    },
+    {
+      "id": 61,
+      "type": "ImageDrawLine",
+      "pos": [
+        0,
+        530
+      ],
+      "size": {
+        "0": 315,
+        "1": 346
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            128
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageDrawLine"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        64,
+        0.5,
+        0.019999999999999886,
+        0.5,
+        0.9800000000000002,
+        50,
+        50,
+        50,
+        1,
+        4,
+        "lanczos"
+      ]
+    },
+    {
+      "id": 59,
+      "type": "ImageDrawRectangle",
+      "pos": [
+        0,
+        30
+      ],
+      "size": {
+        "0": 315,
+        "1": 442
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            139
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageDrawRectangle"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        255,
+        255,
+        255,
+        1,
+        4,
+        "lanczos"
+      ]
+    },
+    {
+      "id": 68,
+      "type": "PreviewImage",
+      "pos": [
+        1140,
+        30
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 133,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 97,
+      "type": "PreviewImage",
+      "pos": [
+        1700,
+        30
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 173,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 67,
+      "type": "ImageCompositeRelative",
+      "pos": [
+        800,
+        30
+      ],
+      "size": {
+        "0": 315,
+        "1": 222
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images_a",
+          "type": "IMAGE",
+          "link": 139,
+          "slot_index": 0
+        },
+        {
+          "name": "images_b",
+          "type": "IMAGE",
+          "link": 131,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            133,
+            174
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageCompositeRelative"
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        0,
+        "images_a",
+        "max",
+        "pair"
+      ]
+    },
+    {
+      "id": 99,
+      "type": "ImageClamp",
+      "pos": [
+        1180,
+        -100
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 174,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            175,
+            178
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 100,
+      "type": "ImageClamp",
+      "pos": [
+        1770,
+        -100
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 175,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            177,
+            201,
+            213,
+            225,
+            248,
+            257
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 95,
+      "type": "PreviewImage",
+      "pos": [
+        2430,
+        30
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 180,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 98,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        1370,
+        30
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 178,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            173
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        10,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 102,
+      "type": "PreviewImage",
+      "pos": [
+        3030,
+        30
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 46,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 181,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 103,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2700,
+        30
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 185
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            181
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        25,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 104,
+      "type": "PreviewImage",
+      "pos": [
+        3630,
+        30
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 62,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 182,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 105,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        3300,
+        30
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 47,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 187
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            182
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 106,
+      "type": "PreviewImage",
+      "pos": [
+        4230,
+        30
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 72,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 183,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 107,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        3900,
+        30
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 63,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 189
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            183
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        100,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 101,
+      "type": "ImageClamp",
+      "pos": [
+        1940,
+        -100
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 177
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            179,
+            184
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 108,
+      "type": "ImageClamp",
+      "pos": [
+        2540,
+        -100
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 184,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            185,
+            186
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 109,
+      "type": "ImageClamp",
+      "pos": [
+        3140,
+        -100
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 186,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            187,
+            188
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 110,
+      "type": "ImageClamp",
+      "pos": [
+        3740,
+        -100
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 48,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 188,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            189
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 111,
+      "type": "PreviewImage",
+      "pos": [
+        2430,
+        530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 190,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 114,
+      "type": "PreviewImage",
+      "pos": [
+        3030,
+        530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 49,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 192,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 116,
+      "type": "PreviewImage",
+      "pos": [
+        3630,
+        530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 64,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 194,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 118,
+      "type": "PreviewImage",
+      "pos": [
+        4230,
+        530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 73,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 196,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 120,
+      "type": "ImageClamp",
+      "pos": [
+        2540,
+        400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 198,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            193,
+            199
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 121,
+      "type": "ImageClamp",
+      "pos": [
+        3140,
+        400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 199,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            195,
+            200
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 122,
+      "type": "ImageClamp",
+      "pos": [
+        3740,
+        400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 51,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 200,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            197
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 113,
+      "type": "ImageClamp",
+      "pos": [
+        1940,
+        400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 201,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            191,
+            198
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 117,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        3300,
+        530
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 50,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 195
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            194
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        256,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        2.5
+      ]
+    },
+    {
+      "id": 119,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        3900,
+        530
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 65,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 197
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            196
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        256,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        5
+      ]
+    },
+    {
+      "id": 115,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2700,
+        530
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 193
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            192
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        256,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 123,
+      "type": "PreviewImage",
+      "pos": [
+        2430,
+        1030
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 202,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 126,
+      "type": "PreviewImage",
+      "pos": [
+        3030,
+        1030
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 52,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 204,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 128,
+      "type": "PreviewImage",
+      "pos": [
+        3630,
+        1030
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 66,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 206,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 130,
+      "type": "PreviewImage",
+      "pos": [
+        4230,
+        1030
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 74,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 208,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 132,
+      "type": "ImageClamp",
+      "pos": [
+        2540,
+        900
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 210,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            205,
+            211
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 133,
+      "type": "ImageClamp",
+      "pos": [
+        3140,
+        900
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 211,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            207,
+            212
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 134,
+      "type": "ImageClamp",
+      "pos": [
+        3740,
+        900
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 54,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 212,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            209
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 125,
+      "type": "ImageClamp",
+      "pos": [
+        1940,
+        900
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 213,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            203,
+            210
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 129,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        3300,
+        1030
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 53,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 207
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            206
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        3,
+        1,
+        "none",
+        "rb",
+        1
+      ]
+    },
+    {
+      "id": 131,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        3900,
+        1030
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 67,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 209
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            208
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        4,
+        1,
+        "none",
+        "rb",
+        1
+      ]
+    },
+    {
+      "id": 135,
+      "type": "PreviewImage",
+      "pos": [
+        2430,
+        1530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 214,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 138,
+      "type": "PreviewImage",
+      "pos": [
+        3030,
+        1530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 55,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 216,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 140,
+      "type": "PreviewImage",
+      "pos": [
+        3630,
+        1530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 68,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 218,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 142,
+      "type": "PreviewImage",
+      "pos": [
+        4230,
+        1530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 75,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 220,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 144,
+      "type": "ImageClamp",
+      "pos": [
+        2540,
+        1400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 222,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            217,
+            223
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 145,
+      "type": "ImageClamp",
+      "pos": [
+        3140,
+        1400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 223,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            219,
+            224
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 146,
+      "type": "ImageClamp",
+      "pos": [
+        3740,
+        1400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 57,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 224,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            221
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 137,
+      "type": "ImageClamp",
+      "pos": [
+        1940,
+        1400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 225,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            215,
+            222
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 139,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2700,
+        1530
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 217
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            216
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        2,
+        "none",
+        "rb",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 141,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        3300,
+        1530
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 56,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 219
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            218
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        3,
+        "none",
+        "rb",
+        1
+      ]
+    },
+    {
+      "id": 143,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        3900,
+        1530
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 69,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 221
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            220
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        4,
+        "none",
+        "rb",
+        1
+      ]
+    },
+    {
+      "id": 159,
+      "type": "PreviewImage",
+      "pos": [
+        2430,
+        2030
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 237,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 162,
+      "type": "PreviewImage",
+      "pos": [
+        3030,
+        2030
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 58,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 239,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 164,
+      "type": "PreviewImage",
+      "pos": [
+        3630,
+        2030
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 70,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 241,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 168,
+      "type": "ImageClamp",
+      "pos": [
+        2540,
+        1900
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 245,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            240,
+            246
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 169,
+      "type": "ImageClamp",
+      "pos": [
+        3140,
+        1900
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 42,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 246,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            242
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 161,
+      "type": "ImageClamp",
+      "pos": [
+        1940,
+        1900
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 248,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            238,
+            245
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 163,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2700,
+        2030
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 240
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            239
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        1,
+        "rotate",
+        "rb",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 165,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        3300,
+        2030
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 59,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 242
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            241
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        1,
+        "reflect",
+        "rb",
+        1
+      ]
+    },
+    {
+      "id": 171,
+      "type": "PreviewImage",
+      "pos": [
+        2430,
+        2530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 249,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 174,
+      "type": "PreviewImage",
+      "pos": [
+        3030,
+        2530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 60,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 251,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 176,
+      "type": "PreviewImage",
+      "pos": [
+        3630,
+        2530
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 71,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 253,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 178,
+      "type": "ImageClamp",
+      "pos": [
+        2540,
+        2400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 255,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            252,
+            256
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 179,
+      "type": "ImageClamp",
+      "pos": [
+        3140,
+        2400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 45,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 256,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            254
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 175,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2700,
+        2530
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 252
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            251
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rg",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 177,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        3300,
+        2530
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 61,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 254
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            253
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        1,
+        "none",
+        "gb",
+        1
+      ]
+    },
+    {
+      "id": 96,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2100,
+        30
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 179
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            180
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        10,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 112,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2100,
+        520
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 191
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            190
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        256,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        0
+      ]
+    },
+    {
+      "id": 127,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2700,
+        1030
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 205
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            204
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        2,
+        1,
+        "none",
+        "rb",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 124,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2100,
+        1030
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 203
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            202
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        0.9999999999999999
+      ]
+    },
+    {
+      "id": 136,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2100,
+        1530
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 215
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            214
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        1
+      ]
+    },
+    {
+      "id": 160,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2100,
+        2030
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 238
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            237
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        1
+      ]
+    },
+    {
+      "id": 173,
+      "type": "ImageClamp",
+      "pos": [
+        1950,
+        2400
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 257,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            250,
+            255
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageClamp"
+      }
+    },
+    {
+      "id": 172,
+      "type": "ImageEffectsChromaticAberration",
+      "pos": [
+        2100,
+        2530
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 250
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            249
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsChromaticAberration"
+      },
+      "widgets_values": [
+        50,
+        "reflect",
+        1,
+        1,
+        "none",
+        "rb",
+        1
+      ]
+    }
+  ],
+  "links": [
+    [
+      128,
+      61,
+      0,
+      65,
+      0,
+      "IMAGE"
+    ],
+    [
+      129,
+      63,
+      0,
+      65,
+      1,
+      "IMAGE"
+    ],
+    [
+      131,
+      65,
+      0,
+      67,
+      1,
+      "IMAGE"
+    ],
+    [
+      133,
+      67,
+      0,
+      68,
+      0,
+      "IMAGE"
+    ],
+    [
+      139,
+      59,
+      0,
+      67,
+      0,
+      "IMAGE"
+    ],
+    [
+      173,
+      98,
+      0,
+      97,
+      0,
+      "IMAGE"
+    ],
+    [
+      174,
+      67,
+      0,
+      99,
+      0,
+      "IMAGE"
+    ],
+    [
+      175,
+      99,
+      0,
+      100,
+      0,
+      "IMAGE"
+    ],
+    [
+      177,
+      100,
+      0,
+      101,
+      0,
+      "IMAGE"
+    ],
+    [
+      178,
+      99,
+      0,
+      98,
+      0,
+      "IMAGE"
+    ],
+    [
+      179,
+      101,
+      0,
+      96,
+      0,
+      "IMAGE"
+    ],
+    [
+      180,
+      96,
+      0,
+      95,
+      0,
+      "IMAGE"
+    ],
+    [
+      181,
+      103,
+      0,
+      102,
+      0,
+      "IMAGE"
+    ],
+    [
+      182,
+      105,
+      0,
+      104,
+      0,
+      "IMAGE"
+    ],
+    [
+      183,
+      107,
+      0,
+      106,
+      0,
+      "IMAGE"
+    ],
+    [
+      184,
+      101,
+      0,
+      108,
+      0,
+      "IMAGE"
+    ],
+    [
+      185,
+      108,
+      0,
+      103,
+      0,
+      "IMAGE"
+    ],
+    [
+      186,
+      108,
+      0,
+      109,
+      0,
+      "IMAGE"
+    ],
+    [
+      187,
+      109,
+      0,
+      105,
+      0,
+      "IMAGE"
+    ],
+    [
+      188,
+      109,
+      0,
+      110,
+      0,
+      "IMAGE"
+    ],
+    [
+      189,
+      110,
+      0,
+      107,
+      0,
+      "IMAGE"
+    ],
+    [
+      190,
+      112,
+      0,
+      111,
+      0,
+      "IMAGE"
+    ],
+    [
+      191,
+      113,
+      0,
+      112,
+      0,
+      "IMAGE"
+    ],
+    [
+      192,
+      115,
+      0,
+      114,
+      0,
+      "IMAGE"
+    ],
+    [
+      193,
+      120,
+      0,
+      115,
+      0,
+      "IMAGE"
+    ],
+    [
+      194,
+      117,
+      0,
+      116,
+      0,
+      "IMAGE"
+    ],
+    [
+      195,
+      121,
+      0,
+      117,
+      0,
+      "IMAGE"
+    ],
+    [
+      196,
+      119,
+      0,
+      118,
+      0,
+      "IMAGE"
+    ],
+    [
+      197,
+      122,
+      0,
+      119,
+      0,
+      "IMAGE"
+    ],
+    [
+      198,
+      113,
+      0,
+      120,
+      0,
+      "IMAGE"
+    ],
+    [
+      199,
+      120,
+      0,
+      121,
+      0,
+      "IMAGE"
+    ],
+    [
+      200,
+      121,
+      0,
+      122,
+      0,
+      "IMAGE"
+    ],
+    [
+      201,
+      100,
+      0,
+      113,
+      0,
+      "IMAGE"
+    ],
+    [
+      202,
+      124,
+      0,
+      123,
+      0,
+      "IMAGE"
+    ],
+    [
+      203,
+      125,
+      0,
+      124,
+      0,
+      "IMAGE"
+    ],
+    [
+      204,
+      127,
+      0,
+      126,
+      0,
+      "IMAGE"
+    ],
+    [
+      205,
+      132,
+      0,
+      127,
+      0,
+      "IMAGE"
+    ],
+    [
+      206,
+      129,
+      0,
+      128,
+      0,
+      "IMAGE"
+    ],
+    [
+      207,
+      133,
+      0,
+      129,
+      0,
+      "IMAGE"
+    ],
+    [
+      208,
+      131,
+      0,
+      130,
+      0,
+      "IMAGE"
+    ],
+    [
+      209,
+      134,
+      0,
+      131,
+      0,
+      "IMAGE"
+    ],
+    [
+      210,
+      125,
+      0,
+      132,
+      0,
+      "IMAGE"
+    ],
+    [
+      211,
+      132,
+      0,
+      133,
+      0,
+      "IMAGE"
+    ],
+    [
+      212,
+      133,
+      0,
+      134,
+      0,
+      "IMAGE"
+    ],
+    [
+      213,
+      100,
+      0,
+      125,
+      0,
+      "IMAGE"
+    ],
+    [
+      214,
+      136,
+      0,
+      135,
+      0,
+      "IMAGE"
+    ],
+    [
+      215,
+      137,
+      0,
+      136,
+      0,
+      "IMAGE"
+    ],
+    [
+      216,
+      139,
+      0,
+      138,
+      0,
+      "IMAGE"
+    ],
+    [
+      217,
+      144,
+      0,
+      139,
+      0,
+      "IMAGE"
+    ],
+    [
+      218,
+      141,
+      0,
+      140,
+      0,
+      "IMAGE"
+    ],
+    [
+      219,
+      145,
+      0,
+      141,
+      0,
+      "IMAGE"
+    ],
+    [
+      220,
+      143,
+      0,
+      142,
+      0,
+      "IMAGE"
+    ],
+    [
+      221,
+      146,
+      0,
+      143,
+      0,
+      "IMAGE"
+    ],
+    [
+      222,
+      137,
+      0,
+      144,
+      0,
+      "IMAGE"
+    ],
+    [
+      223,
+      144,
+      0,
+      145,
+      0,
+      "IMAGE"
+    ],
+    [
+      224,
+      145,
+      0,
+      146,
+      0,
+      "IMAGE"
+    ],
+    [
+      225,
+      100,
+      0,
+      137,
+      0,
+      "IMAGE"
+    ],
+    [
+      237,
+      160,
+      0,
+      159,
+      0,
+      "IMAGE"
+    ],
+    [
+      238,
+      161,
+      0,
+      160,
+      0,
+      "IMAGE"
+    ],
+    [
+      239,
+      163,
+      0,
+      162,
+      0,
+      "IMAGE"
+    ],
+    [
+      240,
+      168,
+      0,
+      163,
+      0,
+      "IMAGE"
+    ],
+    [
+      241,
+      165,
+      0,
+      164,
+      0,
+      "IMAGE"
+    ],
+    [
+      242,
+      169,
+      0,
+      165,
+      0,
+      "IMAGE"
+    ],
+    [
+      245,
+      161,
+      0,
+      168,
+      0,
+      "IMAGE"
+    ],
+    [
+      246,
+      168,
+      0,
+      169,
+      0,
+      "IMAGE"
+    ],
+    [
+      248,
+      100,
+      0,
+      161,
+      0,
+      "IMAGE"
+    ],
+    [
+      249,
+      172,
+      0,
+      171,
+      0,
+      "IMAGE"
+    ],
+    [
+      250,
+      173,
+      0,
+      172,
+      0,
+      "IMAGE"
+    ],
+    [
+      251,
+      175,
+      0,
+      174,
+      0,
+      "IMAGE"
+    ],
+    [
+      252,
+      178,
+      0,
+      175,
+      0,
+      "IMAGE"
+    ],
+    [
+      253,
+      177,
+      0,
+      176,
+      0,
+      "IMAGE"
+    ],
+    [
+      254,
+      179,
+      0,
+      177,
+      0,
+      "IMAGE"
+    ],
+    [
+      255,
+      173,
+      0,
+      178,
+      0,
+      "IMAGE"
+    ],
+    [
+      256,
+      178,
+      0,
+      179,
+      0,
+      "IMAGE"
+    ],
+    [
+      257,
+      100,
+      0,
+      173,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Draw Example",
+      "bounding": [
+        -11,
+        -44,
+        1372,
+        1334
+      ],
+      "color": "#3f789e"
+    },
+    {
+      "title": "For your testing",
+      "bounding": [
+        1362,
+        -44,
+        558,
+        333
+      ],
+      "color": "#A88"
+    },
+    {
+      "title": "Shift",
+      "bounding": [
+        2087,
+        -44,
+        2365,
+        333
+      ],
+      "color": "#8A8"
+    },
+    {
+      "title": "Curvy",
+      "bounding": [
+        2091,
+        446,
+        2359,
+        343
+      ],
+      "color": "#b06634"
+    },
+    {
+      "title": "Shift Type",
+      "bounding": [
+        2091,
+        956,
+        2369,
+        334
+      ],
+      "color": "#88A"
+    },
+    {
+      "title": "Mixing Type",
+      "bounding": [
+        2089,
+        1456,
+        2370,
+        333
+      ],
+      "color": "#8AA"
+    },
+    {
+      "title": "Transpose",
+      "bounding": [
+        2089,
+        1956,
+        1770,
+        333
+      ],
+      "color": "#a1309b"
+    },
+    {
+      "title": "Colors",
+      "bounding": [
+        2089,
+        2456,
+        1770,
+        333
+      ],
+      "color": "#b58b2a"
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
