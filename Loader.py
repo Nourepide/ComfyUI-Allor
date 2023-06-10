@@ -53,6 +53,9 @@ class Loader:
         if self.config()["override"]["transform"]:
             override_nodes_len += override(lambda item: not item[0] == "ImageScale" and not item[0] == "ImageInvert")
 
+        if self.config()["override"]["debug"]:
+            override_nodes_len += override(lambda item: not item[1].CATEGORY.startswith("_for_testing"))
+
         self.__log(str(override_nodes_len) + " standard nodes was overridden.")
 
     def get_modules(self):
