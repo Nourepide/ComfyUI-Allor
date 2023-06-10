@@ -78,6 +78,10 @@ class Loader:
             from .modules import ImageDraw
             modules.update(ImageDraw.NODE_CLASS_MAPPINGS)
 
+        if self.config()["modules"]["ImageEffects"]:
+            from .modules import ImageEffects
+            modules.update(ImageEffects.NODE_CLASS_MAPPINGS)
+
         if self.config()["modules"]["ImageFilter"]:
             from .modules import ImageFilter
             modules.update(ImageFilter.NODE_CLASS_MAPPINGS)
