@@ -1,4 +1,5 @@
 import torch
+import torchvision.transforms.functional as TF
 from PIL import Image, ImageDraw
 
 from .Utils import get_sampler_by_name
@@ -238,6 +239,77 @@ class ImageTransformCropCorners:
         ]),)
 
 
+class ImageTransformPaddingAbsolute:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "add_width": ("INT", {
+                    "default": 64,
+                    "min": 0,
+                }),
+                "add_height": ("INT", {
+                    "default": 64,
+                    "min": 0,
+                }),
+                "method": (["reflect", "edge", "constant"],),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "image_transform_padding_absolute"
+    CATEGORY = "image/transform"
+
+    def image_transform_padding_absolute(self, images, add_width, add_height, method):
+        def transpose_tensor(image):
+            tensor = image.clone().detach()
+            tensor_pad = TF.pad(tensor.permute(2, 0, 1), [add_height, add_width], padding_mode=method).permute(1, 2, 0)
+
+            return tensor_pad
+
+        return (torch.stack([
+            transpose_tensor(images[i]) for i in range(len(images))
+        ]),)
+
+
+class ImageTransformPaddingRelative:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "scale_width": ("FLOAT", {
+                    "default": 0.25,
+                    "step": 0.1,
+                }),
+                "scale_height": ("FLOAT", {
+                    "default": 0.25,
+                    "step": 0.1,
+                }),
+                "method": (["reflect", "edge", "constant"],),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "image_transform_padding_relative"
+    CATEGORY = "image/transform"
+
+    def image_transform_padding_relative(self, images, scale_width, scale_height, method):
+        height, width = images[0, :, :, 0].shape
+
+        add_width = int(width * scale_width)
+        add_height = int(height * scale_height)
+
+        return ImageTransformPaddingAbsolute().image_transform_padding_absolute(images, add_width, add_height, method)
+
+
 class ImageTransformRotate:
     def __init__(self):
         pass
@@ -362,6 +434,8 @@ NODE_CLASS_MAPPINGS = {
     "ImageTransformCropAbsolute": ImageTransformCropAbsolute,
     "ImageTransformCropRelative": ImageTransformCropRelative,
     "ImageTransformCropCorners": ImageTransformCropCorners,
+    "ImageTransformPaddingAbsolute": ImageTransformPaddingAbsolute,
+    "ImageTransformPaddingRelative": ImageTransformPaddingRelative,
     "ImageTransformRotate": ImageTransformRotate,
     "ImageTransformTranspose": ImageTransformTranspose
 }
