@@ -1,7 +1,34 @@
 import torch
 
 
-class AlphaChanelByMask:
+class AlphaChanelAdd:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "alpha_chanel_add"
+    CATEGORY = "image/alpha"
+
+    def alpha_chanel_add(self, images):
+        batch, height, width, channels = images.shape
+
+        if channels == 4:
+            return images
+
+        alpha = torch.ones((batch, height, width, 1))
+
+        return (torch.cat((images, alpha), dim=-1),)
+
+
+class AlphaChanelAddByMask:
     def __init__(self):
         pass
 
@@ -16,10 +43,10 @@ class AlphaChanelByMask:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "alpha_chanel_by_mask"
-    CATEGORY = "mask/alpha"
+    FUNCTION = "alpha_chanel_add_by_mask"
+    CATEGORY = "image/alpha"
 
-    def alpha_chanel_by_mask(self, images, mask, method):
+    def alpha_chanel_add_by_mask(self, images, mask, method):
         img_height, img_width = images[0, :, :, 0].shape
         mask_height, mask_width = mask.shape
 
@@ -65,7 +92,7 @@ class AlphaChanelAsMask:
 
     RETURN_TYPES = ("MASK",)
     FUNCTION = "alpha_chanel_as_mask"
-    CATEGORY = "mask/alpha"
+    CATEGORY = "image/alpha"
 
     def alpha_chanel_as_mask(self, images, method):
         if images[0, 0, 0].shape[0] != 4:
@@ -88,40 +115,24 @@ class AlphaChanelRestore:
         return {
             "required": {
                 "images": ("IMAGE",),
-                "method": (["default", "only_add", "only_restore"],),
             },
         }
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "alpha_chanel_restore"
-    CATEGORY = "mask/alpha"
+    CATEGORY = "image/alpha"
 
-    def alpha_chanel_restore(self, images, method):
-        dimensions = images[0, 0, 0, :].shape[0]
-        width, height = images[0, :, :, 0].shape
+    def alpha_chanel_restore(self, images):
+        batch, height, width, channels = images.shape
 
-        alpha = torch.ones((width, height))
+        if channels != 4:
+            return images
 
-        def add():
-            return (torch.stack([
-                torch.stack((
-                    images[i, :, :, 0],
-                    images[i, :, :, 1],
-                    images[i, :, :, 2],
-                    alpha
-                ), dim=-1) for i in range(len(images))
-            ]),)
+        tensor = images.clone().detach()
 
-        def restore():
-            images[:, :, :, 3] = alpha
-            return (images,)
+        tensor[:, :, :, 3] = torch.ones((batch, height, width))
 
-        if method == "default":
-            return add() if dimensions != 4 else restore()
-        elif method == "only_add":
-            return add() if dimensions != 4 else (images,)
-        else:
-            return restore() if dimensions == 4 else (images,)
+        return (tensor,)
 
 
 class AlphaChanelRemove:
@@ -138,20 +149,15 @@ class AlphaChanelRemove:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "alpha_chanel_remove"
-    CATEGORY = "mask/alpha"
+    CATEGORY = "image/alpha"
 
     def alpha_chanel_remove(self, images):
-        return (torch.stack([
-            torch.stack((
-                images[i, :, :, 0],
-                images[i, :, :, 1],
-                images[i, :, :, 2]
-            ), dim=-1) for i in range(len(images))
-        ]),)
+        return (images[:, :, :, 0:3],)
 
 
 NODE_CLASS_MAPPINGS = {
-    "AlphaChanelByMask": AlphaChanelByMask,
+    "AlphaChanelAdd": AlphaChanelAdd,
+    "AlphaChanelAddByMask": AlphaChanelAddByMask,
     "AlphaChanelAsMask": AlphaChanelAsMask,
     "AlphaChanelRestore": AlphaChanelRestore,
     "AlphaChanelRemove": AlphaChanelRemove

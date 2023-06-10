@@ -38,15 +38,19 @@
   <summary>Details:</summary>
 
 ### Alpha chanel
-![alpha_chanel](images/alpha_chanel.png)
+![alpha_chanel](images/image_alpha_chanel.png)
 > Helpers for work with alpha chanel in exiting images.
 
 <details>
   <summary>Nodes:</summary>
 
-### By Mask
-![alpha_chanel_by_mask](images/alpha_chanel_by_mask.png)
-> Applies transparency to the image using a mask.
+### Add
+![image_alpha_chanel_add](images/image_alpha_chanel_add.png)
+> Adds alpha chanel to images (Convert `RGB` to `RGBA`).
+
+### Add By Mask
+![image_alpha_chanel_by_mask](images/image_alpha_chanel_by_mask.png)
+> Applies transparency to the images using a mask.
 
 <details>
   <summary>Params:</summary>
@@ -58,8 +62,8 @@
 </details>
 
 ### As Mask
-![alpha_chanel_as_mask](images/alpha_chanel_as_mask.png)
-> Get alpha chanel from first image and returns it as mask.
+![image_alpha_chanel_as_mask](images/image_alpha_chanel_as_mask.png)
+> Get alpha chanel from first images and returns it as mask.
 
 <details>
   <summary>Params:</summary>
@@ -71,7 +75,7 @@
 </details>
 
 ### Restore
-![alpha_chanel_restore](images/alpha_chanel_restore.png)
+![image_alpha_chanel_restore](images/image_alpha_chanel_restore.png)
 > Add alpha dimension to images. Or restore if it already exists. 
 
 <details>
@@ -85,8 +89,8 @@
 </details>
 
 ### Remove
-![alpha_chanel_remove](images/alpha_chanel_remove.png)
-> Completely remove alpha chanel from image (Convert `RGBA` to `RGB`).
+![image_alpha_chanel_remove](images/image_alpha_chanel_remove.png)
+> Completely removes alpha chanel from images (Convert `RGBA` to `RGB`).
 
 </details>
 
