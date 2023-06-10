@@ -754,6 +754,9 @@ You also can change the fonts folder in config.
 
 </details>
 
+### Padding
+![image_transform_padding](images/image_transform_padding.png)
+> Expand your images.
 
 ### Rotate
 ![image_transform_rotate](images/image_transform_rotate.png)
