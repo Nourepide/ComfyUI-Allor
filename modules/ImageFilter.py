@@ -155,6 +155,34 @@ class ImageFilterBilateralBlur:
         return (cv2_layer(images, lambda x: cv2.bilateralFilter(x, size, 100 - sigma_color * 100, sigma_intensity * 100)),)
 
 
+class ImageFilterMedianBlur:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "size": ("INT", {
+                    "default": 10
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "image_filter_median_blur"
+    CATEGORY = "image/filter"
+
+    def image_filter_median_blur(self, images, size):
+        size -= 1
+
+        img = images.clone().detach()
+        img = (img * 255).to(torch.uint8)
+
+        return ((cv2_layer(img, lambda x: cv2.medianBlur(x, size)) / 255),)
+
+
 class ImageFilterStackBlur:
     def __init__(self):
         pass
@@ -178,10 +206,10 @@ class ImageFilterStackBlur:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_bilateral_blur"
+    FUNCTION = "image_filter_stack_blur"
     CATEGORY = "image/filter"
 
-    def image_filter_bilateral_blur(self, images, size_x, size_y):
+    def image_filter_stack_blur(self, images, size_x, size_y):
         size_x -= 1
         size_y -= 1
 
@@ -357,31 +385,6 @@ class ImageFilterRank:
         return applyImageFilter(images, ImageFilter.RankFilter(int(size) + 1, rank))
 
 
-class ImageFilterMedian:
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "images": ("IMAGE",),
-                "size": ("INT", {
-                    "default": 2,
-                    "min": 0,
-                    "step": 2
-                }),
-            },
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_median"
-    CATEGORY = "image/filter"
-
-    def image_filter_median(self, images, size):
-        return applyImageFilter(images, ImageFilter.MedianFilter(int(size) + 1))
-
-
 class ImageFilterMin:
     def __init__(self):
         pass
@@ -464,6 +467,7 @@ NODE_CLASS_MAPPINGS = {
     "ImageFilterBoxBlur": ImageFilterBoxBlur,
     "ImageFilterGaussianBlur": ImageFilterGaussianBlur,
     "ImageFilterBilateralBlur": ImageFilterBilateralBlur,
+    "ImageFilterMedianBlur": ImageFilterMedianBlur,
     "ImageFilterStackBlur": ImageFilterStackBlur,
     "ImageFilterContour": ImageFilterContour,
     "ImageFilterDetail": ImageFilterDetail,
@@ -473,7 +477,6 @@ NODE_CLASS_MAPPINGS = {
     "ImageFilterFindEdges": ImageFilterFindEdges,
     "ImageFilterSharpen": ImageFilterSharpen,
     "ImageFilterRank": ImageFilterRank,
-    "ImageFilterMedian": ImageFilterMedian,
     "ImageFilterMin": ImageFilterMin,
     "ImageFilterMax": ImageFilterMax,
     "ImageFilterMode": ImageFilterMode

@@ -585,7 +585,7 @@ You also can change the fonts folder in config.
 ![image_draw_polygon](images/image_filter_smooth.png)
 > Anti-Aliasing of image artifacts.
 
-### SmoothMore
+### Smooth More
 ![image_filter_smooth_more](images/image_filter_smooth_more.png)
 > Improved Anti-Aliasing of image artifacts.
 
@@ -593,7 +593,7 @@ You also can change the fonts folder in config.
 ![image_filter_blur](images/image_filter_blur.png)
 > Blurring the image.
 
-### BoxBlur
+### Box Blur
 ![image_filter_box_blur](images/image_filter_box_blur.png)
 > Blurring the image by box algorithm.
 
@@ -604,7 +604,7 @@ You also can change the fonts folder in config.
 
 </details>
 
-### GaussianBlur
+### Gaussian Blur
 ![image_filter_gaussian_blur](images/image_filter_gaussian_blur.png)
 > Blurring the image by gaussian algorithm.
 
@@ -612,6 +612,17 @@ You also can change the fonts folder in config.
   <summary>Params:</summary>
 
 * radius `[0 - *]` - blurring radius.
+
+</details>
+
+### Median Blur
+![image_filter_median](images/image_filter_median.png)
+> Selects the average pixel value in a window of the specified size.
+
+<details>
+  <summary>Params:</summary>
+
+* size `[0 - *]` - The size of the core in PX.
 
 </details>
 
@@ -623,11 +634,11 @@ You also can change the fonts folder in config.
 ![image_filter_detail](images/image_filter_detail.png)
 > Image detailing.
 
-### EdgeEnhance
+### Edge Enhance
 ![image_filter_edge_enhance](images/image_filter_edge_enhance.png)
 > Clarity of the image boundaries.
 
-### EdgeEnhanceMore
+### Edge Enhance More
 ![image_filter_edge_enhance_more](images/image_filter_edge_enhance_more.png)
 > Improved clarity of image boundaries.
 
@@ -635,7 +646,7 @@ You also can change the fonts folder in config.
 ![image_filter_emboss](images/image_filter_emboss.png)
 > Embossed image.
 
-### FindEdges
+### Find Edges
 ![image_filter_find_edges](images/image_filter_find_edges.png)
 > Identifies the boundaries of the image.
 
@@ -652,17 +663,6 @@ You also can change the fonts folder in config.
 
 * size `[0 - *]` - The size of the core in PX.
 * rank `[0 - *]` - Which pixel value to choose.
-
-</details>
-
-### Median
-![image_filter_median](images/image_filter_median.png)
-> Selects the average pixel value in a window of the specified size.
-
-<details>
-  <summary>Params:</summary>
-
-* size `[0 - *]` - The size of the core in PX.
 
 </details>
 
