@@ -1,3 +1,5 @@
+import cv2
+import numpy as np
 import torch
 from PIL import ImageFilter
 
@@ -90,6 +92,62 @@ class ImageFilterBoxBlur:
 
     def image_filter_box_blur(self, images, radius):
         return applyImageFilter(images, ImageFilter.BoxBlur(radius))
+
+
+class ImageFilterBilateralBlur:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "size": ("INT", {
+                    "default": 10,
+                    "step": 2
+                }),
+                "sigma_color": ("FLOAT", {
+                    "default": 1.0,
+                    "max": 1.0,
+                    "step": 0.01
+                }),
+                "sigma_intensity": ("FLOAT", {
+                    "default": 1.0,
+                    "max": 1.0,
+                    "step": 0.01
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "image_filter_bilateral_blur"
+    CATEGORY = "image/filter"
+
+    def image_filter_bilateral_blur(self, images, size, sigma_color, sigma_intensity):
+        size -= 1
+
+        # noinspection PyUnresolvedReferences
+        def apply(image):
+            img = image.clone().detach()
+
+            channels = img[0, 0, :].shape[0]
+
+            rgb = img[:, :, 0:3].numpy()
+            result_rgb = cv2.bilateralFilter(rgb, size, 100 - sigma_color * 100, sigma_intensity * 100)
+
+            if channels == 3:
+                return torch.from_numpy(result_rgb)
+            elif channels == 4:
+                alpha = img[:, :, 3:4].numpy()
+                result_alpha = cv2.bilateralFilter(alpha, size, 100 - sigma_color * 100, sigma_intensity * 100)[..., np.newaxis]
+                result_rgba = np.concatenate((result_rgb, result_alpha), axis=2)
+
+                return torch.from_numpy(result_rgba)
+
+        return (torch.stack([
+            apply(images[i]) for i in range(len(images))
+        ]),)
 
 
 class ImageFilterGaussianBlur:
@@ -391,6 +449,7 @@ NODE_CLASS_MAPPINGS = {
     "ImageFilterBlur": ImageFilterBlur,
     "ImageFilterBoxBlur": ImageFilterBoxBlur,
     "ImageFilterGaussianBlur": ImageFilterGaussianBlur,
+    "ImageFilterBilateralBlur": ImageFilterBilateralBlur,
     "ImageFilterContour": ImageFilterContour,
     "ImageFilterDetail": ImageFilterDetail,
     "ImageFilterEdgeEnhance": ImageFilterEdgeEnhance,
