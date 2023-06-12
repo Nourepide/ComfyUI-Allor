@@ -1,7 +1,8 @@
 import cv2
-import numpy as np
 import torch
 from PIL import ImageFilter
+
+from .Utils import cv2_layer
 
 
 def applyImageFilter(images, image_filter):
@@ -127,27 +128,7 @@ class ImageFilterBilateralBlur:
     def image_filter_bilateral_blur(self, images, size, sigma_color, sigma_intensity):
         size -= 1
 
-        # noinspection PyUnresolvedReferences
-        def apply(image):
-            img = image.clone().detach()
-
-            channels = img[0, 0, :].shape[0]
-
-            rgb = img[:, :, 0:3].numpy()
-            result_rgb = cv2.bilateralFilter(rgb, size, 100 - sigma_color * 100, sigma_intensity * 100)
-
-            if channels == 3:
-                return torch.from_numpy(result_rgb)
-            elif channels == 4:
-                alpha = img[:, :, 3:4].numpy()
-                result_alpha = cv2.bilateralFilter(alpha, size, 100 - sigma_color * 100, sigma_intensity * 100)[..., np.newaxis]
-                result_rgba = np.concatenate((result_rgb, result_alpha), axis=2)
-
-                return torch.from_numpy(result_rgba)
-
-        return (torch.stack([
-            apply(images[i]) for i in range(len(images))
-        ]),)
+        return (cv2_layer(images, lambda x: cv2.bilateralFilter(x, size, 100 - sigma_color * 100, sigma_intensity * 100)),)
 
 
 class ImageFilterGaussianBlur:
