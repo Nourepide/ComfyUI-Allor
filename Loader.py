@@ -54,6 +54,9 @@ class Loader:
             override_nodes_len += override(lambda item: not item[0] == "ImageScale" and not item[0] == "ImageInvert")
 
         if self.config()["override"]["debug"]:
+            nodes.VAEDecodeTiled.CATEGORY = "latent"
+            nodes.VAEEncodeTiled.CATEGORY = "latent"
+
             override_nodes_len += override(lambda item: not item[1].CATEGORY.startswith("_for_testing"))
 
         self.__log(str(override_nodes_len) + " standard nodes was overridden.")
