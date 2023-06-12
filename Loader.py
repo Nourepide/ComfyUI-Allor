@@ -51,7 +51,7 @@ class Loader:
             override_nodes_len += override(lambda item: not item[1].CATEGORY.startswith("image/postprocessing"))
 
         if self.config()["override"]["transform"]:
-            override_nodes_len += override(lambda item: not item[0] == "ImageScale" and not item[0] == "ImageInvert")
+            override_nodes_len += override(lambda item: not item[0] == "ImageScale" and not item[0] == "ImageScaleBy" and not item[0] == "ImageInvert")
 
         if self.config()["override"]["debug"]:
             nodes.VAEDecodeTiled.CATEGORY = "latent"
