@@ -60,6 +60,14 @@ class ImageFilterBlur:
         return {
             "required": {
                 "images": ("IMAGE",),
+                "size_x": ("INT", {
+                    "default": 10,
+                    "min": 1,
+                }),
+                "size_y": ("INT", {
+                    "default": 10,
+                    "min": 1,
+                }),
             },
         }
 
@@ -67,8 +75,8 @@ class ImageFilterBlur:
     FUNCTION = "image_filter_blur"
     CATEGORY = "image/filter"
 
-    def image_filter_blur(self, images):
-        return applyImageFilter(images, ImageFilter.BLUR)
+    def image_filter_blur(self, images, size_x, size_y):
+        return (cv2_layer(images, lambda x: cv2.blur(x, (size_x, size_y))),)
 
 
 class ImageFilterBoxBlur:
@@ -80,9 +88,13 @@ class ImageFilterBoxBlur:
         return {
             "required": {
                 "images": ("IMAGE",),
-                "radius": ("INT", {
-                    "default": 1,
-                    "step": 1
+                "size_x": ("INT", {
+                    "default": 10,
+                    "min": 1,
+                }),
+                "size_y": ("INT", {
+                    "default": 10,
+                    "min": 1,
                 }),
             },
         }
@@ -91,8 +103,8 @@ class ImageFilterBoxBlur:
     FUNCTION = "image_filter_box_blur"
     CATEGORY = "image/filter"
 
-    def image_filter_box_blur(self, images, radius):
-        return applyImageFilter(images, ImageFilter.BoxBlur(radius))
+    def image_filter_box_blur(self, images, size_x, size_y):
+        return (cv2_layer(images, lambda x: cv2.boxFilter(x, -1, (size_x, size_y))),)
 
 
 class ImageFilterGaussianBlur:
@@ -104,9 +116,19 @@ class ImageFilterGaussianBlur:
         return {
             "required": {
                 "images": ("IMAGE",),
-                "radius": ("INT", {
-                    "default": 1,
-                    "step": 1
+                "size_x": ("INT", {
+                    "default": 10,
+                    "min": 1,
+                }),
+                "size_y": ("INT", {
+                    "default": 10,
+                    "min": 1,
+                }),
+                "sigma_x": ("INT", {
+                    "default": 0,
+                }),
+                "sigma_y": ("INT", {
+                    "default": 0,
                 }),
             },
         }
@@ -115,8 +137,11 @@ class ImageFilterGaussianBlur:
     FUNCTION = "image_filter_gaussian_blur"
     CATEGORY = "image/filter"
 
-    def image_filter_gaussian_blur(self, images, radius):
-        return applyImageFilter(images, ImageFilter.GaussianBlur(radius))
+    def image_filter_gaussian_blur(self, images, size_x, size_y, sigma_x, sigma_y):
+        size_x = size_x * 2 - 1
+        size_y = size_y * 2 - 1
+
+        return (cv2_layer(images, lambda x: cv2.GaussianBlur(x, (size_x, size_y), sigma_x, sigma_y)),)
 
 
 class ImageFilterBilateralBlur:
@@ -130,7 +155,7 @@ class ImageFilterBilateralBlur:
                 "images": ("IMAGE",),
                 "size": ("INT", {
                     "default": 10,
-                    "step": 2
+                    "min": 1
                 }),
                 "sigma_color": ("FLOAT", {
                     "default": 1.0,
@@ -150,7 +175,7 @@ class ImageFilterBilateralBlur:
     CATEGORY = "image/filter"
 
     def image_filter_bilateral_blur(self, images, size, sigma_color, sigma_intensity):
-        size -= 1
+        size = size * 2 - 1
 
         return (cv2_layer(images, lambda x: cv2.bilateralFilter(x, size, 100 - sigma_color * 100, sigma_intensity * 100)),)
 
@@ -165,7 +190,8 @@ class ImageFilterMedianBlur:
             "required": {
                 "images": ("IMAGE",),
                 "size": ("INT", {
-                    "default": 10
+                    "default": 10,
+                    "min": 1
                 }),
             },
         }
@@ -175,7 +201,7 @@ class ImageFilterMedianBlur:
     CATEGORY = "image/filter"
 
     def image_filter_median_blur(self, images, size):
-        size -= 1
+        size = size * 2 - 1
 
         img = images.clone().detach()
         img = (img * 255).to(torch.uint8)
@@ -194,13 +220,11 @@ class ImageFilterStackBlur:
                 "images": ("IMAGE",),
                 "size_x": ("INT", {
                     "default": 10,
-                    "min": 2,
-                    "step": 2
+                    "min": 1,
                 }),
                 "size_y": ("INT", {
                     "default": 10,
-                    "min": 2,
-                    "step": 2
+                    "min": 1,
                 }),
             },
         }
@@ -210,8 +234,8 @@ class ImageFilterStackBlur:
     CATEGORY = "image/filter"
 
     def image_filter_stack_blur(self, images, size_x, size_y):
-        size_x -= 1
-        size_y -= 1
+        size_x = size_x * 2 - 1
+        size_y = size_y * 2 - 1
 
         return (cv2_layer(images, lambda x: cv2.stackBlur(x, (size_x, size_y))),)
 
