@@ -95,6 +95,30 @@ class ImageFilterBoxBlur:
         return applyImageFilter(images, ImageFilter.BoxBlur(radius))
 
 
+class ImageFilterGaussianBlur:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "radius": ("INT", {
+                    "default": 1,
+                    "step": 1
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "image_filter_gaussian_blur"
+    CATEGORY = "image/filter"
+
+    def image_filter_gaussian_blur(self, images, radius):
+        return applyImageFilter(images, ImageFilter.GaussianBlur(radius))
+
+
 class ImageFilterBilateralBlur:
     def __init__(self):
         pass
@@ -131,7 +155,7 @@ class ImageFilterBilateralBlur:
         return (cv2_layer(images, lambda x: cv2.bilateralFilter(x, size, 100 - sigma_color * 100, sigma_intensity * 100)),)
 
 
-class ImageFilterGaussianBlur:
+class ImageFilterStackBlur:
     def __init__(self):
         pass
 
@@ -140,19 +164,28 @@ class ImageFilterGaussianBlur:
         return {
             "required": {
                 "images": ("IMAGE",),
-                "radius": ("INT", {
-                    "default": 1,
-                    "step": 1
+                "size_x": ("INT", {
+                    "default": 10,
+                    "min": 2,
+                    "step": 2
+                }),
+                "size_y": ("INT", {
+                    "default": 10,
+                    "min": 2,
+                    "step": 2
                 }),
             },
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_gaussian_blur"
+    FUNCTION = "image_filter_bilateral_blur"
     CATEGORY = "image/filter"
 
-    def image_filter_gaussian_blur(self, images, radius):
-        return applyImageFilter(images, ImageFilter.GaussianBlur(radius))
+    def image_filter_bilateral_blur(self, images, size_x, size_y):
+        size_x -= 1
+        size_y -= 1
+
+        return (cv2_layer(images, lambda x: cv2.stackBlur(x, (size_x, size_y))),)
 
 
 class ImageFilterContour:
@@ -431,6 +464,7 @@ NODE_CLASS_MAPPINGS = {
     "ImageFilterBoxBlur": ImageFilterBoxBlur,
     "ImageFilterGaussianBlur": ImageFilterGaussianBlur,
     "ImageFilterBilateralBlur": ImageFilterBilateralBlur,
+    "ImageFilterStackBlur": ImageFilterStackBlur,
     "ImageFilterContour": ImageFilterContour,
     "ImageFilterDetail": ImageFilterDetail,
     "ImageFilterEdgeEnhance": ImageFilterEdgeEnhance,
