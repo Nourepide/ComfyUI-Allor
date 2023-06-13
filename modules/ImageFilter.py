@@ -118,11 +118,46 @@ class ImageFilterGaussianBlur:
                 "images": ("IMAGE",),
                 "size_x": ("INT", {
                     "default": 10,
-                    "min": 1,
+                    "min": 2,
+                    "step": 2
                 }),
                 "size_y": ("INT", {
                     "default": 10,
-                    "min": 1,
+                    "min": 2,
+                    "step": 2
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "image_filter_gaussian_blur"
+    CATEGORY = "image/filter"
+
+    def image_filter_gaussian_blur(self, images, size_x, size_y):
+        size_x -= 1
+        size_y -= 1
+
+        return (cv2_layer(images, lambda x: cv2.GaussianBlur(x, (size_x, size_y), size_x, size_y)),)
+
+
+class ImageFilterGaussianBlurAdvanced:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "size_x": ("INT", {
+                    "default": 10,
+                    "min": 2,
+                    "step": 2
+                }),
+                "size_y": ("INT", {
+                    "default": 10,
+                    "min": 2,
+                    "step": 2
                 }),
                 "sigma_x": ("INT", {
                     "default": 0,
@@ -138,10 +173,73 @@ class ImageFilterGaussianBlur:
     CATEGORY = "image/filter"
 
     def image_filter_gaussian_blur(self, images, size_x, size_y, sigma_x, sigma_y):
-        size_x = size_x * 2 - 1
-        size_y = size_y * 2 - 1
+        size_x -= 1
+        size_y -= 1
 
         return (cv2_layer(images, lambda x: cv2.GaussianBlur(x, (size_x, size_y), sigma_x, sigma_y)),)
+
+
+class ImageFilterStackBlur:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "size_x": ("INT", {
+                    "default": 10,
+                    "min": 1,
+                    "step": 2
+                }),
+                "size_y": ("INT", {
+                    "default": 10,
+                    "min": 1,
+                    "step": 2
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "image_filter_stack_blur"
+    CATEGORY = "image/filter"
+
+    def image_filter_stack_blur(self, images, size_x, size_y):
+        size_x -= 1
+        size_y -= 1
+
+        return (cv2_layer(images, lambda x: cv2.stackBlur(x, (size_x, size_y))),)
+
+
+class ImageFilterMedianBlur:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "size": ("INT", {
+                    "default": 10,
+                    "min": 1,
+                    "step": 2
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "image_filter_median_blur"
+    CATEGORY = "image/filter"
+
+    def image_filter_median_blur(self, images, size):
+        size -= 1
+
+        img = images.clone().detach()
+        img = (img * 255).to(torch.uint8)
+
+        return ((cv2_layer(img, lambda x: cv2.medianBlur(x, size)) / 255),)
 
 
 class ImageFilterBilateralBlur:
@@ -155,7 +253,8 @@ class ImageFilterBilateralBlur:
                 "images": ("IMAGE",),
                 "size": ("INT", {
                     "default": 10,
-                    "min": 1
+                    "min": 1,
+                    "step": 2
                 }),
                 "sigma_color": ("FLOAT", {
                     "default": 1.0,
@@ -175,69 +274,9 @@ class ImageFilterBilateralBlur:
     CATEGORY = "image/filter"
 
     def image_filter_bilateral_blur(self, images, size, sigma_color, sigma_intensity):
-        size = size * 2 - 1
+        size -= 1
 
         return (cv2_layer(images, lambda x: cv2.bilateralFilter(x, size, 100 - sigma_color * 100, sigma_intensity * 100)),)
-
-
-class ImageFilterMedianBlur:
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "images": ("IMAGE",),
-                "size": ("INT", {
-                    "default": 10,
-                    "min": 1
-                }),
-            },
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_median_blur"
-    CATEGORY = "image/filter"
-
-    def image_filter_median_blur(self, images, size):
-        size = size * 2 - 1
-
-        img = images.clone().detach()
-        img = (img * 255).to(torch.uint8)
-
-        return ((cv2_layer(img, lambda x: cv2.medianBlur(x, size)) / 255),)
-
-
-class ImageFilterStackBlur:
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "images": ("IMAGE",),
-                "size_x": ("INT", {
-                    "default": 10,
-                    "min": 1,
-                }),
-                "size_y": ("INT", {
-                    "default": 10,
-                    "min": 1,
-                }),
-            },
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_stack_blur"
-    CATEGORY = "image/filter"
-
-    def image_filter_stack_blur(self, images, size_x, size_y):
-        size_x = size_x * 2 - 1
-        size_y = size_y * 2 - 1
-
-        return (cv2_layer(images, lambda x: cv2.stackBlur(x, (size_x, size_y))),)
 
 
 class ImageFilterContour:
@@ -490,9 +529,10 @@ NODE_CLASS_MAPPINGS = {
     "ImageFilterBlur": ImageFilterBlur,
     "ImageFilterBoxBlur": ImageFilterBoxBlur,
     "ImageFilterGaussianBlur": ImageFilterGaussianBlur,
-    "ImageFilterBilateralBlur": ImageFilterBilateralBlur,
-    "ImageFilterMedianBlur": ImageFilterMedianBlur,
+    "ImageFilterGaussianBlurAdvanced": ImageFilterGaussianBlurAdvanced,
     "ImageFilterStackBlur": ImageFilterStackBlur,
+    "ImageFilterMedianBlur": ImageFilterMedianBlur,
+    "ImageFilterBilateralBlur": ImageFilterBilateralBlur,
     "ImageFilterContour": ImageFilterContour,
     "ImageFilterDetail": ImageFilterDetail,
     "ImageFilterEdgeEnhance": ImageFilterEdgeEnhance,
