@@ -592,6 +592,13 @@ You also can change the fonts folder in config.
 ### Blur
 ![image_filter_blur](images/image_filter_blur.png)
 > Blurring the image.
+ 
+<details>
+  <summary>Params:</summary>
+
+* size_[x, y] `[1 - *]` - The strength of the blur application for horizontal and vertical direction.
+
+</details>
 
 ### Box Blur
 ![image_filter_box_blur](images/image_filter_box_blur.png)
@@ -600,7 +607,7 @@ You also can change the fonts folder in config.
 <details>
   <summary>Params:</summary>
 
-* radius `[0 - *]` - blurring radius.
+* size_[x, y] `[1 - *]` - The strength of the blur application for horizontal and vertical direction.
 
 </details>
 
@@ -611,18 +618,44 @@ You also can change the fonts folder in config.
 <details>
   <summary>Params:</summary>
 
-* radius `[0 - *]` - blurring radius.
+#### All
+* size_[x, y] `[1 - *]` - The strength of the blur application for horizontal and vertical direction.
+
+#### Advanced
+* sigma_[x, y] `[1 - *]` - The scale of the blur deviation.
 
 </details>
 
-### Median Blur
-![image_filter_median](images/image_filter_median.png)
-> Selects the average pixel value in a window of the specified size.
+### Stack Blur
+![image_filter_stack_blur](images/image_filter_stack_blur.png)
+> Blurring the image by stack algorithm.
 
 <details>
   <summary>Params:</summary>
 
-* size `[0 - *]` - The size of the core in PX.
+* size_[x, y] `[1 - *]` - The strength of the blur application for horizontal and vertical direction.
+
+</details>
+
+### Median Blur
+![image_filter_median_blur](images/image_filter_median_blur.png)
+> Blurring the image by median algorithm.
+
+<details>
+  <summary>Params:</summary>
+
+* size_[x, y] `[1 - *]` - The strength of the blur application for horizontal and vertical direction.
+
+</details>
+
+### Bilateral Blur
+![image_filter_box_blur](images/image_filter_box_blur.png)
+> Blurring the image by bilateral algorithm. Keeps the image sharp at the edges.
+
+<details>
+  <summary>Params:</summary>
+
+* size_[x, y] `[1 - *]` - The strength of the blur application for horizontal and vertical direction.
 
 </details>
 
