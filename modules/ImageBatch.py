@@ -47,10 +47,10 @@ class ImageBatchRemove:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_batch_get"
+    FUNCTION = "image_batch_remove"
     CATEGORY = "image/batch"
 
-    def image_batch_get(self, images, index):
+    def image_batch_remove(self, images, index):
         batch = images.shape[0]
         index = min(batch, index - 1)
 
@@ -71,10 +71,10 @@ class ImageBatchFork:
         }
 
     RETURN_TYPES = ("IMAGE", "IMAGE")
-    FUNCTION = "image_batch_join"
+    FUNCTION = "image_batch_fork"
     CATEGORY = "image/batch"
 
-    def image_batch_join(self, images, priority):
+    def image_batch_fork(self, images, priority):
         batch = images.shape[0]
 
         if batch == 1:
