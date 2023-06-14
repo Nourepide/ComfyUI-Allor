@@ -1,6 +1,8 @@
+import cv2
 import torch
-
 import torchvision.transforms.functional as F
+
+from .Utils import radialspace_1D, radialspace_2D, cv2_layer
 
 
 class ImageEffectsAdjustment:
@@ -172,7 +174,7 @@ class ImageEffectsSepia:
         return (tensor,)
 
 
-class ImageEffectsChromaticAberration:
+class ImageEffectsLensChromaticAberration:
     def __init__(self):
         pass
 
@@ -200,7 +202,7 @@ class ImageEffectsChromaticAberration:
                 }),
                 "transpose": (["none", "rotate", "reflect"],),
                 "colors": (["rb", "rg", "gb"],),
-                "curvy": ("FLOAT", {
+                "lens_curvy": ("FLOAT", {
                     "default": 1.0,
                     "max": 15.0,
                     "step": 0.1,
@@ -210,9 +212,9 @@ class ImageEffectsChromaticAberration:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "image_effects_chromatic_aberration"
-    CATEGORY = "image/effects"
+    CATEGORY = "image/effects/lens"
 
-    def image_effects_chromatic_aberration(self, images, shift, method, shift_type, mixing_type, transpose, colors, curvy):
+    def image_effects_chromatic_aberration(self, images, shift, method, shift_type, mixing_type, transpose, colors, lens_curvy):
         # noinspection PyUnboundLocalVariable
         def apply(image):
             img = image.clone().detach()
@@ -227,40 +229,32 @@ class ImageEffectsChromaticAberration:
             r, g, b = img[:, :, 0:3].split(1, 2)
             height, width = img[:, :, 0].shape
 
-            def get_space(start, end, steps, strength):
-                steps += shift * 2
-
-                if start == end:
-                    return torch.full((steps,), start)
-
-                tensor = torch.linspace(start, end, steps)
-                tensor = torch.sign(tensor) * (torch.abs(tensor) ** strength)
-                tensor = ((tensor - tensor.min()) / (tensor.max() - tensor.min())) * (end - start) + start
-
-                return tensor
+            def get_space(size, min_val, max_val):
+                size += shift * 2
+                return radialspace_1D(size, lens_curvy, 1.0, min_val, max_val)
 
             if shift_type == 1:
-                f_shifts = get_space(-shift, shift, height, curvy)
+                f_shifts = get_space(height, -shift, shift)
 
                 if transpose == "reflect":
-                    t_shifts = get_space(-shift, shift, width, curvy)
+                    t_shifts = get_space(width, -shift, shift)
             elif shift_type == 2:
-                f_shifts = get_space(0, shift, height, curvy)
+                f_shifts = get_space(height, 0, shift)
                 f_shifts = torch.flip(f_shifts, dims=(0,))
 
                 if transpose == "reflect":
-                    t_shifts = get_space(0, shift, width, curvy)
+                    t_shifts = get_space(width, 0, shift)
                     t_shifts = torch.flip(t_shifts, dims=(0,))
             elif shift_type == 3:
-                f_shifts = get_space(0, shift, height, curvy)
+                f_shifts = get_space(height, 0, shift)
 
                 if transpose == "reflect":
-                    t_shifts = get_space(0, shift, width, curvy)
+                    t_shifts = get_space(width, 0, shift)
             elif shift_type == 4:
-                f_shifts = get_space(shift, shift, height, curvy)
+                f_shifts = get_space(height, shift, shift)
 
                 if transpose == "reflect":
-                    t_shifts = get_space(shift, shift, width, curvy)
+                    t_shifts = get_space(width, shift, shift)
             else:
                 raise ValueError("Not existing shift_type.")
 
@@ -350,10 +344,173 @@ class ImageEffectsChromaticAberration:
         ]),)
 
 
+class ImageEffectsLensOpticAxis:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "lens_shape": (["circle", "square", "rectangle", "corners"],),
+                "lens_edge": (["around", "symmetric"],),
+                "lens_curvy": ("FLOAT", {
+                    "default": 4.0,
+                    "max": 15.0,
+                    "step": 0.1,
+                }),
+                "lens_zoom": ("FLOAT", {
+                    "default": 2.0,
+                    "step": 0.1,
+                }),
+                "lens_aperture": ("FLOAT", {
+                    "default": 0.5,
+                    "max": 10.0,
+                    "step": 0.1,
+                }),
+                "blur_intensity": ("INT", {
+                    "default": 30,
+                    "min": 2,
+                    "step": 2
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE", "MASK")
+    FUNCTION = "image_effects_optic_axis"
+    CATEGORY = "image/effects/lens"
+
+    def image_effects_optic_axis(self, images, lens_shape, lens_edge, lens_curvy, lens_zoom, lens_aperture, blur_intensity):
+        blur_intensity -= 1
+        lens_zoom += 1
+
+        height, width = images[0, :, :, 0].shape
+
+        if lens_edge == "around":
+            mask = radialspace_2D((height, width), lens_curvy, lens_zoom, lens_shape, 0.0, 1.0 + lens_curvy).unsqueeze(0).unsqueeze(3)
+        elif lens_edge == "symmetric":
+            if height != width:
+                new_height = new_width = max(height, width)
+                crop_top_bottom = (new_height - height) // 2
+                crop_left_right = (new_width - width) // 2
+
+                mask = radialspace_2D((new_height, new_width), lens_curvy, lens_zoom, lens_shape, 0.0, 1.0 + lens_curvy)[
+                   crop_top_bottom:-crop_top_bottom or None,
+                   crop_left_right:-crop_left_right or None
+                ].unsqueeze(0).unsqueeze(3)
+            else:
+                mask = radialspace_2D((height, width), lens_curvy, lens_zoom, lens_shape, 0.0, 1.0 + lens_curvy).unsqueeze(0).unsqueeze(3)
+        else:
+            raise ValueError("Not existing lens_edge parameter.")
+
+        center_x = width // 2
+        center_y = height // 2
+
+        y_v, x_v = torch.meshgrid(torch.arange(height), torch.arange(width), indexing='ij')
+
+        dx = x_v - center_x
+        dy = y_v - center_y
+
+        distance = torch.sqrt(dx ** 2 + dy ** 2)
+
+        map_x = x_v + mask[0, :, :, 0] * dx / distance * (-lens_aperture * 100)
+        map_y = y_v + mask[0, :, :, 0] * dy / distance * (-lens_aperture * 100)
+
+        map_x = map_x.to(torch.float32).numpy()
+        map_y = map_y.to(torch.float32).numpy()
+
+        shifted_images = cv2_layer(images, lambda x: cv2.remap(x, map_x, map_y, cv2.INTER_LINEAR))
+        shifted_mask = cv2_layer(mask, lambda x: cv2.remap(x, map_x, map_y, cv2.INTER_LINEAR))
+        edited_images = cv2_layer(shifted_images, lambda x: cv2.stackBlur(x, (blur_intensity, blur_intensity)))
+
+        mask = torch.clamp(mask, 0.0, 1.0)
+        shifted_mask = torch.clamp(shifted_mask, 0.0, 1.0)
+
+        result = shifted_images * (1 - mask) + edited_images * mask
+
+        return result, shifted_mask
+
+
+class ImageEffectsLensVignette:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "lens_shape": (["circle", "rectangle"],),
+                "lens_edge": (["around", "symmetric"],),
+                "lens_curvy": ("FLOAT", {
+                    "default": 3.0,
+                    "max": 15.0,
+                    "step": 0.1,
+                }),
+                "lens_zoom": ("FLOAT", {
+                    "default": 0.0,
+                    "step": 0.1,
+                }),
+                "brightness": ("FLOAT", {
+                    "default": 0.25,
+                    "max": 1.0,
+                    "step": 0.01
+                }),
+                "saturation": ("FLOAT", {
+                    "default": 0.5,
+                    "max": 1.0,
+                    "step": 0.01
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE", "MASK")
+    FUNCTION = "image_effects_vignette"
+    CATEGORY = "image/effects/lens"
+
+    def image_effects_vignette(self, images, lens_shape, lens_edge, lens_curvy, lens_zoom, brightness, saturation):
+        tensor = images.clone().detach()
+
+        lens_zoom += 1
+
+        height, width = tensor[0, :, :, 0].shape
+
+        if lens_edge == "around":
+            mask = radialspace_2D((height, width), lens_curvy, lens_zoom, lens_shape).unsqueeze(0).unsqueeze(3)
+        elif lens_edge == "symmetric":
+            if height != width:
+                new_height = new_width = max(height, width)
+                crop_top_bottom = (new_height - height) // 2
+                crop_left_right = (new_width - width) // 2
+
+                mask = radialspace_2D((new_height, new_width), lens_curvy, lens_zoom, lens_shape)[
+                       crop_top_bottom:-crop_top_bottom or None,
+                       crop_left_right:-crop_left_right or None
+                ].unsqueeze(0).unsqueeze(3)
+            else:
+                mask = radialspace_2D((height, width), lens_curvy, lens_zoom, lens_shape).unsqueeze(0).unsqueeze(3)
+        else:
+            raise ValueError("Not existing lens_edge parameter.")
+
+        tensor = tensor.permute(0, 3, 1, 2)
+        tensor[:, 0:3, :, :] = F.adjust_brightness(tensor[:, 0:3, :, :], brightness)
+        tensor[:, 0:3, :, :] = F.adjust_saturation(tensor[:, 0:3, :, :], saturation)
+        tensor = tensor.permute(0, 2, 3, 1)
+
+        result = images * (1 - mask) + tensor * mask
+
+        mask = mask.squeeze()
+
+        return result, mask
+
+
 NODE_CLASS_MAPPINGS = {
     "ImageEffectsAdjustment": ImageEffectsAdjustment,
     "ImageEffectsGrayscale": ImageEffectsGrayscale,
     "ImageEffectsNegative": ImageEffectsNegative,
     "ImageEffectsSepia": ImageEffectsSepia,
-    "ImageEffectsChromaticAberration": ImageEffectsChromaticAberration,
+    "ImageEffectsLensChromaticAberration": ImageEffectsLensChromaticAberration,
+    "ImageEffectsLensOpticAxis": ImageEffectsLensOpticAxis,
+    "ImageEffectsLensVignette": ImageEffectsLensVignette
 }
