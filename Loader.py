@@ -72,6 +72,10 @@ class Loader:
             from .modules import Clamp
             modules.update(Clamp.NODE_CLASS_MAPPINGS)
 
+        if self.config()["modules"]["ImageBatch"]:
+            from .modules import ImageBatch
+            modules.update(ImageBatch.NODE_CLASS_MAPPINGS)
+
         if self.config()["modules"]["ImageComposite"]:
             from .modules import ImageComposite
             modules.update(ImageComposite.NODE_CLASS_MAPPINGS)
