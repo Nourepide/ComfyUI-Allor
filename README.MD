@@ -550,9 +550,9 @@ You also can change the fonts folder in config.
 ![image_effects_negative](images/image_effects_negative.png)
 > Add negative effect.
 
-### Chromatic Aberration
-![image_effects_chromatic_aberration](images/image_effects_chromatic_aberration.png)
-> Apply a camera lens effect to the images.
+### Lens Chromatic Aberration
+![image_effects_lens_chromatic_aberration](images/image_effects_lens_chromatic_aberration.png)
+> Apply a camera lens color shift to the images.
 
 `Attention`⚡: You can test all params of `Chromatic Aberration` with this  [JSON](images/image_effects_chromatic_aberration.json). The example works using `Image Draw` module and does not require any preparation. Changing the parameters leads to very unusual effects that you will not find anywhere else, so I recommend that you spend time on this and get acquainted as best as possible for incredible results.
 
@@ -565,7 +565,78 @@ You also can change the fonts folder in config.
 * mixing_type `[1 - 4]` - Type of method for shifting colors.
 * transpose `[none, rotate, reflect]` - Shifting direction, where `none` is without changes, `rotate` is in alternative direction and `reflect` in both directions at the same time.
 * colors `[rb, rg, gb]`- The color layers that will be shifted. 
-* curvy `[0.0 - 15.0]` - The value of the curve during the propagation of the effect, where 1.0 is linear. Not work with shift_type 4.
+* lens_curvy `[0.0 - 15.0]` - The value of the curve during the propagation of the effect, where 1.0 is linear. Not work with shift_type 4.
+
+<details>
+  <summary>lens_curvy in details:</summary>
+
+![lens_curvy](images/lens_curvy.png)
+  
+</details>
+
+</details>
+
+### Lens Optic Axis
+![image_effects_lens_optic_axis](images/image_effects_lens_optic_axis.png)
+> Apply a camera lens distort to the images.
+
+<details>
+  <summary>Params:</summary>
+
+* lens_shape `[circle, square, rectangle, corners]` - Form of lens.
+
+<details>
+  <summary>lens_shape in details:</summary>
+
+![lens_shape](images/lens_shape.png)
+  
+</details>
+
+* lens_edge `[around, symmetric]` - If `around` is selected, the lens will adjust to the proportions of the image.
+* lens_curvy `[0.0 - 15.0]` - The value of the curve during the propagation of the effect, where 1.0 is linear.
+
+<details>
+  <summary>lens_curvy in details:</summary>
+
+![lens_curvy](images/lens_curvy.png)
+  
+</details>
+
+* lens_zoom `[0 - *]` - How close lens are to the center of images.
+* lens_aperture `[0 - *]` - How much lens will distort images.
+* blur_intensity `[0.0 - *]` - Strength of blur due to lens.
+
+</details>
+
+### Lens Vignette
+![image_effects_lens_vignette](images/image_effects_lens_vignette.png)
+> Apply a camera lens decreasing in the brightness and saturation to the images.
+
+<details>
+  <summary>Params:</summary>
+
+* lens_shape `[circle, rectangle]` - Form of lens.
+
+<details>
+  <summary>lens_shape in details:</summary>
+
+![lens_shape](images/lens_shape.png)
+  
+</details>
+
+* lens_edge `[around, symmetric]` - If `around` is selected, the lens will adjust to the proportions of the image.
+* lens_curvy `[0.0 - 15.0]` - The value of the curve during the propagation of the effect, where 1.0 is linear.
+
+<details>
+  <summary>lens_curvy in details:</summary>
+
+![lens_curvy](images/lens_curvy.png)
+  
+</details>
+
+* lens_zoom `[0 - *]` - How close lens are to the center of images.
+* brightness `[0.0 - *]` - Adjust brightness of images with scale.
+* saturation `[0.0 - *]` - Adjust color saturation of an images with scale.
 
 </details>
 

@@ -403,7 +403,7 @@
     },
     {
       "id": 98,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         1370,
         30
@@ -435,7 +435,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         10,
@@ -475,7 +475,7 @@
     },
     {
       "id": 103,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2700,
         30
@@ -505,7 +505,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         25,
@@ -545,7 +545,7 @@
     },
     {
       "id": 105,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         3300,
         30
@@ -575,7 +575,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -615,7 +615,7 @@
     },
     {
       "id": 107,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         3900,
         30
@@ -645,7 +645,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         100,
@@ -1080,7 +1080,7 @@
     },
     {
       "id": 117,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         3300,
         530
@@ -1110,7 +1110,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         256,
@@ -1124,7 +1124,7 @@
     },
     {
       "id": 119,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         3900,
         530
@@ -1154,7 +1154,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         256,
@@ -1168,7 +1168,7 @@
     },
     {
       "id": 115,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2700,
         530
@@ -1198,7 +1198,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         256,
@@ -1475,7 +1475,7 @@
     },
     {
       "id": 129,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         3300,
         1030
@@ -1505,7 +1505,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -1519,7 +1519,7 @@
     },
     {
       "id": 131,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         3900,
         1030
@@ -1549,7 +1549,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -1826,7 +1826,7 @@
     },
     {
       "id": 139,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2700,
         1530
@@ -1856,7 +1856,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -1870,7 +1870,7 @@
     },
     {
       "id": 141,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         3300,
         1530
@@ -1900,7 +1900,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -1914,7 +1914,7 @@
     },
     {
       "id": 143,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         3900,
         1530
@@ -1944,7 +1944,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -2155,7 +2155,7 @@
     },
     {
       "id": 163,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2700,
         2030
@@ -2185,7 +2185,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -2199,7 +2199,7 @@
     },
     {
       "id": 165,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         3300,
         2030
@@ -2229,7 +2229,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -2400,7 +2400,7 @@
     },
     {
       "id": 175,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2700,
         2530
@@ -2430,7 +2430,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -2444,7 +2444,7 @@
     },
     {
       "id": 177,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         3300,
         2530
@@ -2474,7 +2474,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -2488,7 +2488,7 @@
     },
     {
       "id": 96,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2100,
         30
@@ -2518,7 +2518,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         10,
@@ -2532,7 +2532,7 @@
     },
     {
       "id": 112,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2100,
         520
@@ -2562,7 +2562,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         256,
@@ -2576,7 +2576,7 @@
     },
     {
       "id": 127,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2700,
         1030
@@ -2606,7 +2606,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -2620,7 +2620,7 @@
     },
     {
       "id": 124,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2100,
         1030
@@ -2650,7 +2650,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -2664,7 +2664,7 @@
     },
     {
       "id": 136,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2100,
         1530
@@ -2694,7 +2694,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -2708,7 +2708,7 @@
     },
     {
       "id": 160,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2100,
         2030
@@ -2738,7 +2738,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
@@ -2792,7 +2792,7 @@
     },
     {
       "id": 172,
-      "type": "ImageEffectsChromaticAberration",
+      "type": "ImageEffectsLensChromaticAberration",
       "pos": [
         2100,
         2530
@@ -2822,7 +2822,7 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ImageEffectsChromaticAberration"
+        "Node name for S&R": "ImageEffectsLensChromaticAberration"
       },
       "widgets_values": [
         50,
