@@ -3,6 +3,7 @@
   "modules": {
     "AlphaChanel": true,
     "Clamp": true,
+    "ImageBatch": true,
     "ImageComposite": true,
     "ImageContainer": true,
     "ImageDraw": true,

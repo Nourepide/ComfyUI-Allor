@@ -905,6 +905,53 @@ You also can change the fonts folder in config.
 
 </details>
 
+---
+### Image Batch
+![image_batch](images/image_batch.png)
+> Allows you to manage batch of images.
+
+<details>
+  <summary>Nodes:</summary>
+
+### Get
+![image_batch_get](images/image_batch_get.png)
+> Get image from images batch.
+
+<details>
+  <summary>Params:</summary>
+
+* index `[1 - *]` - Number of image.
+
+</details>
+
+### Remove
+![image_batch_remove](images/image_batch_remove.png)
+> Remove image from images batch.
+
+<details>
+  <summary>Params:</summary>
+
+* index `[1 - *]` - Number of image.
+
+</details>
+
+### Fork
+![image_batch_fork](images/image_batch_fork.png)
+> Split images from batch.
+
+<details>
+  <summary>Params:</summary>
+
+* priority `[first, second]` - If there are an odd number of images, choose which stream to send the image from the center to.
+
+</details>
+
+### Join
+![image_batch_join](images/image_batch_join.png)
+> Combine images together into batch.
+
+</details>
+
 </details>
 
 ## Configuration:
