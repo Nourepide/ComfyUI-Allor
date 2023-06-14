@@ -35,7 +35,7 @@
 > Click on `Details` to open/close the drop-down menu with all modules.
 
 <details>
-  <summary>Details:</summary>
+  <summary>Details: 👈</summary>
 
 ### Alpha chanel
 ![alpha_chanel](images/image_alpha_chanel.png)
