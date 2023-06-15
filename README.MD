@@ -196,9 +196,9 @@ The first letter `i` in the word `Inheritance` is barely noticeable. But in the 
 * images_[a, b]_x `[0.0 - 1.0]` - First images horizontal offset. `[left edge -> right edge]`.
 * images_[a, b]_y `[0.0 - 1.0]` - First images vertical offset. `[top edge -> bottom edge]`.
 * container_size_type
-* * max - Maximum of width and height from `images_a` and `images_b`.
-* * sum - Sum of width and height from `images_a` and `images_b`.
-* * sum_[width, height] - Sum of width or height from `images_a` and `images_b`.
+  * max - Maximum of width and height from `images_a` and `images_b`.
+  * sum - Sum of width and height from `images_a` and `images_b`.
+  * sum_[width, height] - Sum of width or height from `images_a` and `images_b`.
 
 How it works.
 
@@ -976,17 +976,18 @@ You also can change the fonts folder in config.
 ## Installation:
 To install Allor, you need to have ComfyUI installed on your system. If you don't have it yet, you can download it from [here](https://github.com/comfyanonymous/ComfyUI). Then, follow these steps:
 
-1. `cd C:\ComfyUI\custom_nodes` (Windows) or `cd /home/user/ComfyUI/custom_nodes` (Unix): Navigate to the `custom_nodes` folder inside the ComfyUI folder.
-2. `git clone https://github.com/Nourepide/ComfyUI-Allor.git comfyui_allor`: Clone the Allor repository from GitHub. This will create a new folder called `comfyui_allor` inside the `custom_nodes` folder.
-3. `cd comfyui_allor`: Enter the `comfyui_allor` folder.
-4. `pip install -r requirements.txt`: Install the required dependencies. This may take some time depending on your internet speed and system configuration.
-5. Optionally, you can create a `fonts` folder inside the `comfy_extras` folder to store your custom fonts. If you don't do this, ComfyUI will create it automatically when you run it.
+1. Open a terminal (Linux) or command prompt (Windows) in ComfyUI folder.
+2. `cd custom_nodes`: Navigate to the `custom_nodes` folder inside the ComfyUI folder.
+3. `git clone https://github.com/Nourepide/ComfyUI-Allor.git comfyui_allor`: Clone the Allor repository from GitHub. This will create a new folder called `comfyui_allor` inside the `custom_nodes` folder.
+4. `cd comfyui_allor`: Enter the `comfyui_allor` folder.
+5. `pip install -r requirements.txt`: Install the required dependencies. This may take some time depending on your internet speed and system configuration.
+6. Optionally, you can create a `fonts` folder inside the `comfy_extras` folder to store your custom fonts. If you don't do this, ComfyUI will create it automatically when you run it.
 
 ## Updating:
 To update Allor, you need to make sure that you have saved your work and closed ComfyUI. Then, follow these steps:
 
-1. Open a terminal (Linux) or command prompt (Windows)
-2. `cd C:\ComfyUI\custom_nodes\comfyui_allor` (Windows) or `cd /home/user/ComfyUI/custom_nodes/comfyui_allor` (Linux): Navigate to the `comfyui_allor` folder inside the `custom_nodes` folder. If you renamed the `comfyui_allor` folder, use the new name instead.
+1. Open a terminal (Linux) or command prompt (Windows) in ComfyUI folder.
+2. `cd custom_nodes`: Navigate to the `comfyui_allor` folder inside the `custom_nodes` folder. If you renamed the `comfyui_allor` folder, use the new name instead.
 3. `git checkout main && git pull`: Fetch the latest version of Allor from GitHub. This may take some time depending on your internet speed and system configuration.
 
 ## Configuration:
