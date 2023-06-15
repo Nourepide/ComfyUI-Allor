@@ -29,10 +29,10 @@ class ImageTransformResizeAbsolute:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_transform_resize_absolute"
+    FUNCTION = "node"
     CATEGORY = "image/transform"
 
-    def image_transform_resize_absolute(self, images, width, height, method):
+    def node(self, images, width, height, method):
         def resize_tensor(tensor):
             return tensor.tensor_to_image().resize((width, height), get_sampler_by_name(method)).image_to_tensor()
 
@@ -63,16 +63,16 @@ class ImageTransformResizeRelative:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_transform_resize_relative"
+    FUNCTION = "node"
     CATEGORY = "image/transform"
 
-    def image_transform_resize_relative(self, images, scale_width, scale_height, method):
+    def node(self, images, scale_width, scale_height, method):
         height, width = images[0, :, :, 0].shape
 
         width = int(width * scale_width)
         height = int(height * scale_height)
 
-        return ImageTransformResizeAbsolute().image_transform_resize_absolute(images, width, height, method)
+        return ImageTransformResizeAbsolute().node(images, width, height, method)
 
 
 class ImageTransformCropAbsolute:
@@ -104,10 +104,10 @@ class ImageTransformCropAbsolute:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_transform_crop_absolute"
+    FUNCTION = "node"
     CATEGORY = "image/transform"
 
-    def image_transform_crop_absolute(self, images, start_x, start_y, end_x, end_y):
+    def node(self, images, start_x, start_y, end_x, end_y):
         def resize_tensor(tensor):
             return tensor.tensor_to_image().crop([start_x, start_y, end_x, end_y]).image_to_tensor()
 
@@ -149,13 +149,13 @@ class ImageTransformCropRelative:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_transform_crop_relative"
+    FUNCTION = "node"
     CATEGORY = "image/transform"
 
-    def image_transform_crop_relative(self, images, start_x, start_y, end_x, end_y):
+    def node(self, images, start_x, start_y, end_x, end_y):
         height, width = images[0, :, :, 0].shape
 
-        return ImageTransformCropAbsolute().image_transform_crop_absolute(
+        return ImageTransformCropAbsolute().node(
             images,
             width * start_x,
             height * start_y,
@@ -193,11 +193,11 @@ class ImageTransformCropCorners:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_transform_crop_corners"
+    FUNCTION = "node"
     CATEGORY = "image/transform"
 
     # noinspection PyUnresolvedReferences, PyArgumentList
-    def image_transform_crop_corners(
+    def node(
             self,
             images,
             radius,
@@ -261,10 +261,10 @@ class ImageTransformPaddingAbsolute:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_transform_padding_absolute"
+    FUNCTION = "node"
     CATEGORY = "image/transform"
 
-    def image_transform_padding_absolute(self, images, add_width, add_height, method):
+    def node(self, images, add_width, add_height, method):
         def transpose_tensor(image):
             tensor = image.clone().detach()
             tensor_pad = TF.pad(tensor.permute(2, 0, 1), [add_height, add_width], padding_mode=method).permute(1, 2, 0)
@@ -298,16 +298,16 @@ class ImageTransformPaddingRelative:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_transform_padding_relative"
+    FUNCTION = "node"
     CATEGORY = "image/transform"
 
-    def image_transform_padding_relative(self, images, scale_width, scale_height, method):
+    def node(self, images, scale_width, scale_height, method):
         height, width = images[0, :, :, 0].shape
 
         add_width = int(width * scale_width)
         add_height = int(height * scale_height)
 
-        return ImageTransformPaddingAbsolute().image_transform_padding_absolute(images, add_width, add_height, method)
+        return ImageTransformPaddingAbsolute().node(images, add_width, add_height, method)
 
 
 class ImageTransformRotate:
@@ -336,10 +336,10 @@ class ImageTransformRotate:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_transform_rotate"
+    FUNCTION = "node"
     CATEGORY = "image/transform"
 
-    def image_transform_rotate(self, images, angle, expand, SSAA, method):
+    def node(self, images, angle, expand, SSAA, method):
         height, width = images[0, :, :, 0].shape
 
         def rotate_tensor(tensor):
@@ -399,10 +399,10 @@ class ImageTransformTranspose:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_transform_transpose"
+    FUNCTION = "node"
     CATEGORY = "image/transform"
 
-    def image_transform_transpose(self, images, method):
+    def node(self, images, method):
         def transpose_tensor(tensor):
             if method == "flip_horizontally":
                 transpose = Image.FLIP_LEFT_RIGHT

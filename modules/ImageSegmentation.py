@@ -50,10 +50,10 @@ class ImageSegmentation:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "segmentation"
+    FUNCTION = "node"
     CATEGORY = "image/segmentation"
 
-    def segmentation(
+    def node(
             self,
             images,
             model,
@@ -134,10 +134,10 @@ class ImageSegmentationCustom:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "segmentation"
+    FUNCTION = "node"
     CATEGORY = "image/segmentation"
 
-    def segmentation(
+    def node(
             self,
             images,
             model,
@@ -162,7 +162,7 @@ class ImageSegmentationCustom:
 
         session = CustomSession().from_container(container)
 
-        return ImageSegmentation().segmentation(
+        return ImageSegmentation().node(
             images,
             model,
             alpha_matting,
@@ -242,10 +242,10 @@ class ImageSegmentationCustomAdvanced:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "segmentation"
+    FUNCTION = "node"
     CATEGORY = "image/segmentation"
 
-    def segmentation(
+    def node(
             self,
             images,
             model,
@@ -275,7 +275,7 @@ class ImageSegmentationCustomAdvanced:
 
         session = CustomSession().from_container(container)
 
-        return ImageSegmentation().segmentation(
+        return ImageSegmentation().node(
             images,
             model,
             alpha_matting,

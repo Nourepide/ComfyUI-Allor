@@ -14,10 +14,10 @@ class AlphaChanelAdd:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "alpha_chanel_add"
+    FUNCTION = "node"
     CATEGORY = "image/alpha"
 
-    def alpha_chanel_add(self, images):
+    def node(self, images):
         batch, height, width, channels = images.shape
 
         if channels == 4:
@@ -43,10 +43,10 @@ class AlphaChanelAddByMask:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "alpha_chanel_add_by_mask"
+    FUNCTION = "node"
     CATEGORY = "image/alpha"
 
-    def alpha_chanel_add_by_mask(self, images, mask, method):
+    def node(self, images, mask, method):
         img_height, img_width = images[0, :, :, 0].shape
         mask_height, mask_width = mask.shape
 
@@ -91,10 +91,10 @@ class AlphaChanelAsMask:
         }
 
     RETURN_TYPES = ("MASK",)
-    FUNCTION = "alpha_chanel_as_mask"
+    FUNCTION = "node"
     CATEGORY = "image/alpha"
 
-    def alpha_chanel_as_mask(self, images, method):
+    def node(self, images, method):
         if images[0, 0, 0].shape[0] != 4:
             raise ValueError("Alpha chanel not exist.")
 
@@ -119,10 +119,10 @@ class AlphaChanelRestore:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "alpha_chanel_restore"
+    FUNCTION = "node"
     CATEGORY = "image/alpha"
 
-    def alpha_chanel_restore(self, images):
+    def node(self, images):
         batch, height, width, channels = images.shape
 
         if channels != 4:
@@ -148,10 +148,10 @@ class AlphaChanelRemove:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "alpha_chanel_remove"
+    FUNCTION = "node"
     CATEGORY = "image/alpha"
 
-    def alpha_chanel_remove(self, images):
+    def node(self, images):
         return (images[:, :, :, 0:3],)
 
 

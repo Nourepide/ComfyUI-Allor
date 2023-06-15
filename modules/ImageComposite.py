@@ -42,10 +42,10 @@ class ImageCompositeAbsolute:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_composite_absolute"
+    FUNCTION = "node"
     CATEGORY = "image/composite"
 
-    def image_composite_absolute(
+    def node(
             self,
             images_a,
             images_b,
@@ -175,10 +175,10 @@ class ImageCompositeAbsoluteByContainer:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_composite_absolute_by_container"
+    FUNCTION = "node"
     CATEGORY = "image/composite"
 
-    def image_composite_absolute_by_container(
+    def node(
             self,
             container,
             images_a,
@@ -190,7 +190,7 @@ class ImageCompositeAbsoluteByContainer:
             background,
             method
     ):
-        return ImageCompositeAbsolute().image_composite_absolute(
+        return ImageCompositeAbsolute().node(
             images_a,
             images_b,
             images_a_x,
@@ -241,10 +241,10 @@ class ImageCompositeRelative:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_composite_relative"
+    FUNCTION = "node"
     CATEGORY = "image/composite"
 
-    def image_composite_relative(
+    def node(
             self,
             images_a,
             images_b,
@@ -283,7 +283,7 @@ class ImageCompositeRelative:
         else:
             raise ValueError()
 
-        return ImageCompositeAbsolute().image_composite_absolute(
+        return ImageCompositeAbsolute().node(
             images_a,
             images_b,
             offset_by_percent(container_width, img_a_width, images_a_x),
@@ -334,10 +334,10 @@ class ImageCompositeRelativeByContainer:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_composite_relative_by_container"
+    FUNCTION = "node"
     CATEGORY = "image/composite"
 
-    def image_composite_relative_by_container(
+    def node(
             self,
             container,
             images_a,
@@ -361,7 +361,7 @@ class ImageCompositeRelativeByContainer:
         if container_width < max(img_a_width, img_b_width) or container_height < max(img_a_height, img_b_height):
             raise ValueError("Container can't be smaller then max width or height of images.")
 
-        return ImageCompositeAbsolute().image_composite_absolute(
+        return ImageCompositeAbsolute().node(
             images_a,
             images_b,
             offset_by_percent(container_width, img_a_width, images_a_x),
