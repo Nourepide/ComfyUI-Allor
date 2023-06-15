@@ -45,10 +45,10 @@ class ImageContainer:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_container"
+    FUNCTION = "node"
     CATEGORY = "image/container"
 
-    def image_container(self, width, height, red, green, blue, alpha):
+    def node(self, width, height, red, green, blue, alpha):
         return (create_rgba_image(width, height, (red, green, blue, int(alpha * 255))).image_to_tensor().unsqueeze(0),)
 
 
@@ -94,10 +94,10 @@ class ImageContainerInheritanceAdd:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_container_inheritance_add"
+    FUNCTION = "node"
     CATEGORY = "image/container"
 
-    def image_container_inheritance_add(self, images, add_width, add_height, red, green, blue, alpha, method):
+    def node(self, images, add_width, add_height, red, green, blue, alpha, method):
         width, height = images[0, :, :, 0].shape
 
         width = width + add_width
@@ -157,17 +157,17 @@ class ImageContainerInheritanceScale:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_container_inheritance_scale"
+    FUNCTION = "node"
     CATEGORY = "image/container"
 
-    def image_container_inheritance_scale(self, images, scale_width, scale_height, red, green, blue, alpha, method):
+    def node(self, images, scale_width, scale_height, red, green, blue, alpha, method):
         height, width = images[0, :, :, 0].shape
 
         width = int((width * scale_width) - width)
         height = int((height * scale_height) - height)
 
         return ImageContainerInheritanceAdd() \
-            .image_container_inheritance_add(images, width, height, red, green, blue, alpha, method)
+            .node(images, width, height, red, green, blue, alpha, method)
 
 
 class ImageContainerInheritanceMax:
@@ -205,10 +205,10 @@ class ImageContainerInheritanceMax:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_container_inheritance_max"
+    FUNCTION = "node"
     CATEGORY = "image/container"
 
-    def image_container_inheritance_max(self, images_a, images_b, red, green, blue, alpha, method):
+    def node(self, images_a, images_b, red, green, blue, alpha, method):
         img_a_height, img_a_width = images_a[0, :, :, 0].shape
         img_b_height, img_b_width = images_b[0, :, :, 0].shape
 
@@ -266,10 +266,10 @@ class ImageContainerInheritanceSum:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_container_inheritance_sum"
+    FUNCTION = "node"
     CATEGORY = "image/container"
 
-    def image_container_inheritance_sum(self, images_a, images_b, red, green, blue, alpha, container_size_type, method):
+    def node(self, images_a, images_b, red, green, blue, alpha, container_size_type, method):
         img_a_height, img_a_width = images_a[0, :, :, 0].shape
         img_b_height, img_b_width = images_b[0, :, :, 0].shape
 

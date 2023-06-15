@@ -55,10 +55,10 @@ class ImageEffectsAdjustment:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_effects_adjustment"
+    FUNCTION = "node"
     CATEGORY = "image/effects"
 
-    def image_effects_adjustment(self, images, brightness, contrast, saturation, hue, gamma, sharpness, red, green, blue):
+    def node(self, images, brightness, contrast, saturation, hue, gamma, sharpness, red, green, blue):
         # noinspection PyUnboundLocalVariable
         def apply(img):
             rgba = False
@@ -106,10 +106,10 @@ class ImageEffectsGrayscale:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_effects_grayscale"
+    FUNCTION = "node"
     CATEGORY = "image/effects"
 
-    def image_effects_grayscale(self, images):
+    def node(self, images):
         def apply(image):
             tensor = image.clone().detach()
             grayscale_tensor = torch.mean(tensor, dim=2, keepdim=True)
@@ -134,10 +134,10 @@ class ImageEffectsNegative:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_effects_negative"
+    FUNCTION = "node"
     CATEGORY = "image/effects"
 
-    def image_effects_negative(self, images):
+    def node(self, images):
         tensor = images.clone().detach()
         tensor[:, :, :, 0:3] = 1.0 - tensor[:, :, :, 0:3]
 
@@ -157,10 +157,10 @@ class ImageEffectsSepia:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_effects_sepia"
+    FUNCTION = "node"
     CATEGORY = "image/effects"
 
-    def image_effects_sepia(self, images):
+    def node(self, images):
         tensor = images.clone().detach()
 
         sepia_mask = torch.tensor([[0.393, 0.349, 0.272],
@@ -211,10 +211,10 @@ class ImageEffectsLensChromaticAberration:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_effects_chromatic_aberration"
+    FUNCTION = "node"
     CATEGORY = "image/effects/lens"
 
-    def image_effects_chromatic_aberration(self, images, shift, method, shift_type, mixing_type, transpose, colors, lens_curvy):
+    def node(self, images, shift, method, shift_type, mixing_type, transpose, colors, lens_curvy):
         # noinspection PyUnboundLocalVariable
         def apply(image):
             img = image.clone().detach()
@@ -378,10 +378,10 @@ class ImageEffectsLensOpticAxis:
         }
 
     RETURN_TYPES = ("IMAGE", "MASK")
-    FUNCTION = "image_effects_optic_axis"
+    FUNCTION = "node"
     CATEGORY = "image/effects/lens"
 
-    def image_effects_optic_axis(self, images, lens_shape, lens_edge, lens_curvy, lens_zoom, lens_aperture, blur_intensity):
+    def node(self, images, lens_shape, lens_edge, lens_curvy, lens_zoom, lens_aperture, blur_intensity):
         blur_intensity -= 1
         lens_zoom += 1
 
@@ -466,10 +466,10 @@ class ImageEffectsLensVignette:
         }
 
     RETURN_TYPES = ("IMAGE", "MASK")
-    FUNCTION = "image_effects_vignette"
+    FUNCTION = "node"
     CATEGORY = "image/effects/lens"
 
-    def image_effects_vignette(self, images, lens_shape, lens_edge, lens_curvy, lens_zoom, brightness, saturation):
+    def node(self, images, lens_shape, lens_edge, lens_curvy, lens_zoom, brightness, saturation):
         tensor = images.clone().detach()
 
         lens_zoom += 1

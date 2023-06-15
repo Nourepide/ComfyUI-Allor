@@ -50,10 +50,10 @@ class ImageText:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_text"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
-    def image_text(self, text, font, size, red, green, blue, alpha, margin_x, margin_y):
+    def node(self, text, font, size, red, green, blue, alpha, margin_x, margin_y):
         font_path = folder_paths.get_full_path("fonts", font)
         font = ImageFont.truetype(font_path, size, encoding="unic")
 
@@ -133,10 +133,10 @@ class ImageTextOutlined:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_text"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
-    def image_text(
+    def node(
             self, text, font, size, red, green, blue, outline_size, outline_red, outline_green, outline_blue, alpha,
             margin_x, margin_y
     ):
@@ -210,10 +210,10 @@ class ImageTextMultiline:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_text"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
-    def image_text(self, text, font, align, size, red, green, blue, alpha, margin_x, margin_y):
+    def node(self, text, font, align, size, red, green, blue, alpha, margin_x, margin_y):
         font_path = folder_paths.get_full_path("fonts", font)
         font = ImageFont.truetype(font_path, size, encoding="unic")
 
@@ -294,10 +294,10 @@ class ImageTextMultilineOutlined:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_text"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
-    def image_text(
+    def node(
             self, text, font, align, size, red, green, blue, outline_size, outline_red, outline_green, outline_blue,
             alpha, margin_x, margin_y
     ):

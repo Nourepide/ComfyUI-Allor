@@ -24,10 +24,10 @@ class ImageFilterSmooth:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_smooth"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_smooth(self, images):
+    def node(self, images):
         return applyImageFilter(images, ImageFilter.SMOOTH)
 
 
@@ -44,10 +44,10 @@ class ImageFilterSmoothMore:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_smooth_more"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_smooth_more(self, images):
+    def node(self, images):
         return applyImageFilter(images, ImageFilter.SMOOTH_MORE)
 
 
@@ -72,10 +72,10 @@ class ImageFilterBlur:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_blur"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_blur(self, images, size_x, size_y):
+    def node(self, images, size_x, size_y):
         return (cv2_layer(images, lambda x: cv2.blur(x, (size_x, size_y))),)
 
 
@@ -100,10 +100,10 @@ class ImageFilterBoxBlur:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_box_blur"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_box_blur(self, images, size_x, size_y):
+    def node(self, images, size_x, size_y):
         return (cv2_layer(images, lambda x: cv2.boxFilter(x, -1, (size_x, size_y))),)
 
 
@@ -130,10 +130,10 @@ class ImageFilterGaussianBlur:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_gaussian_blur"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_gaussian_blur(self, images, size_x, size_y):
+    def node(self, images, size_x, size_y):
         size_x -= 1
         size_y -= 1
 
@@ -169,10 +169,10 @@ class ImageFilterGaussianBlurAdvanced:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_gaussian_blur"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_gaussian_blur(self, images, size_x, size_y, sigma_x, sigma_y):
+    def node(self, images, size_x, size_y, sigma_x, sigma_y):
         size_x -= 1
         size_y -= 1
 
@@ -202,10 +202,10 @@ class ImageFilterStackBlur:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_stack_blur"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_stack_blur(self, images, size_x, size_y):
+    def node(self, images, size_x, size_y):
         size_x -= 1
         size_y -= 1
 
@@ -230,10 +230,10 @@ class ImageFilterMedianBlur:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_median_blur"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_median_blur(self, images, size):
+    def node(self, images, size):
         size -= 1
 
         img = images.clone().detach()
@@ -270,10 +270,10 @@ class ImageFilterBilateralBlur:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_bilateral_blur"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_bilateral_blur(self, images, size, sigma_color, sigma_intensity):
+    def node(self, images, size, sigma_color, sigma_intensity):
         size -= 1
 
         return (cv2_layer(images, lambda x: cv2.bilateralFilter(x, size, 100 - sigma_color * 100, sigma_intensity * 100)),)
@@ -292,10 +292,10 @@ class ImageFilterContour:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_contour"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_contour(self, images):
+    def node(self, images):
         return applyImageFilter(images, ImageFilter.CONTOUR)
 
 
@@ -312,10 +312,10 @@ class ImageFilterDetail:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_detail"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_detail(self, images):
+    def node(self, images):
         return applyImageFilter(images, ImageFilter.DETAIL)
 
 
@@ -332,10 +332,10 @@ class ImageFilterEdgeEnhance:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_edge_enhance"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_edge_enhance(self, images):
+    def node(self, images):
         return applyImageFilter(images, ImageFilter.EDGE_ENHANCE)
 
 
@@ -352,10 +352,10 @@ class ImageFilterEdgeEnhanceMore:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_edge_enhance_more"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_edge_enhance_more(self, images):
+    def node(self, images):
         return applyImageFilter(images, ImageFilter.EDGE_ENHANCE_MORE)
 
 
@@ -372,10 +372,10 @@ class ImageFilterEmboss:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_emboss"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_emboss(self, images):
+    def node(self, images):
         return applyImageFilter(images, ImageFilter.EMBOSS)
 
 
@@ -392,10 +392,10 @@ class ImageFilterFindEdges:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_find_edges"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_find_edges(self, images):
+    def node(self, images):
         return applyImageFilter(images, ImageFilter.FIND_EDGES)
 
 
@@ -412,10 +412,10 @@ class ImageFilterSharpen:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_sharpen"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_sharpen(self, images):
+    def node(self, images):
         return applyImageFilter(images, ImageFilter.SHARPEN)
 
 
@@ -441,10 +441,10 @@ class ImageFilterRank:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_rank"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_rank(self, images, size, rank):
+    def node(self, images, size, rank):
         return applyImageFilter(images, ImageFilter.RankFilter(int(size) + 1, rank))
 
 
@@ -466,10 +466,10 @@ class ImageFilterMin:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_min"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_min(self, images, size):
+    def node(self, images, size):
         return applyImageFilter(images, ImageFilter.MinFilter(int(size) + 1))
 
 
@@ -491,10 +491,10 @@ class ImageFilterMax:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_max"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_max(self, images, size):
+    def node(self, images, size):
         return applyImageFilter(images, ImageFilter.MaxFilter(int(size) + 1))
 
 
@@ -516,10 +516,10 @@ class ImageFilterMode:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_filter_mode"
+    FUNCTION = "node"
     CATEGORY = "image/filter"
 
-    def image_filter_mode(self, images, size):
+    def node(self, images, size):
         return applyImageFilter(images, ImageFilter.ModeFilter(int(size) + 1))
 
 

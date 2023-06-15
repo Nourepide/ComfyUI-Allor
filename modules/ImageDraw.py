@@ -87,11 +87,11 @@ class ImageDrawArc:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_arc"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences
-    def image_draw_arc(self, width, height, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
+    def node(self, width, height, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
         canvas = Image.new("RGBA", (width * SSAA, height * SSAA), (0, 0, 0, 0))
 
         draw = ImageDraw.Draw(canvas)
@@ -183,12 +183,12 @@ class ImageDrawArcByContainer:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_arc_by_container"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming
-    def image_draw_arc_by_container(self, container, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
-        return ImageDrawArc().image_draw_arc(
+    def node(self, container, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
+        return ImageDrawArc().node(
             container[0, :, :, 0].shape[1],
             container[0, :, :, 0].shape[0],
             size,
@@ -291,11 +291,11 @@ class ImageDrawChord:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_chord"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences
-    def image_draw_chord(self, width, height, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
+    def node(self, width, height, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
         canvas = Image.new("RGBA", (width * SSAA, height * SSAA), (0, 0, 0, 0))
 
         draw = ImageDraw.Draw(canvas)
@@ -387,12 +387,12 @@ class ImageDrawChordByContainer:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_chord_by_container"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming
-    def image_draw_chord_by_container(self, container, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
-        return ImageDrawChord().image_draw_chord(
+    def node(self, container, size, start_x, start_y, end_x, end_y, start, end, red, green, blue, alpha, SSAA, method):
+        return ImageDrawChord().node(
             container[0, :, :, 0].shape[1],
             container[0, :, :, 0].shape[0],
             size,
@@ -504,11 +504,11 @@ class ImageDrawEllipse:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_ellipse"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences
-    def image_draw_ellipse(
+    def node(
             self,
             width,
             height,
@@ -630,11 +630,11 @@ class ImageDrawEllipseByContainer:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_ellipse_by_container"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming
-    def image_draw_ellipse_by_container(
+    def node(
             self,
             container,
             start_x,
@@ -653,7 +653,7 @@ class ImageDrawEllipseByContainer:
             SSAA,
             method
     ):
-        return ImageDrawEllipse().image_draw_ellipse(
+        return ImageDrawEllipse().node(
             container[0, :, :, 0].shape[1],
             container[0, :, :, 0].shape[0],
             start_x,
@@ -748,11 +748,11 @@ class ImageDrawLine:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_line"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences
-    def image_draw_line(self, width, height, size, start_x, start_y, end_x, end_y, red, green, blue, alpha, SSAA, method):
+    def node(self, width, height, size, start_x, start_y, end_x, end_y, red, green, blue, alpha, SSAA, method):
         canvas = Image.new("RGBA", (width * SSAA, height * SSAA), (0, 0, 0, 0))
 
         draw = ImageDraw.Draw(canvas)
@@ -834,12 +834,12 @@ class ImageDrawLineByContainer:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_line_by_container"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming
-    def image_draw_line_by_container(self, container, size, start_x, start_y, end_x, end_y, red, green, blue, alpha, SSAA, method):
-        return ImageDrawLine().image_draw_line(
+    def node(self, container, size, start_x, start_y, end_x, end_y, red, green, blue, alpha, SSAA, method):
+        return ImageDrawLine().node(
             container[0, :, :, 0].shape[1],
             container[0, :, :, 0].shape[0],
             size,
@@ -959,11 +959,11 @@ class ImageDrawPieslice:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_pieslice"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences
-    def image_draw_pieslice(
+    def node(
             self,
             width,
             height,
@@ -1098,11 +1098,11 @@ class ImageDrawPiesliceByContainer:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_pieslice_by_container"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming
-    def image_draw_pieslice_by_container(
+    def node(
             self,
             container,
             start_x,
@@ -1123,7 +1123,7 @@ class ImageDrawPiesliceByContainer:
             SSAA,
             method
     ):
-        return ImageDrawPieslice().image_draw_pieslice(
+        return ImageDrawPieslice().node(
             container[0, :, :, 0].shape[1],
             container[0, :, :, 0].shape[0],
             start_x,
@@ -1239,11 +1239,11 @@ class ImageDrawRectangle:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_rectangle"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences
-    def image_draw_rectangle(
+    def node(
             self,
             width,
             height,
@@ -1365,11 +1365,11 @@ class ImageDrawRectangleByContainer:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_rectangle_by_container"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming
-    def image_draw_rectangle_by_container(
+    def node(
             self,
             container,
             start_x,
@@ -1388,7 +1388,7 @@ class ImageDrawRectangleByContainer:
             SSAA,
             method
     ):
-        return ImageDrawRectangle().image_draw_rectangle(
+        return ImageDrawRectangle().node(
             container[0, :, :, 0].shape[1],
             container[0, :, :, 0].shape[0],
             start_x,
@@ -1511,11 +1511,11 @@ class ImageDrawRectangleRounded:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_rounded"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences, PyArgumentList
-    def image_draw_rounded(
+    def node(
             self,
             width,
             height,
@@ -1658,11 +1658,11 @@ class ImageDrawRectangleRoundedByContainer:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_rounded_by_container"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences, PyArgumentList
-    def image_draw_rounded_by_container(
+    def node(
             self,
             container,
             start_x,
@@ -1790,11 +1790,11 @@ class ImageDrawPolygon:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_draw_polygon"
+    FUNCTION = "node"
     CATEGORY = "image/draw"
 
     # noinspection PyPep8Naming, PyUnresolvedReferences
-    def image_draw_polygon(
+    def node(
             self,
             size,
             sides,

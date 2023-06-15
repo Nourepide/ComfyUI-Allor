@@ -11,10 +11,10 @@ class ClipClamp:
         }
 
     RETURN_TYPES = ("CLIP",)
-    FUNCTION = "clip_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def clip_clamp(self, clip):
+    def node(self, clip):
         return (clip,)
 
 
@@ -31,10 +31,10 @@ class ClipVisionClamp:
         }
 
     RETURN_TYPES = ("CLIP_VISION",)
-    FUNCTION = "clip_vision_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def clip_vision_clamp(self, clip_vision):
+    def node(self, clip_vision):
         return (clip_vision,)
 
 
@@ -51,10 +51,10 @@ class ClipVisionOutputClamp:
         }
 
     RETURN_TYPES = ("CLIP_VISION_OUTPUT",)
-    FUNCTION = "clip_vision_output_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def clip_vision_output_clamp(self, clip_vision_output):
+    def node(self, clip_vision_output):
         return (clip_vision_output,)
 
 
@@ -71,10 +71,10 @@ class ConditioningClamp:
         }
 
     RETURN_TYPES = ("CONDITIONING",)
-    FUNCTION = "conditioning_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def conditioning_clamp(self, conditioning):
+    def node(self, conditioning):
         return (conditioning,)
 
 
@@ -91,10 +91,10 @@ class ControlNetClamp:
         }
 
     RETURN_TYPES = ("CONTROL_NET",)
-    FUNCTION = "control_net_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def control_net_clamp(self, control_net_clamp):
+    def node(self, control_net_clamp):
         return (control_net_clamp,)
 
 
@@ -111,10 +111,10 @@ class GligenClamp:
         }
 
     RETURN_TYPES = ("GLIGEN",)
-    FUNCTION = "gligen_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def gligen_clamp(self, gligen):
+    def node(self, gligen):
         return (gligen,)
 
 
@@ -131,10 +131,10 @@ class ImageClamp:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def image_clamp(self, image):
+    def node(self, image):
         return (image,)
 
 
@@ -151,10 +151,10 @@ class LatentClamp:
         }
 
     RETURN_TYPES = ("LATENT",)
-    FUNCTION = "latent_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def latent_clamp(self, latent):
+    def node(self, latent):
         return (latent,)
 
 
@@ -171,10 +171,10 @@ class MaskClamp:
         }
 
     RETURN_TYPES = ("MASK",)
-    FUNCTION = "mask_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def mask_clamp(self, mask):
+    def node(self, mask):
         return (mask,)
 
 
@@ -191,10 +191,10 @@ class ModelClamp:
         }
 
     RETURN_TYPES = ("MODEL",)
-    FUNCTION = "model_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def model_clamp(self, model):
+    def node(self, model):
         return (model,)
 
 
@@ -211,10 +211,10 @@ class StyleModelClamp:
         }
 
     RETURN_TYPES = ("STYLE_MODEL",)
-    FUNCTION = "style_mode_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def style_mode_clamp(self, style_model):
+    def node(self, style_model):
         return (style_model,)
 
 
@@ -231,10 +231,10 @@ class UpscaleModelClamp:
         }
 
     RETURN_TYPES = ("UPSCALE_MODEL",)
-    FUNCTION = "upscale_mode_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def upscale_mode_clamp(self, upscale_model):
+    def node(self, upscale_model):
         return (upscale_model,)
 
 
@@ -251,10 +251,10 @@ class VaeClamp:
         }
 
     RETURN_TYPES = ("VAE",)
-    FUNCTION = "vae_clamp"
+    FUNCTION = "node"
     CATEGORY = "clamp"
 
-    def vae_clamp(self, vae):
+    def node(self, vae):
         return (vae,)
 
 

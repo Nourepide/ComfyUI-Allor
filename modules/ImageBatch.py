@@ -19,10 +19,10 @@ class ImageBatchGet:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_batch_get"
+    FUNCTION = "node"
     CATEGORY = "image/batch"
 
-    def image_batch_get(self, images, index):
+    def node(self, images, index):
         batch = images.shape[0]
         index = min(batch, index - 1)
 
@@ -47,10 +47,10 @@ class ImageBatchRemove:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_batch_remove"
+    FUNCTION = "node"
     CATEGORY = "image/batch"
 
-    def image_batch_remove(self, images, index):
+    def node(self, images, index):
         batch = images.shape[0]
         index = min(batch, index - 1)
 
@@ -71,10 +71,10 @@ class ImageBatchFork:
         }
 
     RETURN_TYPES = ("IMAGE", "IMAGE")
-    FUNCTION = "image_batch_fork"
+    FUNCTION = "node"
     CATEGORY = "image/batch"
 
-    def image_batch_fork(self, images, priority):
+    def node(self, images, priority):
         batch = images.shape[0]
 
         if batch == 1:
@@ -109,10 +109,10 @@ class ImageBatchJoin:
         }
 
     RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "image_batch_join"
+    FUNCTION = "node"
     CATEGORY = "image/batch"
 
-    def image_batch_join(self, images_a, images_b):
+    def node(self, images_a, images_b):
         height_a, width_a, channels_a = images_a[0].shape
         height_b, width_b, channels_b = images_b[0].shape
 
