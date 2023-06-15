@@ -69,12 +69,25 @@ class ImageEffectsAdjustment:
                 rgba = True
 
             img = img.permute(2, 0, 1)
-            img = F.adjust_brightness(img, brightness)
-            img = F.adjust_contrast(img, contrast)
-            img = F.adjust_saturation(img, saturation)
-            img = F.adjust_hue(img, hue - 0.5)
-            img = F.adjust_gamma(img, gamma)
-            img = F.adjust_sharpness(img, sharpness)
+
+            if brightness != 1.0:
+                img = F.adjust_brightness(img, brightness)
+
+            if contrast != 1.0:
+                img = F.adjust_contrast(img, contrast)
+
+            if saturation != 1.0:
+                img = F.adjust_saturation(img, saturation)
+
+            if hue != 0.5:
+                img = F.adjust_hue(img, hue - 0.5)
+
+            if gamma != 1.0:
+                img = F.adjust_gamma(img, gamma)
+
+            if sharpness != 1.0:
+                img = F.adjust_sharpness(img, sharpness)
+
             img = img.permute(1, 2, 0)
 
             r, g, b = torch.chunk(img, 3, dim=2)
