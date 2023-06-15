@@ -21,21 +21,6 @@
 * Allor aims to provide a level of control over image modification that is close to professional tools.
 * It's easy to install and configure.
 
-## Installation:
-To install Allor, you need to have ComfyUI installed on your system. If you don't have it yet, you can download it from [here](https://github.com/comfyanonymous/ComfyUI). Then, follow these steps:
-
-1. Open a terminal (Unix) or command prompt (Windows) and navigate to the `custom_nodes` folder inside the ComfyUI folder. For example, if you installed ComfyUI in `C:\ComfyUI` (Windows) or `/home/user/ComfyUI` (Unix), you can type `cd C:\ComfyUI\custom_nodes` (Windows) or `cd /home/user/ComfyUI/custom_nodes` (Unix).
-2. Clone the Allor repository from GitHub by typing `git clone https://github.com/Nourepide/ComfyUI-Allor.git comfyui_allor`. This will create a new folder called `comfyui_allor` inside the `custom_nodes` folder.
-3. Enter the `comfyui_allor` folder by typing `cd comfyui_allor`.
-4. Install the required dependencies by typing `pip install -r requirements.txt`. This may take some time depending on your internet speed and system configuration.
-5. Optionally, you can create a `fonts` folder inside the `comfy_extras` folder to store your custom fonts. If you don't do this, ComfyUI will create it automatically when you run it.
-
-## Updating:
-To update Allor, you need to make sure that you have saved your work and closed ComfyUI. Then, follow these steps:
-
-1. Open a terminal (Linux) or command prompt (Windows) and navigate to the `comfyui_allor` folder inside the `custom_nodes` folder. For example, if you installed ComfyUI in `C:\ComfyUI` (Windows) or `/home/user/ComfyUI` (Linux), you can type `cd C:\ComfyUI\custom_nodes\comfyui_allor` (Windows) or `cd /home/user/ComfyUI/custom_nodes/comfyui_allor` (Linux). If you renamed the `comfyui_allor` folder, use the new name instead.
-2. Type `git checkout main && git pull` to fetch the latest version of Allor from GitHub. This may take some time depending on your internet speed and system configuration.
-
 ## Modules:
 > Click on `Details` to open/close the drop-down menu with all modules.
 
@@ -988,15 +973,31 @@ You also can change the fonts folder in config.
 
 </details>
 
+## Installation:
+To install Allor, you need to have ComfyUI installed on your system. If you don't have it yet, you can download it from [here](https://github.com/comfyanonymous/ComfyUI). Then, follow these steps:
+
+1. `cd C:\ComfyUI\custom_nodes` (Windows) or `cd /home/user/ComfyUI/custom_nodes` (Unix): Navigate to the `custom_nodes` folder inside the ComfyUI folder.
+2. `git clone https://github.com/Nourepide/ComfyUI-Allor.git comfyui_allor`: Clone the Allor repository from GitHub. This will create a new folder called `comfyui_allor` inside the `custom_nodes` folder.
+3. `cd comfyui_allor`: Enter the `comfyui_allor` folder.
+4. `pip install -r requirements.txt`: Install the required dependencies. This may take some time depending on your internet speed and system configuration.
+5. Optionally, you can create a `fonts` folder inside the `comfy_extras` folder to store your custom fonts. If you don't do this, ComfyUI will create it automatically when you run it.
+
+## Updating:
+To update Allor, you need to make sure that you have saved your work and closed ComfyUI. Then, follow these steps:
+
+1. Open a terminal (Linux) or command prompt (Windows)
+2. `cd C:\ComfyUI\custom_nodes\comfyui_allor` (Windows) or `cd /home/user/ComfyUI/custom_nodes/comfyui_allor` (Linux): Navigate to the `comfyui_allor` folder inside the `custom_nodes` folder. If you renamed the `comfyui_allor` folder, use the new name instead.
+3. `git checkout main && git pull`: Fetch the latest version of Allor from GitHub. This may take some time depending on your internet speed and system configuration.
+
 ## Configuration:
 You can customize Allor with the `config.json` file.
 
-* **fonts_folder_path** - This is an array that specifies the relative path to the folder with fonts. The default value is `["comfy_extras", "fonts"]`. For Unix systems, it is converted to `ComfyUI/comfy_extras/fonts`, and for Windows systems, it is converted to `ComfyUI\comfy_extras\fonts`.
-* **modules** - This is an object that allows you to enable or disable different modules of Allor. If you disable a module, its nodes will not be loaded when you start ComfyUI.
-* **override** - This is an object that lets you override some of the original nodes with similar functionality from Allor. If you set the value of a nested property to `true`, the corresponding original node will be disabled. The properties are:
-  * **postprocessing** - This disables the `image/postprocessing` nodes. (See the `ImageFilter` module for more details)
-  * **transform** - This disables the `ImageScale` and `ImageInvert` nodes. (See the `ImageTransform` module for more details)
-  * **debug** - This disables the `__for__testing` nodes.
+* **fonts_folder_path**: This is an array that specifies the relative path to the folder with fonts. The default value is `["comfy_extras", "fonts"]`. For Unix systems, it is converted to `ComfyUI/comfy_extras/fonts`, and for Windows systems, it is converted to `ComfyUI\comfy_extras\fonts`.
+* **modules**: This is an object that allows you to enable or disable different modules of Allor. If you disable a module, its nodes will not be loaded when you start ComfyUI.
+* **override**: This is an object that lets you override some of the original nodes with similar functionality from Allor. If you set the value of a nested property to `true`, the corresponding original node will be disabled. The properties are:
+  * **postprocessing**: This disables the `image/postprocessing` nodes. (See the `ImageFilter` module for more details)
+  * **transform**: This disables the `ImageScale` and `ImageInvert` nodes. (See the `ImageTransform` module for more details)
+  * **debug**: This disables the `__for__testing` nodes.
 
 ## Contributing:
 ComfyUI Allor is an open source project and I welcome any contributions from the community. If you want to help me improve this plugin, here are some ways you can do it:
