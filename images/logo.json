@@ -1,6 +1,6 @@
 {
-  "last_node_id": 512,
-  "last_link_id": 802,
+  "last_node_id": 514,
+  "last_link_id": 804,
   "nodes": [
     {
       "id": 227,
@@ -490,7 +490,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "(worst quality, low quality:1.4), (painting style:1.0), (dusty sunbeams:1.0), (abs, muscular, rib:1.0), (depth of field, bokeh, blurry:1.4), (greyscale, monochrome, zombie:1.0), (text, title, logo, signature, watermark:1.0), (intricate details:1.0), (head out of frame:1.0)"
+        "(worst quality, low quality:1.4), (painting style:1.0), (dusty sunbeams:1.0), (abs, muscular, rib:1.0), (depth of field, bokeh, blurry:1.4), (greyscale, monochrome, zombie:1.0), (text, title, logo, signature, watermark:1.0), (intricate details:1.0), (head out of frame:1.0), (lamps:1.0)"
       ]
     },
     {
@@ -623,7 +623,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "(empty background, simple background, plain background:1.2), (masterpiece, best quality, ultra-detailed, photorealistic, hyperrealistic, realistic, realizm, beautiful light, sidelight, best illumination, best shadows:1.0), (1girl, solo, outdoors, standing, looking at viewer, from below, hands clenched into fists:1.0)"
+        "(empty background, simple background, plain background:1.2), (masterpiece, best quality, ultra-detailed, photorealistic, hyperrealistic, realistic, realizm, beautiful light, sidelight, best illumination, best shadows:1.0), (1girl, solo, outdoors, standing, looking at viewer, from below, hands clenched into fists:1.0), (smiling:0.8)"
       ]
     },
     {
@@ -674,10 +674,10 @@
         2750,
         -400
       ],
-      "size": [
-        310,
-        260
-      ],
+      "size": {
+        "0": 310,
+        "1": 262
+      },
       "flags": {},
       "order": 31,
       "mode": 0,
@@ -734,10 +734,10 @@
         2750,
         -100
       ],
-      "size": [
-        310,
-        110
-      ],
+      "size": {
+        "0": 310,
+        "1": 110
+      },
       "flags": {},
       "order": 2,
       "mode": 0,
@@ -852,48 +852,6 @@
       ],
       "properties": {
         "Node name for S&R": "PreviewImage"
-      }
-    },
-    {
-      "id": 161,
-      "type": "ImageUpscaleWithModel",
-      "pos": [
-        3320,
-        330
-      ],
-      "size": {
-        "0": 241.79998779296875,
-        "1": 46
-      },
-      "flags": {},
-      "order": 41,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "upscale_model",
-          "type": "UPSCALE_MODEL",
-          "link": 266
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 271,
-          "slot_index": 1
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            267,
-            741
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ImageUpscaleWithModel"
       }
     },
     {
@@ -1767,10 +1725,10 @@
         4480,
         430
       ],
-      "size": [
-        210,
-        246
-      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
       "flags": {},
       "order": 54,
       "mode": 0,
@@ -2071,61 +2029,16 @@
       ]
     },
     {
-      "id": 141,
-      "type": "ImageSegmentation",
-      "pos": [
-        5290,
-        330
-      ],
-      "size": {
-        "0": 315,
-        "1": 178
-      },
-      "flags": {},
-      "order": 59,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 772,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            721,
-            786
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ImageSegmentation"
-      },
-      "widgets_values": [
-        "isnet-general-use",
-        "true",
-        250,
-        5,
-        10,
-        "false"
-      ]
-    },
-    {
       "id": 456,
       "type": "PreviewImage",
       "pos": [
         5630,
         330
       ],
-      "size": [
-        210,
-        246
-      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
       "flags": {},
       "order": 62,
       "mode": 0,
@@ -2166,97 +2079,6 @@
       "properties": {
         "Node name for S&R": "PreviewImage"
       }
-    },
-    {
-      "id": 498,
-      "type": "ImageEffectsAdjustment",
-      "pos": [
-        5860,
-        330
-      ],
-      "size": {
-        "0": 315,
-        "1": 250
-      },
-      "flags": {},
-      "order": 63,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 786,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            787,
-            788
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ImageEffectsAdjustment"
-      },
-      "widgets_values": [
-        1.4000000000000004,
-        1,
-        1,
-        0.5,
-        1,
-        1,
-        1,
-        1,
-        1
-      ]
-    },
-    {
-      "id": 487,
-      "type": "ImageTransformResizeAbsolute",
-      "pos": [
-        6200,
-        180
-      ],
-      "size": {
-        "0": 315,
-        "1": 106
-      },
-      "flags": {},
-      "order": 66,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 788,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            769
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ImageTransformResizeAbsolute"
-      },
-      "widgets_values": [
-        960,
-        1280,
-        "lanczos"
-      ]
     },
     {
       "id": 485,
@@ -2759,7 +2581,8 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            802
+            802,
+            803
           ]
         }
       ],
@@ -2801,6 +2624,252 @@
       "properties": {},
       "widgets_values": [
         "ComfyUI Allor"
+      ]
+    },
+    {
+      "id": 513,
+      "type": "ImageTransformResizeRelative",
+      "pos": [
+        9550,
+        -400
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 72,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 803,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            804
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageTransformResizeRelative"
+      },
+      "widgets_values": [
+        0.75,
+        0.75,
+        "lanczos"
+      ]
+    },
+    {
+      "id": 514,
+      "type": "SaveImage",
+      "pos": [
+        9880,
+        -400
+      ],
+      "size": {
+        "0": 315,
+        "1": 270
+      },
+      "flags": {},
+      "order": 73,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 804,
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI Allor - GitHub"
+      ]
+    },
+    {
+      "id": 487,
+      "type": "ImageTransformResizeAbsolute",
+      "pos": [
+        6200,
+        180
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 66,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 788,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            769
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageTransformResizeAbsolute"
+      },
+      "widgets_values": [
+        960,
+        1280,
+        "lanczos"
+      ]
+    },
+    {
+      "id": 161,
+      "type": "ImageUpscaleWithModel",
+      "pos": [
+        3320,
+        330
+      ],
+      "size": {
+        "0": 241.79998779296875,
+        "1": 46
+      },
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 266
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 271,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            267,
+            741
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageUpscaleWithModel"
+      }
+    },
+    {
+      "id": 498,
+      "type": "ImageEffectsAdjustment",
+      "pos": [
+        5860,
+        330
+      ],
+      "size": {
+        "0": 315,
+        "1": 250
+      },
+      "flags": {},
+      "order": 63,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 786,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            787,
+            788
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageEffectsAdjustment"
+      },
+      "widgets_values": [
+        1.4000000000000004,
+        1,
+        1.1,
+        0.5,
+        0.8999999999999999,
+        0.9999999999999998,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 141,
+      "type": "ImageSegmentation",
+      "pos": [
+        5290,
+        330
+      ],
+      "size": {
+        "0": 315,
+        "1": 178
+      },
+      "flags": {},
+      "order": 59,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 772,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            721,
+            786
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageSegmentation"
+      },
+      "widgets_values": [
+        "isnet-general-use",
+        "true",
+        250,
+        50,
+        10,
+        "false"
       ]
     }
   ],
@@ -3506,6 +3575,22 @@
       509,
       0,
       512,
+      0,
+      "IMAGE"
+    ],
+    [
+      803,
+      509,
+      0,
+      513,
+      0,
+      "IMAGE"
+    ],
+    [
+      804,
+      513,
+      0,
+      514,
       0,
       "IMAGE"
     ]
