@@ -345,6 +345,35 @@ You also can change the fonts folder in config.
 
 </details>
 
+### Multiline
+![image_text_multiline](images/image_text_multiline.png)
+> Create an image with text.
+
+<details>
+  <summary>Params:</summary>
+
+* text - Your input. Shouldn't be empty.
+* font `[*.otf, *.ttf]` - Font from `ComfyUI/comfy_extras/fonts` folder.
+* size `[1 - *]` - Font size in `SP`. `Warning!`: It's not `PX` size of the container. The size of the container is calculated using a variety of parameters. Example: `o` and `j` will have different height and exactly different size compared to `树`.   
+* [red, green, blue] `[0 - 255]` - Color of the text in `RGB`. 
+* alpha `[0.0 - 1.0]` - Transparency of the text. 
+* margin_x `[0 - *]` - Horizontal offset. 
+* margin_y `[0 - *]` - Vertical offset.
+
+</details>
+
+### Multiline Outlined
+![image_text_multiline_outlined](images/image_text_multiline_outlined.png)
+> Create an image with outlined text.
+
+<details>
+  <summary>Params:</summary>
+
+* outline_size `[0 - *]` - Outline size in `PX`. 
+* outline_[red, green, blue] `[0 - 255]` - Color of the outline in `RGB`. 
+
+</details>
+
 </details>
 
 ---
