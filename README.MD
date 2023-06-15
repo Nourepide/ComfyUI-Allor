@@ -985,11 +985,23 @@ You also can change the fonts folder in config.
 
 ## Configuration:
 You can configurate Allor with `config.json`.
-* fonts_folder_path - Array with a relative path to fonts folder, by default is `["comfy_extras", "fonts"]`. (Converted to `ComfyUI/comfy_extras/fonts` for Unix and `ComfyUI\comfy_extras\fonts` for Windows).
-* modules - You can disable (or enable) modules at will. Nodes from disabled modules will not be loaded during the start of ComfyUI.
-* override - If the nested value is set to `true`, similar functionality from the original nodes is disabled.
-* * postprocessing - Disable `image/postprocessing` nodes. (See `ImageFilter` module)
-* * transform - Disable `ImageScale` and `ImageInvert` nodes. (See `ImageTransform` module)
+* **fonts_folder_path** - Array with a relative path to fonts folder, by default is `["comfy_extras", "fonts"]`. (Converted to `ComfyUI/comfy_extras/fonts` for Unix and `ComfyUI\comfy_extras\fonts` for Windows).
+* **modules** - You can disable (or enable) modules at will. Nodes from disabled modules will not be loaded during the start of ComfyUI.
+* **override** - If the nested value is set to `true`, similar functionality from the original nodes is disabled.
+* - **postprocessing** - Disable `image/postprocessing` nodes. (See `ImageFilter` module)
+* - **transform** - Disable `ImageScale` and `ImageInvert` nodes. (See `ImageTransform` module)
+* - **debug** - Disable `__for__testing` nodes.
+
+## Contributing:
+ComfyUI Allor is an open source project and I welcome any contributions from the community. If you want to help me improve this plugin, here are some ways you can do it:
+
+* **Suggest ideas**: If you have any ideas or suggestions on how to make this plugin better or more useful, please feel free to open an issue on GitHub. I appreciate any feedback and input.
+
+* **Report bugs**: If you encounter any bugs or errors while using this plugin, please report them on GitHub. Please provide as much information as possible, such as the steps to reproduce the bug, the expected and actual results, the error messages and screenshots if possible. I will try to fix them as soon as possible.
+
+* **Make pull requests**: If you want to contribute to the code of this plugin, you can fork this repository and make your changes. Then you can submit a pull request with your modifications and explain what you did and why. I will review your code and merge it if it is suitable and compatible with the plugin.
+
+* **Share your results**: If you use this plugin to create amazing images, please share them with me and the community. You can post them on any other platform you like. You can also tag me (@Nourepide) on Reddit or use the hashtag #ComfyUIAllor. I would love to see what you create with this plugin and showcase some of your works on the README.MD file.
 
 ## Examples:
 ![example](images/example.png)
