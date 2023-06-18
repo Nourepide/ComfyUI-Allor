@@ -244,7 +244,11 @@ class ImageEffectsLensChromaticAberration:
 
             def get_space(size, min_val, max_val):
                 size += shift * 2
-                return radialspace_1D(size, lens_curvy, 1.0, min_val, max_val)
+
+                if min_val == max_val:
+                    return torch.linspace(min_val, max_val, size)
+                else:
+                    return radialspace_1D(size, lens_curvy, 1.0, min_val, max_val)
 
             if shift_type == 1:
                 f_shifts = get_space(height, -shift, shift)
