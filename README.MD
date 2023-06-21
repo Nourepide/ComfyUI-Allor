@@ -595,6 +595,27 @@ You also can change the fonts folder in config.
 
 </details>
 
+### Lens Bokeh
+![image_effects_lens_bokeh](images/image_effects_lens_bokeh.png)
+> Emulate a [bokeh](https://en.wikipedia.org/wiki/Bokeh) effect to images.
+
+<details>
+  <summary>Params:</summary>
+
+* blades_shape `[3 - *]` - The number of blades at the lens.
+* blades_radius `[1 - *]` - Size of blades.
+* blades_rotation `[0.0 - 360.0]` - Blades rotation.
+* blur_size `[2 - *]` - Blur strength.
+* blur_type `[bilateral, stack, none]`
+  * **bilateral** - Blur is set up to preserve sharp and bright edges.
+  * **stack** - Blur with color correction.
+  * **none** - Without blur.
+* method `[dilate, filter]`
+  * **dilate** - A good choice for initially bright images. Creates a strong bokeh effect, but spoils the details of the image. I can recommend it only for the background.
+  * **filter** - Very fast. A weak bokeh effect, I recommend it for dark images with bright rare details such as lamp lights or car headlights. Originally created under the impression of LensBlur in Adobe Photoshop and achieved about 80%~ compliance. I recommend setting `blur_type` as `none` since it blurs the image by itself.
+
+</details>
+
 ### Lens Optic Axis
 ![image_effects_lens_optic_axis](images/image_effects_lens_optic_axis.png)
 > Apply a camera lens distort to the images.
