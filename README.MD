@@ -15,11 +15,12 @@
 </details>
 
 ## About Allor:
-* Allor is a plugin for ComfyUI with an emphasis on transparency and performance.
+* Allor is a powerful ComfyUI plugin for image processing with an emphasis on transparency and performance.
 * All modules and nodes support transparency and multi-image (batch) processing.
 * Almost all functionality is implemented in tensor space, avoiding unnecessary image transformations where possible.
 * Allor aims to provide a level of control over image modification that is close to professional tools.
-* It's easy to install and configure.
+* Allor contains more than **90** nodes with many parameters.
+* Can be configured and allows you to disable unnecessary for you functionality.
 
 ## Modules:
 > Click on `Details` to open/close the drop-down menu with all modules.
