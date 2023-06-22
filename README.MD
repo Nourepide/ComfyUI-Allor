@@ -570,6 +570,24 @@ You also can change the fonts folder in config.
 ![image_effects_negative](images/image_effects_negative.png)
 > Add negative effect.
 
+### Lens Zoom Burst
+![image_effects_lens_zoom_burst](images/image_effects_lens_zoom_burst.png)
+> Emulate a [Zoom Burst](https://en.wikipedia.org/wiki/Zoom_burst) effect to images.
+
+<details>
+  <summary>Params:</summary>
+
+* scale `[1.0 - *]` - How far the zoom will aim. Where `2.0` is x2 from image size.
+* samples `[1 - *]` - How many intermediate frames will be created.
+* position_[x, y] `[0.0 - 1.0]` - Relative image position
+* rotation `[0.0 - *]` - Rotation in angle.
+* method `[circle, point]`
+  * **circle** - Zoom will spread out in the form of a circle, and do not take into account the boundaries of the images.
+  * **point** - Zoom will spread out from point to boundaries of the images.
+* stabilization `[boolean]`- If set to `true`, the images will retain their size.
+
+</details>
+
 ### Lens Chromatic Aberration
 ![image_effects_lens_chromatic_aberration](images/image_effects_lens_chromatic_aberration.png)
 > Apply a camera lens color shift to the images.
