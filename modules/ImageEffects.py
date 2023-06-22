@@ -1,7 +1,7 @@
 import cv2
+import numpy as np
 import torch
 import torchvision.transforms.functional as F
-import numpy as np
 
 from .Utils import radialspace_1D, radialspace_2D, cv2_layer
 
@@ -202,7 +202,6 @@ class ImageEffectsLensZoomBurst:
                     "min": 1.0,
                     "step": 0.01
                 }),
-
                 "samples": ("INT", {
                     "default": 100,
                     "min": 1,
@@ -224,7 +223,6 @@ class ImageEffectsLensZoomBurst:
                 }),
                 "method": (["circle", "point"],),
                 "stabilization": (["true", "false"],),
-
             },
         }
 
