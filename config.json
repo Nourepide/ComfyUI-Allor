@@ -9,6 +9,7 @@
     "ImageDraw": true,
     "ImageEffects": true,
     "ImageFilter": true,
+    "ImageNoise": true,
     "ImageSegmentation": true,
     "ImageText": true,
     "ImageTransform": true
