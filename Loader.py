@@ -96,6 +96,10 @@ class Loader:
             from .modules import ImageFilter
             modules.update(ImageFilter.NODE_CLASS_MAPPINGS)
 
+        if self.config()["modules"]["ImageNoise"]:
+            from .modules import ImageNoise
+            modules.update(ImageNoise.NODE_CLASS_MAPPINGS)
+
         if self.config()["modules"]["ImageSegmentation"]:
             from .modules import ImageSegmentation
             modules.update(ImageSegmentation.NODE_CLASS_MAPPINGS)
