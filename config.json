@@ -15,8 +15,8 @@
     "ImageTransform": true
   },
   "override" : {
-    "postprocessing": true,
-    "transform": true,
-    "debug": true
+    "postprocessing": false,
+    "transform": false,
+    "debug": false
   }
 }
