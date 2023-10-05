@@ -48,7 +48,7 @@ class AlphaChanelAddByMask:
 
     def node(self, images, mask, method):
         img_height, img_width = images[0, :, :, 0].shape
-        mask_height, mask_width = mask.shape
+        _, mask_height, mask_width = mask.shape
 
         if img_height != mask_height or img_width != mask_width:
             raise ValueError(
@@ -63,7 +63,7 @@ class AlphaChanelAddByMask:
                     images[i, :, :, 0],
                     images[i, :, :, 1],
                     images[i, :, :, 2],
-                    1. - mask
+                    1. - mask[i]
                 ), dim=-1) for i in range(len(images))
             ]),)
         else:
@@ -72,7 +72,7 @@ class AlphaChanelAddByMask:
                     images[i, :, :, 0],
                     images[i, :, :, 1],
                     images[i, :, :, 2],
-                    mask
+                    mask[i]
                 ), dim=-1) for i in range(len(images))
             ]),)
 
