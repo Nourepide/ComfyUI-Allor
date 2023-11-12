@@ -47,15 +47,21 @@ class AlphaChanelAddByMask:
     CATEGORY = "image/alpha"
 
     def node(self, images, mask, method):
-        img_height, img_width = images[0, :, :, 0].shape
-        _, mask_height, mask_width = mask.shape
+        img_count, img_height, img_width = images[:, :, :, 0].shape
+        mask_count, mask_height, mask_width = mask.shape
 
-        if img_height != mask_height or img_width != mask_width:
-            raise ValueError(
-                "[AlphaChanelByMask]: Size of images not equals size of mask. " +
-                "Images: [" + str(img_width) + ", " + str(img_height) + "] - " +
-                "Mask: [" + str(mask_width) + ", " + str(mask_height) + "]."
-            )
+        if mask_width == 64 and mask_height == 64:
+            mask = torch.zeros((img_count, img_height, img_width))
+        else:
+            if img_height != mask_height or img_width != mask_width:
+                raise ValueError(
+                    "[AlphaChanelByMask]: Size of images not equals size of mask. " +
+                    "Images: [" + str(img_width) + ", " + str(img_height) + "] - " +
+                    "Mask: [" + str(mask_width) + ", " + str(mask_height) + "]."
+                )
+
+        if img_count != mask_count:
+            mask = mask.expand((img_count, -1, -1))
 
         if method == "default":
             return (torch.stack([
