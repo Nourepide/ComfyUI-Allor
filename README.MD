@@ -1026,21 +1026,115 @@ Then, follow these steps:
 6. Optionally, you can create a `fonts` folder inside the `comfy_extras` folder to store your custom fonts. If you don't do this, ComfyUI will create it automatically when you run it.
 
 ## Updating:
-To update Allor, you need to make sure that you have saved your work and closed ComfyUI. Then, follow these steps:
+Allor has the ability to update itself (by default) during the startup of ComfyUI.
 
-1. Open a terminal (Linux) or command prompt (Windows) in ComfyUI folder.
-2. `cd custom_nodes`: Navigate to the `comfyui_allor` folder inside the `custom_nodes` folder. If you renamed the `comfyui_allor` folder, use the new name instead.
-3. `git checkout main && git pull`: Fetch the latest version of Allor from GitHub. This may take some time depending on your internet speed and system configuration.
+If you need to manually update Allor, navigate to the root folder of Allor through the terminal and enter `git checkout main && git pull`.
 
 ## Configuration:
 You can customize Allor with the `config.json` file.
 
-* **fonts_folder_path**: This is an array that specifies the relative path to the folder with fonts. The default value is `["comfy_extras", "fonts"]`. For Unix systems, it is converted to `ComfyUI/comfy_extras/fonts`, and for Windows systems, it is converted to `ComfyUI\comfy_extras\fonts`.
-* **modules**: This is an object that allows you to enable or disable different modules of Allor. If you disable a module, its nodes will not be loaded when you start ComfyUI.
-* **override**: This is an object that lets you override some of the original nodes with similar functionality from Allor. If you set the value of a nested property to `true`, the corresponding original node will be disabled. The properties are:
-  * **postprocessing**: This disables the `image/postprocessing` nodes. (See the `ImageFilter` module for more details)
-  * **transform**: This disables the `ImageScale` and `ImageInvert` nodes. (See the `ImageTransform` module for more details)
-  * **debug**: This disables the `__for__testing` nodes.
+* **fonts_folder_path**: An array specifying the relative path to the font folder. Default is `[“comfy_extras”, “fonts”]`, translating to `ComfyUI/comfy_extras/fonts`.
+* **modules**: Enables or disables Allor’s various modules. Disabling a module prevents its nodes from loading at ComfyUI startup.
+* **override**: Allows overriding and disabling original nodes with similar functionality from Allor. Setting a nested property to `true` disables the corresponding original node.
+
+<details>
+  <summary>See more about Overriding:</summary>
+
+<table>
+<thead>
+  <tr>
+    <th>Module</th>
+    <th>Original</th>
+    <th>New</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="10">postprocessing</td>
+    <td>ImageBlend</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td rowspan="7">ImageBlur</td>
+    <td>ImageFilterBlur</td>
+  </tr>
+  <tr>
+    <td>ImageFilterBoxBlur</td>
+  </tr>
+  <tr>
+    <td>ImageFilterGaussianBlur</td>
+  </tr>
+  <tr>
+    <td>ImageFilterGaussianBlurAdvanced</td>
+  </tr>
+  <tr>
+    <td>ImageFilterStackBlur</td>
+  </tr>
+  <tr>
+    <td>ImageFilterMedianBlur</td>
+  </tr>
+  <tr>
+    <td>ImageFilterBilateralBlur</td>
+  </tr>
+  <tr>
+    <td>ImageQuantize</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>ImageSharpen</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td rowspan="4">transform</td>
+    <td>ImageScale</td>
+    <td>ImageTransformResizeAbsolute</td>
+  </tr>
+  <tr>
+    <td>ImageScaleBy</td>
+    <td>ImageTransformResizeRelative</td>
+  </tr>
+  <tr>
+    <td rowspan="2">ImageInvert</td>
+    <td>ImageTransfromRotate</td>
+  </tr>
+  <tr>
+    <td>ImageTransformTranspose</td>
+  </tr>
+  <tr>
+    <td rowspan="7">debug</td>
+    <td>LatentBlend</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>LoadLatent</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>SaveLatent</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>TomePatchModel</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>FreeU</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>FreeU_V2</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>HyperTile</td>
+    <td>-</td>
+  </tr>
+</tbody>
+</table>
+
+</details>
+
+* **updates**: Allows Allor to update itself and also manages notifications about new updates.
 
 ## Contributing:
 ComfyUI Allor is an open source project and I welcome any contributions from the community. If you want to help me improve this plugin, here are some ways you can do it:
