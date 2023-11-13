@@ -1051,6 +1051,14 @@ ComfyUI Allor is an open source project and I welcome any contributions from the
 
 * **Share your results**: If you use this plugin to create amazing images, please share them with me and the community. You can post them on any other platform you like. You can also tag me (@Nourepide) on Reddit or use the hashtag #ComfyUIAllor. I would love to see what you create with this plugin and showcase some of your works on the README.MD file.
 
+## Google Colab:
+
+If you have a subscription to [Colab Pro](https://colab.research.google.com/signup), then you can run Allor in [Google Colab](https://colab.research.google.com/drive/1qOALtMEG_f6DN0o9mxUih6x_7PTPYM8X?usp=sharing).
+
+## Jupiter Notebook:
+
+To run this on another cloud service, you can use this [Jupiter Notebook](notebooks/ComfyUI_Allor.ipynb).
+
 ## Examples:
 ![example](images/example.png)
 > Ready to create your own masterpiece?
