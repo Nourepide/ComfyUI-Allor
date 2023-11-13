@@ -1,8 +1,8 @@
 from .Loader import Loader
 
-
 loader = Loader()
 
+loader.setup_config()
 loader.setup_rembg()
 loader.setup_paths()
 loader.setup_override()

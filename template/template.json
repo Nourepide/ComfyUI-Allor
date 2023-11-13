@@ -1,5 +1,9 @@
 {
-  "fonts_folder_path": ["comfy_extras", "fonts"],
+  "__comment": "Do not use or modify this file. This file is used as a template for generating config.json and nothing else.",
+  "fonts_folder_path": [
+    "comfy_extras",
+    "fonts"
+  ],
   "modules": {
     "AlphaChanel": true,
     "Clamp": true,
@@ -14,7 +18,7 @@
     "ImageText": true,
     "ImageTransform": true
   },
-  "override" : {
+  "override": {
     "postprocessing": false,
     "transform": false,
     "debug": false
