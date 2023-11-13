@@ -16,6 +16,12 @@ class Loader:
     def __log(self, text):
         print("\033[92m[Allor]\033[0m: " + text)
 
+    def __error(self, text):
+        print("\033[91m[Allor]\033[0m: " + text)
+
+    def __notification(self, text):
+        print("\033[94m[Allor]\033[0m: " + text)
+
     def __get_template(self):
         with open(self.__template_path, "r") as f:
             template = json.load(f)
@@ -83,6 +89,36 @@ class Loader:
             if not self.__check_json_keys(self.__template(), self.__config()):
                 self.__log("Updating config.json")
                 self.__update_config(self.__template(), self.__config())
+
+    def check_updates(self):
+        if self.__config()["updates"]["check_updates"]:
+            try:
+                import git
+            except ImportError:
+                self.__error("GitPython is not installed.")
+                return
+
+        from git import Repo
+
+        # noinspection PyTypeChecker, PyUnboundLocalVariable
+        repo = Repo(self.__root_path, odbt=git.db.GitDB)
+        current_commit = repo.head.commit.hexsha
+
+        repo.remotes.origin.fetch()
+
+        # noinspection PyUnresolvedReferences
+        latest_commit = repo.head.ref.commit.hexsha
+
+        if current_commit == latest_commit:
+            if self.__config()["updates"]["notify_if_no_new_updates"]:
+                self.__notification("No new updates.")
+        else:
+            if self.__config()["updates"]["notify_if_has_new_updates"]:
+                self.__notification("New updates are available.")
+
+            if self.__config()["updates"]["auto_update"]:
+                repo.remotes.origin.pull()
+                self.__notification("Update complete.")
 
     def setup_rembg(self):
         os.environ["U2NET_HOME"] = folder_paths.models_dir + "/onnx"
