@@ -27,6 +27,7 @@
     "check_updates": true,
     "notify_if_has_new_updates": true,
     "notify_if_no_new_updates": true,
-    "auto_update": true
+    "auto_update": true,
+    "branch_name": "main"
   }
 }

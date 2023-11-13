@@ -107,7 +107,8 @@ class Loader:
         repo.remotes.origin.fetch()
 
         # noinspection PyUnresolvedReferences
-        latest_commit = repo.head.ref.commit.hexsha
+        branch_name = self.__config()["updates"]["branch_name"]
+        latest_commit = getattr(repo.remotes.origin.refs, branch_name).commit.hexsha
 
         if current_commit == latest_commit:
             if self.__config()["updates"]["notify_if_no_new_updates"]:
