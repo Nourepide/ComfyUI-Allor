@@ -1059,7 +1059,7 @@ If you have a subscription to [Colab Pro](https://colab.research.google.com/sign
 
 ## Jupiter Notebook:
 
-To run this on another cloud service, you can use this [Jupiter Notebook](notebooks/ComfyUI_Allor.ipynb).
+To run Allor on another cloud service, you can use this [Jupiter Notebook](notebooks/ComfyUI_Allor.ipynb).
 
 ## Examples:
 ![example](images/example.png)
