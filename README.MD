@@ -1014,7 +1014,9 @@ You also can change the fonts folder in config.
 </details>
 
 ## Installation:
-To install Allor, you need to have ComfyUI installed on your system. If you don't have it yet, you can download it from [here](https://github.com/comfyanonymous/ComfyUI). Then, follow these steps:
+To install Allor, you need to have ComfyUI and Python 3.10 or above installed on your system.
+If you don't have it yet, you can download it from [here](https://github.com/comfyanonymous/ComfyUI).
+Then, follow these steps:
 
 1. Open a terminal (Linux) or command prompt (Windows) in ComfyUI folder.
 2. `cd custom_nodes`: Navigate to the `custom_nodes` folder inside the ComfyUI folder.
