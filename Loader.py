@@ -94,32 +94,33 @@ class Loader:
         if self.__config()["updates"]["check_updates"]:
             try:
                 import git
+                from git import Repo
+
+                # noinspection PyTypeChecker, PyUnboundLocalVariable
+                repo = Repo(self.__root_path, odbt=git.db.GitDB)
+                current_commit = repo.head.commit.hexsha
+
+                repo.remotes.origin.fetch()
+
+                # noinspection PyUnresolvedReferences
+                branch_name = self.__config()["updates"]["branch_name"]
+                latest_commit = getattr(repo.remotes.origin.refs, branch_name).commit.hexsha
+
+                if current_commit == latest_commit:
+                    if self.__config()["updates"]["notify_if_no_new_updates"]:
+                        self.__notification("No new updates.")
+                else:
+                    if self.__config()["updates"]["notify_if_has_new_updates"]:
+                        self.__notification("New updates are available.")
+
+                    if self.__config()["updates"]["auto_update"]:
+                        repo.remotes.origin.pull()
+                        self.__notification("Update complete.")
             except ImportError:
                 self.__error("GitPython is not installed.")
                 return
 
-        from git import Repo
-
-        # noinspection PyTypeChecker, PyUnboundLocalVariable
-        repo = Repo(self.__root_path, odbt=git.db.GitDB)
-        current_commit = repo.head.commit.hexsha
-
-        repo.remotes.origin.fetch()
-
-        # noinspection PyUnresolvedReferences
-        branch_name = self.__config()["updates"]["branch_name"]
-        latest_commit = getattr(repo.remotes.origin.refs, branch_name).commit.hexsha
-
-        if current_commit == latest_commit:
-            if self.__config()["updates"]["notify_if_no_new_updates"]:
-                self.__notification("No new updates.")
-        else:
-            if self.__config()["updates"]["notify_if_has_new_updates"]:
-                self.__notification("New updates are available.")
-
-            if self.__config()["updates"]["auto_update"]:
-                repo.remotes.origin.pull()
-                self.__notification("Update complete.")
+        
 
     def setup_rembg(self):
         os.environ["U2NET_HOME"] = folder_paths.models_dir + "/onnx"
