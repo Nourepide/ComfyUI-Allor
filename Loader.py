@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import platform
 
 import folder_paths
 import nodes
@@ -81,7 +82,32 @@ class Loader:
     __timestamp = __get_timestamp
 
     def __get_fonts_folder_path(self):
-        return os.path.join(folder_paths.base_path, *self.__config()["fonts_folder_path"])
+        system = platform.system()
+        user_home = os.path.expanduser('~')
+
+        config_font_path = os.path.join(folder_paths.base_path, *self.__config()["fonts"]["folder_path"].replace("\\", "/").split("/"))
+
+        if not os.path.exists(config_font_path):
+            os.makedirs(config_font_path, exist_ok=True)
+
+        paths = [config_font_path]
+
+        if self.__config()["fonts"]["system_fonts"]:
+            if system == "Windows":
+                paths.append(os.path.join(os.environ["WINDIR"], "Fonts"))
+            elif system == "Darwin":
+                paths.append(os.path.join("/Library", "Fonts"))
+            elif system == "Linux":
+                paths.append(os.path.join("/usr", "share", "fonts"))
+                paths.append(os.path.join("/usr", "local", "share", "fonts"))
+
+        if self.__config()["fonts"]["user_fonts"]:
+            if system == "Darwin":
+                paths.append(os.path.join(user_home, "Library", "Fonts"))
+            elif system == "Linux":
+                paths.append(os.path.join(user_home, ".fonts"))
+
+        return [path for path in paths if os.path.exists(path)]
 
     def __get_keys(self, json_obj, prefix=''):
         keys = []
@@ -173,10 +199,7 @@ class Loader:
         fonts_folder_path = self.__get_fonts_folder_path()
 
         folder_paths.folder_names_and_paths["onnx"] = ([os.path.join(folder_paths.models_dir, "onnx")], {".onnx"})
-        folder_paths.folder_names_and_paths["fonts"] = ([fonts_folder_path], {".otf", ".ttf"})
-
-        if not os.path.exists(fonts_folder_path):
-            os.mkdir(fonts_folder_path)
+        folder_paths.folder_names_and_paths["fonts"] = (fonts_folder_path, {".otf", ".ttf"})
 
     def setup_override(self):
         override_nodes_len = 0

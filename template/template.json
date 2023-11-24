@@ -1,9 +1,5 @@
 {
   "__comment": "Do not use or modify this file. This file is used as a template for generating config.json and nothing else.",
-  "fonts_folder_path": [
-    "comfy_extras",
-    "fonts"
-  ],
   "modules": {
     "AlphaChanel": true,
     "Clamp": true,
@@ -29,5 +25,10 @@
     "notify_if_no_new_updates": true,
     "auto_update": true,
     "branch_name": "main"
+  },
+  "fonts": {
+    "folder_path": "comfy_extras/fonts",
+    "system_fonts": false,
+    "user_fonts": false
   }
 }
