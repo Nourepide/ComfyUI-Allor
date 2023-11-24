@@ -24,7 +24,7 @@
     "debug": false
   },
   "updates": {
-    "check_updates": true,
+    "update_frequency": "day",
     "notify_if_has_new_updates": true,
     "notify_if_no_new_updates": true,
     "auto_update": true,

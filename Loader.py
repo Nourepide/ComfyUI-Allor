@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 import folder_paths
 import nodes
@@ -9,9 +10,14 @@ class Loader:
     def __init__(self):
         pass
 
-    __root_path = os.path.dirname(os.path.abspath(__file__))
-    __template_path = os.path.join(__root_path, "template/template.json")
-    __config_path = os.path.join(__root_path, "config.json")
+    __ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+    __TEMPLATE_PATH = os.path.join(__ROOT_PATH, "template/template.json")
+    __TIMESTAMP_PATH = os.path.join(__ROOT_PATH, "template/timestamp.json")
+    __CONFIG_PATH = os.path.join(__ROOT_PATH, "config.json")
+
+    __DAY_SECONDS = 24 * 60 * 60
+    __WEEK_SECONDS = 7 * __DAY_SECONDS
+    __MONTH_SECONDS = 30 * __DAY_SECONDS
 
     def __log(self, text):
         print("\033[92m[Allor]\033[0m: " + text)
@@ -22,8 +28,16 @@ class Loader:
     def __notification(self, text):
         print("\033[94m[Allor]\033[0m: " + text)
 
+    def __create_config(self):
+        with open(self.__CONFIG_PATH, "w", encoding="utf-8") as f:
+            json.dump(self.__template(), f, ensure_ascii=False, indent=4)
+
+    def __create_timestamp(self):
+        with open(self.__TIMESTAMP_PATH, "w", encoding="utf-8") as f:
+            json.dump({"timestamp": 0}, f, ensure_ascii=False, indent=4)
+
     def __get_template(self):
-        with open(self.__template_path, "r") as f:
+        with open(self.__TEMPLATE_PATH, "r") as f:
             template = json.load(f)
 
             if "__comment" in template:
@@ -31,12 +45,12 @@ class Loader:
 
             return template
 
-    def __create_config(self):
-        with open(self.__config_path, "w", encoding="utf-8") as f:
-            json.dump(self.__template(), f, ensure_ascii=False, indent=4)
-
     def __get_config(self):
-        with open(self.__config_path, "r") as f:
+        with open(self.__CONFIG_PATH, "r") as f:
+            return json.load(f)
+
+    def __get_timestamp(self):
+        with open(self.__TIMESTAMP_PATH, "r") as f:
             return json.load(f)
 
     def __update_config(self, template, source):
@@ -55,11 +69,16 @@ class Loader:
         for k in keys_to_delete:
             del source[k]
 
-        with open(self.__config_path, "w", encoding="utf-8") as f:
+        with open(self.__CONFIG_PATH, "w", encoding="utf-8") as f:
             json.dump(source, f, ensure_ascii=False, indent=4)
+
+    def __update_timestamp(self):
+        with open(self.__TIMESTAMP_PATH, "w", encoding="utf-8") as f:
+            json.dump({"timestamp": time.time()}, f, ensure_ascii=False, indent=4)
 
     __template = __get_template
     __config = __get_config
+    __timestamp = __get_timestamp
 
     def __get_fonts_folder_path(self):
         return os.path.join(folder_paths.base_path, *self.__config()["fonts_folder_path"])
@@ -82,7 +101,7 @@ class Loader:
         return keys1 == keys2
 
     def setup_config(self):
-        if not os.path.exists(self.__config_path):
+        if not os.path.exists(self.__CONFIG_PATH):
             self.__log("Creating config.json")
             self.__create_config()
         else:
@@ -90,14 +109,39 @@ class Loader:
                 self.__log("Updating config.json")
                 self.__update_config(self.__template(), self.__config())
 
+    def setup_timestamp(self):
+        if not os.path.exists(self.__TIMESTAMP_PATH):
+            self.__log("Creating timestamp.json")
+            self.__create_timestamp()
+
     def check_updates(self):
-        if self.__config()["updates"]["check_updates"]:
+        update_frequency = self.__config()["updates"]["update_frequency"]
+        valid_frequencies = ["always", "day", "week", "month", "never"]
+        time_difference = time.time() - self.__timestamp()["timestamp"]
+
+        if update_frequency == valid_frequencies[0]:
+            it_is_time_for_update = True
+        elif update_frequency == valid_frequencies[1]:
+            it_is_time_for_update = time_difference >= self.__DAY_SECONDS
+        elif update_frequency == valid_frequencies[2]:
+            it_is_time_for_update = time_difference >= self.__WEEK_SECONDS
+        elif update_frequency == valid_frequencies[3]:
+            it_is_time_for_update = time_difference >= self.__MONTH_SECONDS
+        elif update_frequency == valid_frequencies[4]:
+            it_is_time_for_update = False
+        else:
+            self.__error(f"Unknown update frequency - {update_frequency}, available: {valid_frequencies}")
+
+            return
+
+        if it_is_time_for_update:
             try:
                 import git
+
                 from git import Repo
 
                 # noinspection PyTypeChecker, PyUnboundLocalVariable
-                repo = Repo(self.__root_path, odbt=git.db.GitDB)
+                repo = Repo(self.__ROOT_PATH, odbt=git.db.GitDB)
                 current_commit = repo.head.commit.hexsha
 
                 repo.remotes.origin.fetch()
@@ -116,11 +160,11 @@ class Loader:
                     if self.__config()["updates"]["auto_update"]:
                         repo.remotes.origin.pull()
                         self.__notification("Update complete.")
+
+                self.__update_timestamp()
+
             except ImportError:
                 self.__error("GitPython is not installed.")
-                return
-
-        
 
     def setup_rembg(self):
         os.environ["U2NET_HOME"] = folder_paths.models_dir + "/onnx"
