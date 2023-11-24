@@ -231,7 +231,7 @@ class ImageTransformCropCorners:
 
         def crop_tensor(tensor):
             return torch.stack([
-                tensor[:, :, i] - mask for i in range(tensor.shape[2])
+                (tensor[:, :, i] - mask).clamp(0, 1) for i in range(tensor.shape[2])
             ], dim=2)
 
         return (torch.stack([
