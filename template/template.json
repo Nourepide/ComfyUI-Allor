@@ -24,7 +24,8 @@
     "notify_if_has_new_updates": true,
     "notify_if_no_new_updates": true,
     "auto_update": true,
-    "branch_name": "main"
+    "branch_name": "main",
+    "update_mode": "soft"
   },
   "fonts": {
     "folder_path": "comfy_extras/fonts",

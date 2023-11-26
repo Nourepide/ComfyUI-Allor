@@ -165,6 +165,7 @@ class Loader:
                 import git
 
                 from git import Repo
+                from git import GitCommandError
 
                 # noinspection PyTypeChecker, PyUnboundLocalVariable
                 repo = Repo(self.__ROOT_PATH, odbt=git.db.GitDB)
@@ -184,7 +185,19 @@ class Loader:
                         self.__notification("New updates are available.")
 
                     if self.__config()["updates"]["auto_update"]:
-                        repo.remotes.origin.pull()
+                        update_mode = self.__config()["updates"]["update_mode"]
+
+                        if update_mode == "soft":
+                            try:
+                                repo.git.pull()
+                            except GitCommandError:
+                                self.__error("An error occurred during the update. "
+                                             "It is recommended to use \"hard\" update mode. "
+                                             "But be careful, it erases all personal changes from Allor repository.")
+
+                        elif update_mode == "hard":
+                            repo.git.reset('--hard', 'origin/' + branch_name)
+
                         self.__notification("Update complete.")
 
                 self.__update_timestamp()
