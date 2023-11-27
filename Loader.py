@@ -29,6 +29,24 @@ class Loader:
     def __notification(self, text):
         print("\033[94m[Allor]\033[0m: " + text)
 
+    def __new_line(self):
+        print()
+
+    def __warning_unstable_branch(self):
+        self.__new_line()
+        self.__error("Attention! You are currently using an unstable \"main\" update branch intended for the development of Allor 2.")
+        self.__error("Please be aware that changes made in Allor 2 may disrupt your current workflow.")
+        self.__error("Nodes may be renamed, parameters within them may be altered or even removed.")
+        self.__new_line()
+        self.__error("If backward compatibility of your workflow is important to you, "
+                     "you can change the \"branch_name\" parameter to \"allor-1\" in your config.json.")
+        self.__error("Switch the \"confirm_unstable_agreement\" parameter in your config.json to \"true\", "
+                     "if you are prepared for potential changes and are willing to modify your current workflow from time to time.")
+        self.__error("This will result in this warning no longer appearing.")
+        self.__new_line()
+        self.__notification("We appreciate your support and understanding during this transition period.")
+        self.__notification("Thank you for using Allor 2.\n")
+
     def __create_config(self):
         with open(self.__CONFIG_PATH, "w", encoding="utf-8") as f:
             json.dump(self.__template(), f, ensure_ascii=False, indent=4)
@@ -55,20 +73,42 @@ class Loader:
             return json.load(f)
 
     def __update_config(self, template, source):
-        for k, v in template.items():
-            if k not in source:
+        def update_source(__template, __source):
+            for k, v in __template.items():
+                if k not in __source:
+                    if isinstance(v, dict):
+                        __source[k] = {}
+                    else:
+                        __source[k] = v
+
                 if isinstance(v, dict):
-                    source[k] = {}
-                else:
-                    source[k] = v
+                    __source[k] = update_source(v, __source[k])
 
-            if isinstance(v, dict):
-                self.__update_config(v, source[k])
+            return __source
 
-        keys_to_delete = [k for k in source if k not in template]
+        def delete_keys(__template, __source):
+            keys_to_delete = [k for k in __source if k not in __template]
 
-        for k in keys_to_delete:
-            del source[k]
+            for k in keys_to_delete:
+                del __source[k]
+
+            return __source
+
+        def sync_order(__template, __source):
+            new_source = {}
+
+            for key in __template:
+                if key in __source:
+                    if isinstance(__template[key], dict):
+                        new_source[key] = sync_order(__template[key], __source[key])
+                    else:
+                        new_source[key] = __source[key]
+
+            return new_source
+
+        source = update_source(template, source)
+        source = delete_keys(template, source)
+        source = sync_order(template, source)
 
         with open(self.__CONFIG_PATH, "w", encoding="utf-8") as f:
             json.dump(source, f, ensure_ascii=False, indent=4)
@@ -141,7 +181,14 @@ class Loader:
             self.__create_timestamp()
 
     def check_updates(self):
-        update_frequency = self.__config()["updates"]["update_frequency"]
+        # confirm_unstable_agreement = self.__config()["updates"]["confirm_unstable_agreement"]
+        confirm_unstable_agreement = True
+        branch_name = self.__config()["updates"]["branch_name"]
+
+        if not confirm_unstable_agreement and branch_name == "main":
+            self.__warning_unstable_branch()
+
+        update_frequency = self.__config()["updates"]["update_frequency"].lower()
         valid_frequencies = ["always", "day", "week", "month", "never"]
         time_difference = time.time() - self.__timestamp()["timestamp"]
 
@@ -173,8 +220,6 @@ class Loader:
 
                 repo.remotes.origin.fetch()
 
-                # noinspection PyUnresolvedReferences
-                branch_name = self.__config()["updates"]["branch_name"]
                 latest_commit = getattr(repo.remotes.origin.refs, branch_name).commit.hexsha
 
                 if current_commit == latest_commit:
@@ -185,7 +230,16 @@ class Loader:
                         self.__notification("New updates are available.")
 
                     if self.__config()["updates"]["auto_update"]:
-                        update_mode = self.__config()["updates"]["update_mode"]
+                        update_mode = self.__config()["updates"]["update_mode"].lower()
+                        valid_modes = ["soft", "hard"]
+
+                        if repo.active_branch.name != branch_name:
+                            try:
+                                repo.git.checkout(branch_name)
+                            except GitCommandError:
+                                self.__error(f"An error occurred while switching to the branch {branch_name}.")
+
+                                return
 
                         if update_mode == "soft":
                             try:
@@ -197,6 +251,10 @@ class Loader:
 
                         elif update_mode == "hard":
                             repo.git.reset('--hard', 'origin/' + branch_name)
+                        else:
+                            self.__error(f"Unknown update mode - {update_mode}, available: {valid_modes}")
+
+                            return
 
                         self.__notification("Update complete.")
 
