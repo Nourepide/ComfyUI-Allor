@@ -54,17 +54,26 @@ class ImageText:
     CATEGORY = "image/draw"
 
     def node(self, text, font, size, red, green, blue, alpha, margin_x, margin_y):
-        font_path = folder_paths.get_full_path("fonts", font)
-        font = ImageFont.truetype(font_path, size, encoding="unic")
+        outline_size = 0
+        outline_red = 255
+        outline_green = 255
+        outline_blue = 255
 
-        (left, top, right, bottom) = font.getbbox(text)
-
-        canvas = Image.new("RGBA", (right + margin_x * 2, bottom - top + margin_y * 2), (0, 0, 0, 0))
-
-        draw = ImageDraw.Draw(canvas)
-        draw.text((margin_x, margin_y - top), text, (red, green, blue, int(alpha * 255)), font)
-
-        return (canvas.image_to_tensor().unsqueeze(0),)
+        return ImageTextOutlined().node(
+            text,
+            font,
+            size,
+            red,
+            green,
+            blue,
+            outline_size,
+            outline_red,
+            outline_green,
+            outline_blue,
+            alpha,
+            margin_x,
+            margin_y
+        )
 
 
 class ImageTextOutlined:
@@ -214,17 +223,27 @@ class ImageTextMultiline:
     CATEGORY = "image/draw"
 
     def node(self, text, font, align, size, red, green, blue, alpha, margin_x, margin_y):
-        font_path = folder_paths.get_full_path("fonts", font)
-        font = ImageFont.truetype(font_path, size, encoding="unic")
+        outline_size = 0
+        outline_red = 255
+        outline_green = 255
+        outline_blue = 255
 
-        (_, top, _, _) = font.getbbox(text)
-        text_size = font.getsize_multiline(text)
-        canvas = Image.new("RGBA", (text_size[0] + margin_x * 2, text_size[1] - top + margin_y * 2), (0, 0, 0, 0))
-
-        draw = ImageDraw.Draw(canvas)
-        draw.multiline_text((margin_x, margin_y - top), text, (red, green, blue, int(alpha * 255)), font, align=align)
-
-        return (canvas.image_to_tensor().unsqueeze(0),)
+        return ImageTextMultilineOutlined().node(
+            text,
+            font,
+            align,
+            size,
+            red,
+            green,
+            blue,
+            outline_size,
+            outline_red,
+            outline_green,
+            outline_blue,
+            alpha,
+            margin_x,
+            margin_y
+        )
 
 
 class ImageTextMultilineOutlined:
@@ -306,11 +325,14 @@ class ImageTextMultilineOutlined:
 
         lines = text.split('\n').__len__()
         (_, top, _, _) = font.getbbox(text)
-        text_size = font.getsize_multiline(text)
+
+        canvas = Image.new("RGBA", (0, 0))
+        draw = ImageDraw.Draw(canvas)
+        text_size = draw.multiline_textbbox((0, 0), text, font)
 
         canvas = Image.new("RGBA", (
-            text_size[0] + (margin_x + outline_size) * 2,
-            text_size[1] - top + (margin_y + (outline_size * lines)) * 2
+            text_size[2] + (margin_x + outline_size) * 2,
+            text_size[3] - top + (margin_y + (outline_size * lines)) * 2
         ), (0, 0, 0, 0))
 
         draw = ImageDraw.Draw(canvas)
