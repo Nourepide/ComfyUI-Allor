@@ -67,7 +67,7 @@ if !VENV_ACTIVATED! equ 0 (
 )
 
 where /q git
-if !ERRORLEVEL! equ 1 (
+if !ERRORLEVEL! equ 0 (
     echo Git is installed.
 
     REM Check if the current directory is a git repository
