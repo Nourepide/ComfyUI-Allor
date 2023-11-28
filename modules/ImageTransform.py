@@ -75,6 +75,52 @@ class ImageTransformResizeRelative:
         return ImageTransformResizeAbsolute().node(images, width, height, method)
 
 
+class ImageTransformResizeClip:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "max_width": ("INT", {
+                    "default": 1024,
+                }),
+                "max_height": ("INT", {
+                    "default": 1024,
+                }),
+                "min_width": ("INT", {
+                    "default": 0,
+                }),
+                "min_height": ("INT", {
+                    "default": 0,
+                }),
+                "method": (["lanczos", "bicubic", "hamming", "bilinear", "box", "nearest"],),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "node"
+    CATEGORY = "image/transform"
+
+    def node(self, images, max_width, max_height, min_width, min_height, method):
+        height, width = images[0, :, :, 0].shape
+
+        if min_width >= max_width and min_height >= max_height:
+            return (images,)
+
+        scale_min = max(min_width / width, min_height / height)
+        scale_max = min(max_width / width, max_height / height)
+
+        scale = max(scale_min, scale_max)
+
+        width = int(width * scale)
+        height = int(height * scale)
+
+        return ImageTransformResizeAbsolute().node(images, width, height, method)
+
+
 class ImageTransformCropAbsolute:
     def __init__(self):
         pass
@@ -431,6 +477,7 @@ class ImageTransformTranspose:
 NODE_CLASS_MAPPINGS = {
     "ImageTransformResizeAbsolute": ImageTransformResizeAbsolute,
     "ImageTransformResizeRelative": ImageTransformResizeRelative,
+    "ImageTransformResizeClip": ImageTransformResizeClip,
     "ImageTransformCropAbsolute": ImageTransformCropAbsolute,
     "ImageTransformCropRelative": ImageTransformCropRelative,
     "ImageTransformCropCorners": ImageTransformCropCorners,
