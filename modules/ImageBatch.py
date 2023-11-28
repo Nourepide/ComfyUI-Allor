@@ -1,3 +1,5 @@
+import re
+
 import torch
 
 
@@ -128,9 +130,36 @@ class ImageBatchJoin:
         return (torch.cat((images_a, images_b)),)
 
 
+class ImageBatchPermute:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "permute": ("STRING", {"multiline": False}),
+                "start_with_zero": ("BOOLEAN",),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "node"
+    CATEGORY = "image/batch"
+
+    def node(self, images, permute, start_with_zero):
+        order = [int(num) - 1 if not start_with_zero else int(num) for num in re.findall(r'\d+', permute)]
+        order = torch.tensor(order)
+        order = order.clamp(0, images.shape[0] - 1)
+
+        return (images.index_select(0, order),)
+
+
 NODE_CLASS_MAPPINGS = {
     "ImageBatchGet": ImageBatchGet,
     "ImageBatchRemove": ImageBatchRemove,
     "ImageBatchFork": ImageBatchFork,
-    "ImageBatchJoin": ImageBatchJoin
+    "ImageBatchJoin": ImageBatchJoin,
+    "ImageBatchPermute": ImageBatchPermute
 }
