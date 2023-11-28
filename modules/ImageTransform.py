@@ -107,7 +107,7 @@ class ImageTransformResizeClip:
     def node(self, images, max_width, max_height, min_width, min_height, method):
         height, width = images[0, :, :, 0].shape
 
-        if min_width >= max_width and min_height >= max_height:
+        if min_width >= max_width or min_height >= max_height:
             return (images,)
 
         scale_min = max(min_width / width, min_height / height)
@@ -115,10 +115,7 @@ class ImageTransformResizeClip:
 
         scale = max(scale_min, scale_max)
 
-        width = int(width * scale)
-        height = int(height * scale)
-
-        return ImageTransformResizeAbsolute().node(images, width, height, method)
+        return ImageTransformResizeRelative().node(images, scale, scale, method)
 
 
 class ImageTransformCropAbsolute:
