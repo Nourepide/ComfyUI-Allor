@@ -26,9 +26,42 @@ class ImageBatchGet:
 
     def node(self, images, index):
         batch = images.shape[0]
-        index = min(batch, index - 1)
+        index = min(batch, index) - 1
 
         return (images[index].unsqueeze(0),)
+
+
+class ImageBatchCopy:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "images": ("IMAGE",),
+                "index": ("INT", {
+                    "default": 1,
+                    "min": 1,
+                    "step": 1
+                }),
+                "quantity": ("INT", {
+                    "default": 1,
+                    "min": 2,
+                    "step": 1
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "node"
+    CATEGORY = "image/batch"
+
+    def node(self, images, index, quantity):
+        batch = images.shape[0]
+        index = min(batch, index) - 1
+
+        return (images[index].repeat(quantity, 1, 1, 1),)
 
 
 class ImageBatchRemove:
@@ -158,6 +191,7 @@ class ImageBatchPermute:
 
 NODE_CLASS_MAPPINGS = {
     "ImageBatchGet": ImageBatchGet,
+    "ImageBatchCopy": ImageBatchCopy,
     "ImageBatchRemove": ImageBatchRemove,
     "ImageBatchFork": ImageBatchFork,
     "ImageBatchJoin": ImageBatchJoin,
