@@ -1,7 +1,9 @@
 import json
 import os
-import time
 import platform
+import time
+
+from pathlib import Path
 
 import folder_paths
 import nodes
@@ -184,10 +186,6 @@ class Loader:
         # confirm_unstable_agreement = self.__config()["updates"]["confirm_unstable_agreement"]
         confirm_unstable_agreement = True
         branch_name = self.__config()["updates"]["branch_name"]
-
-        if not confirm_unstable_agreement and branch_name == "main":
-            self.__warning_unstable_branch()
-
         update_frequency = self.__config()["updates"]["update_frequency"].lower()
         valid_frequencies = ["always", "day", "week", "month", "never"]
         time_difference = time.time() - self.__timestamp()["timestamp"]
@@ -207,7 +205,15 @@ class Loader:
 
             return
 
+        if not confirm_unstable_agreement and branch_name == "main" and update_frequency != "never":
+            self.__warning_unstable_branch()
+
         if it_is_time_for_update:
+            if not (Path(".git").exists() or Path(".git").is_dir()):
+                self.__error("Root directory of Allor is not a git repository. Update canceled.")
+
+                return
+
             try:
                 import git
 
