@@ -17,6 +17,7 @@ class Loader:
     __TEMPLATE_PATH = os.path.join(__ROOT_PATH, "template/template.json")
     __TIMESTAMP_PATH = os.path.join(__ROOT_PATH, "template/timestamp.json")
     __CONFIG_PATH = os.path.join(__ROOT_PATH, "config.json")
+    __GIT_PATH = Path(os.path.join(__ROOT_PATH, ".git"))
 
     __DAY_SECONDS = 24 * 60 * 60
     __WEEK_SECONDS = 7 * __DAY_SECONDS
@@ -209,7 +210,7 @@ class Loader:
             self.__warning_unstable_branch()
 
         if it_is_time_for_update:
-            if not (Path(".git").exists() or Path(".git").is_dir()):
+            if not (self.__GIT_PATH.exists() or self.__GIT_PATH.is_dir()):
                 self.__error("Root directory of Allor is not a git repository. Update canceled.")
 
                 return
