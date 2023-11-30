@@ -50,7 +50,7 @@ if command -v git >/dev/null 2>&1; then
     if [ ! -d ".git" ]; then
         echo -e "\e[34m[Allor]\e[0m: This directory is not a git repository. Initializing a new repository."
 
-        git init
+        git init -b main
         git remote add origin https://github.com/Nourepide/ComfyUI-Allor
         git pull origin master
     else
@@ -70,7 +70,7 @@ from pathlib import Path
 if not (Path(".git").exists() or Path(".git").is_dir()):
     print("\033[94m[Allor]\033[0m: This directory is not a git repository. Initializing a new repository.")
 
-    repo = Repo.init()
+    repo = Repo.init(initial_branch='main')
     origin = repo.create_remote("origin", "https://github.com/Nourepide/ComfyUI-Allor")
     origin.fetch("main")
     repo.git.reset("--hard", "origin/main")

@@ -107,7 +107,7 @@ where /q git && if !ERRORLEVEL! equ 0 (
     if not exist ".git" (
         echo [Allor]: This directory is not a git repository. Initializing a new repository.
 
-        git init
+        git init -b main
         git remote add origin https://github.com/Nourepide/ComfyUI-Allor
         git fetch origin main
         git reset --hard origin/main
@@ -140,7 +140,7 @@ if not (Path('.git').exists() or Path('.git').is_dir()):
 
     print("[Allor]: This directory is not a git repository. Initializing a new repository.")
 
-    repo = Repo.init()
+    repo = Repo.init(initial_branch='main')
     origin = repo.create_remote('origin', 'https://github.com/Nourepide/ComfyUI-Allor')
     origin.fetch('main')
     repo.git.reset('--hard', 'origin/main')
