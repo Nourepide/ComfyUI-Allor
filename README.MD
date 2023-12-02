@@ -25,7 +25,7 @@
 
 We are pleased to present to you our [new documentation](https://nourepide.github.io/ComfyUI-Allor-Doc/).
 
-The [documentation](https://nourepide.github.io/ComfyUI-Allor-Doc/) includes information about **installation**, **updating**, all **nodes** including their parameters and much more.
+The [documentation](https://nourepide.github.io/ComfyUI-Allor-Doc/) includes information about [installation](https://nourepide.github.io/ComfyUI-Allor-Doc/installation-allor.html), [updating](https://nourepide.github.io/ComfyUI-Allor-Doc/updating.html), all [nodes](https://nourepide.github.io/ComfyUI-Allor-Doc/modules.html) including their parameters and much more.
 
 ## Contributing:
 ComfyUI Allor is an open source project and I welcome any contributions from the community.
