@@ -23,9 +23,20 @@
 
 ## Documentation
 
-We are pleased to present to you our [new documentation](https://nourepide.github.io/ComfyUI-Allor-Doc/).
+We are pleased to present to you our new documentation.
 
 The [documentation](https://nourepide.github.io/ComfyUI-Allor-Doc/) includes information about [installation](https://nourepide.github.io/ComfyUI-Allor-Doc/installation-allor.html), [updating](https://nourepide.github.io/ComfyUI-Allor-Doc/updating.html), all [nodes](https://nourepide.github.io/ComfyUI-Allor-Doc/modules.html) including their parameters and much more.
+
+## Image Rebasing
+
+We recently rebased the **Allor** repository by **removing all images** from the history, which resulted in a significant reduction in its size - by a factor of about **22**.
+
+However, because of this change, you may encounter **problems with updates**.
+
+We have instructions in the documentation to help you:
+
+* [Troubleshooting for Auto-Update](https://nourepide.github.io/ComfyUI-Allor-Doc/updating.html#troubleshooting_auto_update)
+* [Troubleshooting for Git](https://nourepide.github.io/ComfyUI-Allor-Doc/updating.html#troubleshooting_git)
 
 ## Contributing:
 ComfyUI Allor is an open source project and I welcome any contributions from the community.
