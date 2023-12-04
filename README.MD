@@ -1,4 +1,4 @@
-![logo](images/logo.png)
+![logo](resources/logo.png)
 
 <details>
   <summary>This image from start to end was done in ComfyUI. How?</summary>
@@ -9,7 +9,7 @@
 4. Load [RealESRNet_x4plus.pth](https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.1/RealESRNet_x4plus.pth) and put in to `models/upscale` folder.
 5. Load [AOM3A1B_orangemixs.safetensors](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/Models/AbyssOrangeMix3/AOM3A1B_orangemixs.safetensors) and put in to `models/chekpoints` folder.
 6. Load [orangemix.vae.pt](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/VAEs/orangemix.vae.pt) and put in to `models/vae` folder.
-7. Drag-and-drop this [image](images/logo.png) to ComfyUI or load [JSON](images/logo.json).
+7. Drag-and-drop this [image](resources/logo.png) to ComfyUI or load [JSON](resources/logo.json).
 8. Press the `Queue Promt` button.
 
 </details>
