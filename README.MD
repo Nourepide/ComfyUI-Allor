@@ -29,7 +29,7 @@ The [documentation](https://nourepide.github.io/ComfyUI-Allor-Doc/) includes inf
 
 ## Image Rebasing
 
-We recently rebased the **Allor** repository by **removing all images** from the history, which resulted in a significant reduction in its size - by a factor of about **22**.
+We recently rebased the **Allor** repository by **removing all images** from the history, which resulted in a significant reduction in its size - by a factor of about **344**.
 
 However, because of this change, you may encounter **problems with updates**.
 
