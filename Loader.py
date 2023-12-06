@@ -14,8 +14,8 @@ class Loader:
         pass
 
     __ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
-    __TEMPLATE_PATH = os.path.join(__ROOT_PATH, "template/template.json")
-    __TIMESTAMP_PATH = os.path.join(__ROOT_PATH, "template/timestamp.json")
+    __TEMPLATE_PATH = os.path.join(__ROOT_PATH, "resources/template.json")
+    __TIMESTAMP_PATH = os.path.join(__ROOT_PATH, "resources/timestamp.json")
     __CONFIG_PATH = os.path.join(__ROOT_PATH, "config.json")
     __GIT_PATH = Path(os.path.join(__ROOT_PATH, ".git"))
 

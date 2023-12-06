@@ -49,6 +49,6 @@ ComfyUI Allor is an open source project and I welcome any contributions from the
 
 ## Jupiter Notebook:
 
-To run Allor on another cloud service, you can use this [Jupiter Notebook](notebooks/ComfyUI_Allor.ipynb).
+To run Allor on another cloud service, you can use this [Jupiter Notebook](resources/allor.ipynb).
 
 If you have a subscription to [Colab Pro](https://colab.research.google.com/signup), then you can run Allor in [Google Colab](https://colab.research.google.com/drive/1qOALtMEG_f6DN0o9mxUih6x_7PTPYM8X?usp=sharing).
