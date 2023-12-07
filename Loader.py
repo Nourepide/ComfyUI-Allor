@@ -303,7 +303,7 @@ class Loader:
 
             override_nodes_len += override(lambda item: not item[1].CATEGORY.startswith("_for_testing"))
 
-        self.__log(str(override_nodes_len) + " standard nodes was overridden.")
+        self.__log(str(override_nodes_len) + " nodes were overridden.")
 
     def get_modules(self):
         modules = dict()
@@ -365,7 +365,7 @@ class Loader:
 
         nodes_len = modules.__len__()
 
-        self.__log(str(modules_len) + " modules enabled.")
-        self.__log(str(nodes_len) + " nodes was loaded.")
+        self.__log(str(modules_len) + " modules were enabled.")
+        self.__log(str(nodes_len) + " nodes were loaded.")
 
         return modules
