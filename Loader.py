@@ -35,21 +35,6 @@ class Loader:
     def __new_line(self):
         print()
 
-    def __warning_unstable_branch(self):
-        self.__new_line()
-        self.__error("Attention! You are currently using an unstable \"main\" update branch intended for the development of Allor 2.")
-        self.__error("Please be aware that changes made in Allor 2 may disrupt your current workflow.")
-        self.__error("Nodes may be renamed, parameters within them may be altered or even removed.")
-        self.__new_line()
-        self.__error("If backward compatibility of your workflow is important to you, "
-                     "you can change the \"branch_name\" parameter to \"allor-1\" in your config.json.")
-        self.__error("Switch the \"confirm_unstable_agreement\" parameter in your config.json to \"true\", "
-                     "if you are prepared for potential changes and are willing to modify your current workflow from time to time.")
-        self.__error("This will result in this warning no longer appearing.")
-        self.__new_line()
-        self.__notification("We appreciate your support and understanding during this transition period.")
-        self.__notification("Thank you for using Allor 2.\n")
-
     def __create_config(self):
         with open(self.__CONFIG_PATH, "w", encoding="utf-8") as f:
             json.dump(self.__template(), f, ensure_ascii=False, indent=4)
@@ -184,8 +169,6 @@ class Loader:
             self.__create_timestamp()
 
     def check_updates(self):
-        # confirm_unstable_agreement = self.__config()["updates"]["confirm_unstable_agreement"]
-        confirm_unstable_agreement = True
         branch_name = self.__config()["updates"]["branch_name"]
         update_frequency = self.__config()["updates"]["update_frequency"].lower()
         valid_frequencies = ["always", "day", "week", "month", "never"]
@@ -205,9 +188,6 @@ class Loader:
             self.__error(f"Unknown update frequency - {update_frequency}, available: {valid_frequencies}")
 
             return
-
-        if not confirm_unstable_agreement and branch_name == "main" and update_frequency != "never":
-            self.__warning_unstable_branch()
 
         if it_is_time_for_update:
             if not (self.__GIT_PATH.exists() or self.__GIT_PATH.is_dir()):
