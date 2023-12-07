@@ -26,7 +26,7 @@
     "auto_update": true,
     "branch_name": "main",
     "update_mode": "soft",
-    "confirm_unstable_agreement": false
+    "confirm_unstable": false
   },
   "fonts": {
     "folder_path": "comfy_extras/fonts",

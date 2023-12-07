@@ -1,12 +1,13 @@
-from .Loader import Loader
+from .boot.Config import Config
+from .boot.Update import Update
+from .boot.Paths import Paths
+from .boot.Override import Override
+from .boot.Modules import Modules
 
-loader = Loader()
+config = Config().initiate()
 
-loader.setup_config()
-loader.setup_timestamp()
-loader.check_updates()
-loader.setup_rembg()
-loader.setup_paths()
-loader.setup_override()
+Update(config).initiate()
+Paths(config).initiate()
+Override(config).initiate()
 
-NODE_CLASS_MAPPINGS = loader.get_modules()
+NODE_CLASS_MAPPINGS = Modules(config).initiate()

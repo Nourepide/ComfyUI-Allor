@@ -320,5 +320,6 @@ pip-selfcheck.json
 ### Allor ###
 config.json
 resources/timestamp.json
+resources/logs/*
 
 # End of https://www.toptal.com/developers/gitignore/api/python,venv,visualstudiocode,pycharm
