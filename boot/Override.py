@@ -1,11 +1,11 @@
 import nodes
-from .Logger import Logger
 
 
 class Override:
-    def __init__(self, logger, config):
+    def __init__(self, logger, config, backends):
         self.__logger = logger
         self.__config = config
+        self.__backends = backends
 
     def initiate(self):
         override_nodes_len = 0

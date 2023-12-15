@@ -11,7 +11,7 @@ config = Config(logger).initiate()
 backends = Backends(logger).initiate()
 
 Update(logger, config, backends).initiate()
-Paths(logger, config).initiate()
-Override(logger, config).initiate()
+Paths(logger, config, backends).initiate()
+Override(logger, config, backends).initiate()
 
 NODE_CLASS_MAPPINGS = Modules(logger, config, backends).initiate()
