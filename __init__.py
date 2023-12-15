@@ -1,13 +1,17 @@
+from .boot.Logger import Logger
+from .boot.Backends import Backends
 from .boot.Config import Config
 from .boot.Update import Update
 from .boot.Paths import Paths
 from .boot.Override import Override
 from .boot.Modules import Modules
 
-config = Config().initiate()
+logger = Logger()
+config = Config(logger).initiate()
+backends = Backends(logger).initiate()
 
-Update(config).initiate()
-Paths(config).initiate()
-Override(config).initiate()
+Update(logger, config, backends).initiate()
+Paths(logger, config).initiate()
+Override(logger, config).initiate()
 
-NODE_CLASS_MAPPINGS = Modules(config).initiate()
+NODE_CLASS_MAPPINGS = Modules(logger, config, backends).initiate()

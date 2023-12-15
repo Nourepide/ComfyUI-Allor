@@ -3,8 +3,8 @@ from .Logger import Logger
 
 
 class Override:
-    def __init__(self, config):
-        self.__logger = Logger()
+    def __init__(self, logger, config):
+        self.__logger = logger
         self.__config = config
 
     def initiate(self):
@@ -31,4 +31,4 @@ class Override:
 
             override_nodes_len += override(lambda item: not item[1].CATEGORY.startswith("_for_testing"))
 
-        self.__logger.info(str(override_nodes_len) + " nodes were overridden.")
+        self.__logger.info(str(override_nodes_len) + " nodes were overridden.", self.__config["logger"]["nodes_overridden"])

@@ -1,72 +1,54 @@
-from .Logger import Logger
+import functools
+from importlib import import_module
+
+from .Backends import Backends
 
 
 class Modules:
-    def __init__(self, config):
-        self.__logger = Logger()
+    def __init__(self, logger, config, backends):
+        self.__logger = logger
         self.__config = config
+        self.__backends = backends
 
     def initiate(self):
-        modules = dict()
+        modules_loaded = dict()
+        modules_not_loaded = dict()
 
-        if self.__config["modules"]["AlphaChanel"]:
-            from ..modules import AlphaChanel
-            modules.update(AlphaChanel.NODE_CLASS_MAPPINGS)
+        modules_info = {
+            "AlphaChanel": [Backends.TORCH],
+            "Clamp": [],
+            "ImageBatch": [Backends.TORCH],
+            "ImageComposite": [Backends.TORCH, Backends.PIL],
+            "ImageContainer": [Backends.TORCH],
+            "ImageDraw": [Backends.PIL],
+            "ImageEffects": [Backends.TORCH, Backends.NUMPY, Backends.CV2],
+            "ImageFilter": [Backends.TORCH, Backends.PIL, Backends.CV2],
+            "ImageNoise": [Backends.TORCH, Backends.NUMPY],
+            "ImageSegmentation": [Backends.TORCH, Backends.PIL, Backends.REMBG],
+            "ImageText": [Backends.PIL],
+            "ImageTransform": [Backends.TORCH, Backends.PIL]
+        }
 
-        if self.__config["modules"]["Clamp"]:
-            from ..modules import Clamp
-            modules.update(Clamp.NODE_CLASS_MAPPINGS)
+        for module_name, backends in modules_info.items():
+            if self.__config["modules"][module_name]:
+                if self.__required(module_name, *backends):
+                    if module := import_module(f"..modules.{module_name}", package=__package__):
+                        modules_loaded.update(module.NODE_CLASS_MAPPINGS)
+                else:
+                    modules_not_loaded[module_name] = backends
 
-        if self.__config["modules"]["ImageBatch"]:
-            from ..modules import ImageBatch
-            modules.update(ImageBatch.NODE_CLASS_MAPPINGS)
+        modules_len = len({k: v for k, v in self.__config["modules"].items() if v})
+        nodes_len = len(modules_loaded)
 
-        if self.__config["modules"]["ImageComposite"]:
-            from ..modules import ImageComposite
-            modules.update(ImageComposite.NODE_CLASS_MAPPINGS)
+        self.__logger.info(f"{modules_len} modules were enabled.", self.__config["logger"]["modules_enabled"])
+        self.__logger.info(f"{nodes_len} nodes were loaded.", self.__config["logger"]["nodes_loaded"])
 
-        if self.__config["modules"]["ImageContainer"]:
-            from ..modules import ImageContainer
-            modules.update(ImageContainer.NODE_CLASS_MAPPINGS)
+        return modules_loaded
 
-        if self.__config["modules"]["ImageDraw"]:
-            from ..modules import ImageDraw
-            modules.update(ImageDraw.NODE_CLASS_MAPPINGS)
-
-        if self.__config["modules"]["ImageEffects"]:
-            from ..modules import ImageEffects
-            modules.update(ImageEffects.NODE_CLASS_MAPPINGS)
-
-        if self.__config["modules"]["ImageFilter"]:
-            from ..modules import ImageFilter
-            modules.update(ImageFilter.NODE_CLASS_MAPPINGS)
-
-        if self.__config["modules"]["ImageNoise"]:
-            from ..modules import ImageNoise
-            modules.update(ImageNoise.NODE_CLASS_MAPPINGS)
-
-        if self.__config["modules"]["ImageSegmentation"]:
-            from ..modules import ImageSegmentation
-            modules.update(ImageSegmentation.NODE_CLASS_MAPPINGS)
-
-        if self.__config["modules"]["ImageText"]:
-            from ..modules import ImageText
-            modules.update(ImageText.NODE_CLASS_MAPPINGS)
-
-        if self.__config["modules"]["ImageTransform"]:
-            from ..modules import ImageTransform
-            modules.update(ImageTransform.NODE_CLASS_MAPPINGS)
-
-        modules_len = dict(
-            filter(
-                lambda item: item[1],
-                self.__config["modules"].items()
-            )
-        ).__len__()
-
-        nodes_len = modules.__len__()
-
-        self.__logger.info(str(modules_len) + " modules were enabled.")
-        self.__logger.info(str(nodes_len) + " nodes were loaded.")
-
-        return modules
+    @functools.lru_cache
+    def __required(self, module, *backends):
+        for backend in backends:
+            if not self.__backends[backend]:
+                self.__logger.error(f"Module {module} did not find all necessary backends. Loading skipped.")
+                return False
+        return True

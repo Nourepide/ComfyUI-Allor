@@ -1,14 +1,22 @@
 import os
 import platform
+from datetime import datetime
+from pathlib import Path
 
 import folder_paths
 
-from .Logger import Logger
-
 
 class Paths:
-    def __init__(self, config):
-        self.__logger = Logger()
+    ROOT_PATH = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    TEMPLATE_PATH = ROOT_PATH / "resources/template.json"
+    TIMESTAMP_PATH = ROOT_PATH / "resources/timestamp.json"
+    INFO_PATH = ROOT_PATH / "resources/info.json"
+    CONFIG_PATH = ROOT_PATH / "config.json"
+    GIT_PATH = ROOT_PATH / ".git"
+    LOG_PATH = ROOT_PATH / f"resources/logs/log_{datetime.now().strftime('%Y_%m_%d_%H_%M_%S')}.log"
+
+    def __init__(self, logger, config):
+        self.__logger = logger
         self.__config = config
 
     def initiate(self):

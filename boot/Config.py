@@ -1,15 +1,14 @@
 import json
 
-from .Constants import Constants
-from .Logger import Logger
+from .Paths import Paths
 
 
 class Config:
-    def __init__(self):
-        self.__logger = Logger()
+    def __init__(self, logger):
+        self.__logger = logger
         self.__template = self.__get_template()
 
-        if not Constants.CONFIG_PATH.exists():
+        if not Paths.CONFIG_PATH.exists():
             self.__logger.info("Creating configuration file.")
             self.__create_config()
 
@@ -23,11 +22,11 @@ class Config:
         return self.__get_config()
 
     def __create_config(self):
-        with open(Constants.CONFIG_PATH, "w", encoding="utf-8") as f:
+        with open(Paths.CONFIG_PATH, "w", encoding="utf-8") as f:
             json.dump(self.__template, f, ensure_ascii=False, indent=4)
 
     def __get_template(self):
-        with open(Constants.TEMPLATE_PATH, "r") as f:
+        with open(Paths.TEMPLATE_PATH, "r") as f:
             template = json.load(f)
 
             if "__comment" in template:
@@ -36,7 +35,7 @@ class Config:
             return template
 
     def __get_config(self):
-        with open(Constants.CONFIG_PATH, "r") as f:
+        with open(Paths.CONFIG_PATH, "r") as f:
             return json.load(f)
 
     def __verify_keys(self, json1, json2):
@@ -94,5 +93,5 @@ class Config:
         source = delete_keys(template, source)
         source = sync_order(template, source)
 
-        with open(Constants.CONFIG_PATH, "w", encoding="utf-8") as f:
+        with open(Paths.CONFIG_PATH, "w", encoding="utf-8") as f:
             json.dump(source, f, ensure_ascii=False, indent=4)

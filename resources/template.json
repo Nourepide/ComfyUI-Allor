@@ -20,17 +20,22 @@
     "debug": false
   },
   "updates": {
-    "update_frequency": "day",
-    "notify_if_has_new_updates": true,
-    "notify_if_no_new_updates": true,
-    "auto_update": true,
+    "search_frequency": "day",
+    "install_update": true,
     "branch_name": "main",
-    "update_mode": "soft",
-    "confirm_unstable": false
+    "update_mode": "soft"
   },
   "fonts": {
     "folder_path": "comfy_extras/fonts",
     "system_fonts": false,
     "user_fonts": false
+  },
+  "logger": {
+    "confirm_unstable": false,
+    "updates_search": true,
+    "install_complete": true,
+    "modules_enabled": true,
+    "nodes_loaded": true,
+    "nodes_overridden": true
   }
 }
