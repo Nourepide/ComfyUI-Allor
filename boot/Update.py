@@ -36,8 +36,13 @@ class Update:
             "never": False
         }
 
-        if not confirm_unstable and branch_name == "main" and search_frequency != "never":
-            self.__logger.warning_unstable_branch(branch_name)
+        unstable_branches = ["main"]
+
+        if branch_name in unstable_branches and search_frequency != "never":
+            if not confirm_unstable:
+                self.__logger.warning_unstable_branch(branch_name)
+            else:
+                self.__logger.debug("Unstable branch agreement confirmed.\nPlease be careful when using this version.", False)
 
         if self.__backends[Backends.GIT]:
             if Paths.GIT_PATH.exists() and Paths.GIT_PATH.is_dir():

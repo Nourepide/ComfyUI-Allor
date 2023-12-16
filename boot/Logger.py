@@ -23,15 +23,17 @@ class Logger(metaclass=SingletonLogger):
     def __init__(self):
         self.formatting = _Formatting()
         self.levels = {
-            "FATAL": _Formatting.COLOR["RED"],
-            "ERROR": _Formatting.COLOR["RED"],
-            "WARN": _Formatting.COLOR["YELLOW"],
-            "INFO": _Formatting.COLOR["BLUE"],
-            "EMIT": _Formatting.COLOR["GREEN"],
-            "DEBUG": _Formatting.COLOR["MAGENTA"],
-            "TRACE": _Formatting.COLOR["CYAN"],
-            "LINE": _Formatting.COLOR["DEFAULT"],
+            "FATAL": "r",
+            "ERROR": "r",
+            "WARN": "y",
+            "INFO": "b",
+            "EMIT": "g",
+            "DEBUG": "m",
+            "TRACE": "c",
+            "LINE": "n"
         }
+
+        self.__length = max(len(key) for key in self.levels)
 
         info = self.__get_info()
 
@@ -41,14 +43,16 @@ class Logger(metaclass=SingletonLogger):
         self.debug(f"{info['branch']} : {info['hex']}")
 
     def __log(self, text, level, display):
+        text = self.formatting.format(text)
+
         if display:
             if level == "LINE":
                 print()
             else:
-                indent = " " * 9
-                indented_text = "\n".join(line if i == 0 or not line else indent + line for i, line in enumerate(text.split("\n")))
+                prefix = self.formatting.format(f"!![f{self.levels.get(level)}b;" + re.escape("[Allor]") + ":" + "] ")
+                postfix = self.formatting.format(text, 9)
 
-                print(f"{self.formatting.foreground('[Allor]: ', self.levels.get(level), _Formatting.INTENSITY['BRIGHT'])}" + indented_text)
+                print(f"{prefix}{postfix}")
 
         if Logger.file:
             directory = Logger.file.parent
@@ -70,11 +74,11 @@ class Logger(metaclass=SingletonLogger):
                 if level == "LINE":
                     f.write("\n")
                 else:
-                    indent = " " * 30
-                    indented_text = "\n".join(line if i == 0 or not line else indent + line for i, line in enumerate(text.split("\n")))
-                    indented_text = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])').sub("", indented_text)
+                    prefix = f"[{datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}][{level:<{self.__length}}]: "
+                    postfix = self.formatting.format(text, len(prefix))
+                    postfix = self.formatting.reset(postfix)
 
-                    f.write(f"[{datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}][{level:<5}]: {indented_text}\n")
+                    f.write(f"{prefix}{postfix}\n")
 
     def fatal(self, text, display=True):
         self.__log(text, "FATAL", display)
@@ -101,32 +105,21 @@ class Logger(metaclass=SingletonLogger):
         self.__log("\n" * count, "LINE", display)
 
     def warning_unstable_branch(self, branch_name="main"):
-        def bold(text):
-            return self.formatting.format(text, _Formatting.FORMAT["BOLD"])
-
-        branch_name = bold(branch_name)
-        allor_v2 = bold("Allor v.2")
-        branch_name_param = bold("\"branch_name\"")
-        v1 = bold("\"v.1\"")
-        config_json = bold("config.json")
-        confirm_unstable_param = bold("\"confirm_unstable\"")
-        true = bold("\"true\"")
-
         warn_messages = (
-            f"Attention! You are currently using an unstable {branch_name} update branch. \n"
-            f"This branch is intended for the development of {allor_v2}. \n"
-            f"Please be aware that changes made in {allor_v2} may disrupt your current workflow. \n"
-            "Nodes may be renamed, parameters within them may be altered or even removed. \n"
+            f"Attention! You are currently using an unstable !![fyb;{branch_name}] update branch. \n"
+            f"This branch is intended for the development of !![fmb;Allor v.2]. \n\n"
+            f"Please be aware that changes made in !![fmb;Allor v.2] may disrupt your current workflow. \n"
+            "Nodes may be renamed, parameters within them may be altered or even removed. \n\n"
             "If backward compatibility of your workflow is important to you, consider this. \n"
-            f"You can change the {branch_name_param} parameter to {v1} in your {config_json}. \n"
-            "If you are prepared for potential changes, you can modify your current workflow. \n"
-            f"To accept, switch the {confirm_unstable_param} parameter in your {config_json} to {true}. \n"
+            f"You can change the !![fcb;branch_name_param] parameter to !![fbb;v1] in your !![fgb;config_json]. \n\n"
+            "If you are prepared for potential changes, you can modify your configuration file. \n"
+            f"To accept, switch the !![fcb;confirm_unstable_param] parameter in your !![fgb;config_json] to !![fbb;true]. \n"
             "This will result in this warning no longer appearing."
         )
 
         emit_messages = (
             "We appreciate your support and understanding during this transition period. \n"
-            f"Thank you and welcome to {allor_v2}."
+            f"Thank you and welcome to !![fmb;Allor v.2]."
         )
 
         self.warn(warn_messages)
@@ -141,56 +134,33 @@ class Logger(metaclass=SingletonLogger):
 
 class _Formatting:
     COLOR = {
-        "BLACK": 0,
-        "RED": 1,
-        "GREEN": 2,
-        "YELLOW": 3,
-        "BLUE": 4,
-        "MAGENTA": 5,
-        "CYAN": 6,
-        "WHITE": 7,
-        "DEFAULT": 8,
-        "GRAY_1": 232,
-        "GRAY_2": 233,
-        "GRAY_3": 234,
-        "GRAY_4": 235,
-        "GRAY_5": 236,
-        "GRAY_6": 237,
-        "GRAY_7": 238,
-        "GRAY_8": 239,
-        "GRAY_9": 240,
-        "GRAY_10": 241,
-        "GRAY_11": 242,
-        "GRAY_12": 243,
-        "GRAY_13": 244,
-        "GRAY_14": 245,
-        "GRAY_15": 246,
-        "GRAY_16": 247,
-        "GRAY_17": 248,
-        "GRAY_18": 249,
-        "GRAY_19": 250,
-        "GRAY_20": 251,
-        "GRAY_21": 252,
-        "GRAY_22": 253,
-        "GRAY_32": 254,
-        "GRAY_24": 255
+        "d": 0,  # DARK
+        "r": 1,  # RED
+        "g": 2,  # GREEN
+        "y": 3,  # YELLOW
+        "b": 4,  # BLUE
+        "m": 5,  # MAGENTA
+        "c": 6,  # CYAN
+        "w": 7,  # WHITE
+        "n": 8   # NORMAL
     }
 
     INTENSITY = {
-        "NORMAL": 30,
-        "BRIGHT": 90
+        "n": 30,  # NORMAL
+        "b": 90   # BRIGHT
     }
 
-    FORMAT = {
-        "BOLD": 1,
-        "FAINT": 2,
-        "ITALIC": 3,
-        "UNDERLINE": 4,
-        "BLINKING": 5,
-        "FAST_BLINKING": 6,
-        "REVERSE": 7,
-        "HIDE": 8,
-        "STRIKETHROUGH": 9,
+    ATTRIBUTE = {
+        "n": 0,  # NORMAL
+        "b": 1,  # BOLD
+        "f": 2,  # FAINT
+        "i": 3,  # ITALIC
+        "u": 4,  # UNDERLINE
+        "l": 5,  # BLINKING
+        "a": 6,  # FAST_BLINKING
+        "r": 7,  # REVERSE
+        "h": 8,  # HIDE
+        "s": 9   # STRIKETHROUGH
     }
 
     def __init__(self):
@@ -224,38 +194,56 @@ class _Formatting:
 
         return True
 
-    def format(self, text, format_code):
+    def format(self, text, intend=0):
         if self.__ansi:
-            if re.search(r"\033\[\d+m", text):
-                return re.sub(r"(\033\[\d+m)", r"\1;\033[" + str(format_code) + "m", text)
-            else:
-                return "\033[" + str(format_code) + "m" + text + "\033[0m"
+            text = self.__interpolation(text)
         else:
-            return text
+            text = self.__extraction(text)
 
-    def foreground(self, text, color_code, intensity):
-        if 232 <= color_code <= 255:
-            intensity = 0
+        if intend > 0:
+            text = "\n".join(line if i == 0 or not line else " " * intend + line for i, line in enumerate(text.split("\n")))
 
-        if self.__ansi:
-            if re.search(r"\033\[\d+m", text):
-                return re.sub(r"(\033\[\d+m)", r"\1;\033[" + str(color_code + intensity) + "m", text)
-            else:
-                return "\033[" + str(color_code + intensity) + "m" + text + "\033[0m"
-        else:
-            return text
-
-    def background(self, text, color_code, intensity):
-        if 232 <= color_code <= 255:
-            intensity = 0
-
-        if self.__ansi:
-            if re.search(r"\033\[\d+m", text):
-                return re.sub(r"(\033\[\d+m)", r"\1;\033[" + str(color_code + 10 + intensity) + "m", text)
-            else:
-                return "\033[" + str(color_code + 10 + intensity) + "m" + text + "\033[0m"
-        else:
-            return text
+        return text
 
     def reset(self, text):
-        return re.compile(r'\033\[[0-?]*[ -/]*[@-~]').sub('', text)
+        return re.compile(r"\033\[[0-?]*[ -/]*[@-~]").sub("", text)
+
+    def __interpolation(self, input_string):
+        pattern = re.compile(r"!!\[(.*?)(?<!\\)]")
+
+        def replace_func(match):
+            params = match.group(1).split(';')
+
+            fg, bg, attr, text = "fnn", "bnn", "an", None
+
+            for param in params:
+                if (len(param) == 3
+                        and param[0] in ["f", "b"]
+                        and param[1] in self.COLOR
+                        and param[2] in self.INTENSITY):
+
+                    if param[0] == "f":
+                        fg = param
+                    else:
+                        bg = param
+                elif len(param) == 2 and param[0] == "a" and param[1] in self.ATTRIBUTE:
+                    attr = param
+                else:
+                    text = param
+
+            text = text.replace("\\", "")
+
+            return (f"\033["
+                    f"{self.COLOR[fg[1]] + self.INTENSITY[fg[2]]};"
+                    f"{self.COLOR[bg[1]] + self.INTENSITY[bg[2]] + 10};"
+                    f"{self.ATTRIBUTE[attr[1]]}m{text}\033[0m")
+
+        return pattern.sub(replace_func, input_string)
+
+    def __extraction(self, input_string):
+        pattern = re.compile(r"!!\[(.*?)(?<!\\)]")
+
+        def replace_func(match):
+            return match.group(1).split(":")[-1]
+
+        return pattern.sub(replace_func, input_string)
