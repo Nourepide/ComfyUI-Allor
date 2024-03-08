@@ -1,6 +1,5 @@
 import torch
 from PIL import Image
-from rembg import remove, new_session
 
 import folder_paths
 
@@ -64,6 +63,7 @@ class ImageSegmentation:
             post_process_mask,
             session=None
     ):
+        from rembg import remove, new_session
         if session is None:
             if model == "isnetis":
                 session = new_session("isnet-anime")
