@@ -1,14 +1,7 @@
 import torch
 from PIL import Image
-from rembg import remove, new_session
-
+import time
 import folder_paths
-
-from ..session.CustomSession import CustomAbstractSession
-from ..session.CustomSession import CustomSessionContainer
-from ..session.ModnetPhotographicSession import ModnetPhotographicSession
-from ..session.ModnetWebcamSession import ModnetWebcamSession
-
 
 class ImageSegmentation:
     def __init__(self):
@@ -64,6 +57,9 @@ class ImageSegmentation:
             post_process_mask,
             session=None
     ):
+        from rembg import remove, new_session
+        from ..session.ModnetPhotographicSession import ModnetPhotographicSession
+        from ..session.ModnetWebcamSession import ModnetWebcamSession
         if session is None:
             if model == "isnetis":
                 session = new_session("isnet-anime")
@@ -150,8 +146,10 @@ class ImageSegmentationCustom:
             std,
             size
     ):
+        from ..session.CustomSession import CustomSessionContainer
         container = CustomSessionContainer(mean, mean, mean, std, std, std, size, size)
 
+        from ..session.CustomSession import CustomAbstractSession
         class CustomSession(CustomAbstractSession):
             def __init__(self):
                 super().__init__(model)
