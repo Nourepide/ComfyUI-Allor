@@ -310,7 +310,7 @@ class ImageTransformPaddingAbsolute:
     def node(self, images, add_width, add_height, method):
         def transpose_tensor(image):
             tensor = image.clone().detach()
-            tensor_pad = TF.pad(tensor.permute(2, 0, 1), [add_height, add_width], padding_mode=method).permute(1, 2, 0)
+            tensor_pad = TF.pad(tensor.permute(2, 0, 1), [add_width, add_height], padding_mode=method).permute(1, 2, 0)
 
             return tensor_pad
 
